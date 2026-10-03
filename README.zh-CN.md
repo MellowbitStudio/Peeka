@@ -6,7 +6,7 @@
 
 Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的文件预览。选中受支持的文件，按下**空格键**，即可查看应用软件包信息、阅读高亮源码、浏览结构化数据、检查 SQLite 表结构和查看压缩包目录。
 
-[官网](https://mellowbit.studio/peeka) · [反馈问题](https://github.com/MellowbitStudio/Peeka/issues) · [隐私政策](https://mellowbit.studio/peeka/privacy/)
+[在 App Store 下载](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289) · [官网](https://mellowbit.studio/peeka) · [反馈问题](https://github.com/MellowbitStudio/Peeka/issues) · [隐私政策](https://mellowbit.studio/peeka/privacy/)
 
 需要 **macOS 14 或更高版本**。支持**英语和简体中文**。
 
@@ -35,7 +35,7 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 ## 开始使用
 
-1. 访问 [Peeka 官网](https://mellowbit.studio/peeka)，了解应用与获取渠道。
+1. 从 [Mac App Store](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289) 下载 Peeka，也可访问 [Peeka 官网](https://mellowbit.studio/peeka)了解产品详情。
 2. 安装后启动 Peeka，按引导完成设置；如有需要，在**系统设置**中启用快速查看扩展。
 3. 在 Peeka 的格式列表中，确认对应格式已开启。
 4. 在**访达**中选中受支持的文件，按下**空格键**。

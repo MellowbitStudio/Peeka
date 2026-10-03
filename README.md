@@ -6,7 +6,7 @@ English · [简体中文](README.zh-CN.md)
 
 Peeka is a native macOS app that brings developer-friendly previews to Finder. Select a supported file and press **Space** to explore application packages, read highlighted source code, browse structured data, inspect SQLite schemas, and view archive listings.
 
-[Website](https://mellowbit.studio/peeka) · [Report an issue](https://github.com/MellowbitStudio/Peeka/issues) · [Privacy policy](https://mellowbit.studio/peeka/privacy/)
+[Download on the App Store](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289) · [Website](https://mellowbit.studio/peeka) · [Report an issue](https://github.com/MellowbitStudio/Peeka/issues) · [Privacy policy](https://mellowbit.studio/peeka/privacy/)
 
 Requires **macOS 14 or later**. Available in **English and Simplified Chinese**.
 
@@ -35,7 +35,7 @@ Preview availability depends on file contents and macOS choosing Peeka's extensi
 
 ## Get started
 
-1. Visit the [Peeka website](https://mellowbit.studio/peeka) for app information and distribution details.
+1. Download Peeka from the [Mac App Store](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289), or visit the [Peeka website](https://mellowbit.studio/peeka) to learn more about the app.
 2. Launch Peeka after installation. Follow the setup guidance and enable its Quick Look extension in **System Settings** if needed.
 3. Check that the relevant format is enabled in Peeka's format list.
 4. Select a supported file in **Finder** and press **Space**.
