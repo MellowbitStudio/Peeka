@@ -1,0 +1,56 @@
+# macOS metadata
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+
+# Local editor and agent settings
+.idea/
+.vscode/
+.cursor/
+.codex/
+.agents/
+*.swp
+*.swo
+*~
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+
+# Logs, caches, and temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Dependencies and generated output
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.build/
+build/
+dist/
+DerivedData/
+.derivedData/
+
+# Local Apple build and distribution artifacts
+xcuserdata/
+*.xcuserstate
+*.app/
+*.appex/
+*.xcarchive/
+*.dSYM/
+*.dSYM.zip
