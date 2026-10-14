@@ -1,5 +1,7 @@
 # Troubleshooting Peeka
 
+Skill **0.1.3**, product baseline reviewed **2026-10-14**. Match the installed app's version and UI before assuming every current-source feature is available.
+
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
 
 ## Establish the symptom
@@ -29,7 +31,8 @@ App Store download failures occur before Peeka's preview extension is available.
 
 macOS decides which Quick Look extension handles a file. Closing and reopening the preview is necessary after switch changes, but an enabled switch cannot force macOS to choose Peeka.
 
-- For **`.ts` / `.mts`** and **dotenv**, explain the documented Finder routing limitation. Do not promise that a cache reset or Pro purchase will resolve it.
+- For **`.ts` / `.mts`**, **dotenv**, **AAR**, **TXT / TEXT**, **IPS**, and some plist / CSV files, account for documented system-provider/type conflicts. Android AAR may be identified as Apple Archive; Peeka does not claim that broad type. Do not promise that a cache reset or Pro purchase resolves routing.
+- A `.mmd` file may be assigned another app's Markdown type (including Ulysses). Current source declares a relevant candidate, but registration/type matching alone does not establish that Finder selected Peeka. Compare the observed preview and the installed build before calling it fixed.
 - Check for another Quick Look provider if the visible preview appears to belong to another app. When testing a conflict, change one relevant provider at a time, record its prior setting, and restore settings after the comparison unless the user requested the new state.
 - If Peeka was switched off, a macOS preview or another provider may still appear. Confirm that Peeka's handling is disabled rather than treating any remaining preview as a failed switch.
 - Avoid renaming, overwriting, or changing file associations on the original file as a preview fix. Any experiment should use a separate non-sensitive sample.
@@ -39,17 +42,35 @@ macOS decides which Quick Look extension handles a file. Closing and reopening t
 | Symptom | What to check or explain |
 | --- | --- |
 | `.db` does not show database tables | The suffix is ambiguous; verify that it actually contains a SQLite database. |
+| An extensionless database or unknown suffix gets a generic preview | Internal SQLite/content recognition does not guarantee Finder routing. Do not change the original filename or claim arbitrary-file support. |
 | SQLite shows schema but no records | Schema is free; records and BLOB prefixes require Pro. Restore an existing purchase before suggesting a new purchase. |
 | SQLite records or BLOBs are truncated | Pages have a 100-row and 1 MiB display limit; BLOBs show only the first 4 KiB. Pro retains these limits. |
 | 7z listing is absent | Requires Pro and a supported variant. Encrypted, solid, or unsupported variants can still fail. |
 | A large archive listing stops early | Bounded listings may be incomplete. No unlimited listing guarantee is documented. |
 | YAML/TOML outline or mindmap differs from the full document | Structure views support bounded syntax subsets. Inspect the source view if available before concluding that data was lost. |
 | dotenv shows keys without values | Key-name-only display is the documented behavior. Do not expose secret values in a support report. |
-| DMG, flat PKG, or GZ only shows metadata | The documented scope is metadata rather than general payload browsing. |
+| DMG / flat PKG shows only metadata or a partial app list | Current source can inspect supported containers for app names/icons, within budgets. Unsupported/encrypted variants or limits may yield partial results; only complete inspection can establish that no app was found. Do not mount/install as a preview repair. |
+| GZ only shows metadata | Standalone gzip does not browse payloads or verify total uncompressed size; TAR.GZ / TGZ has a separate listing path and switch. |
+| A log has no structured mode or summary | Highlighted source is free; structured details require Pro and recognized content. TXT / TEXT does not detect logs; binary traces and `.logarchive` are outside support. |
+| Logcat stays plain source or omits statistics | Check the actual layout. `raw` is plain text; `long` needs properly framed multiple records. Statistics cover parsed preview records, not the whole file; budget-truncated final lines do not supply guessed tags or severity. |
+| An IPS report lacks structured crash details | Structured support targets standard crash reports (309). Other report types, damage, or truncation retain source; Peeka does not symbolicate or infer a crash cause. |
+| Binary / OpenStep plist shows only keys | A key-name projection is intentional, not a full source dump; corrupt binary input does not fall back to unreadable text. |
+| A Markdown image is missing | It must be an authorized regular local file inside the document directory and within image budgets. Remote/data URLs, traversal, and symlinks are blocked; adjacent-file sandbox access may be unavailable. |
 | Signing information is absent or questioned | Metadata availability varies; Peeka is not a signature-validity verifier. |
-| Finder thumbnail is missing | Thumbnail support depends on a compatible package containing an available embedded icon. Preview success alone does not guarantee a thumbnail. |
+| Finder thumbnail is missing | Only supported Android/Apple packages with readable embedded icons get Peeka thumbnails. Check the separate thumbnail extension and Finder icon-preview setting; Pro and preview switches do not gate thumbnails. DMG / PKG, text, diagrams, databases, and generic archives retain system icons. |
 
 If a small supported file fails despite correct switches and tier, record its actual error and reproduction steps for support. Do not infer corruption merely from an extension failure.
+
+## Mermaid shows source, no diagram, or no format switch
+
+1. Check **macOS 14.4+** and an installed build containing Mermaid support. Earlier systems hide the standalone row and keep Markdown fences as highlighted source, without diagram controls.
+2. Check Pro and the correct switch: standalone `.mmd` / `.mermaid` uses Mermaid; a Markdown fence uses Markdown. Enabling Mermaid cannot override a disabled Markdown switch.
+3. Inspect the displayed fallback reason. Unsupported syntax, directives/front matter, truncated input, or graph/render budgets retain source. Compare with a small supported diagram, such as `flowchart LR` followed by `A --> B`, in a separate sample.
+4. If a small graph also fails, preserve the exact rendering error and installed version. A rendering failure inside Peeka differs from Finder choosing another provider; purchasing again does not repair either.
+
+## A main-app file-opening command is missing
+
+The main app provides setup, the searchable format catalog, settings, and purchasing. Its retained log viewer's toolbar/menu and Open Log File / Command-O entries are hidden. Use Finder Space for previews; do not guide users to a delivered general Inspector, Mermaid editor/export, or log-opening menu. The main window is single-instance; Command-N does not create another window.
 
 ## Pro is still locked or restore fails
 
@@ -83,4 +104,4 @@ No Peeka-specific terminal repair commands are documented in this public skill. 
 
 ## Source
 
-Product behavior and limitations: [Peeka public documentation](https://github.com/MellowbitStudio/Peeka#readme), reviewed **2026-10-04**. The troubleshooting sequence is diagnostic guidance built around that baseline, not a guarantee that every issue has a local fix.
+Product behavior and limitations: Peeka's current 0.1.3 app source and canonical format/licensing documents, reviewed **2026-10-14**, summarized in [features and plans](features-and-plans.md). Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance, not a guarantee that every issue has a local fix or that current-source capabilities have shipped to the App Store.

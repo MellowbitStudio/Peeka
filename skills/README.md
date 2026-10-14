@@ -1,6 +1,6 @@
 # Peeka agent skill
 
-This folder publishes the **`peeka`** skill for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, features and supported formats, Free and Pro, preview switches, and troubleshooting.
+This folder publishes the **`peeka`** skill, version **0.1.3**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. Product knowledge follows the app's current 0.1.3 source baseline reviewed **2026-10-14**; confirm availability in the installed app rather than treating the baseline as a live App Store release.
 
 The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions and product knowledge; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
 
@@ -47,6 +47,8 @@ Installation requires a Node.js/npm environment capable of running `npx skills`.
 
 - “Use the Peeka skill to install the app from the Mac App Store and set up Finder previews.”
 - “Can Peeka preview an XAPK? Is Pro required?”
+- “Preview my Mermaid diagram. Why does Markdown show its source instead?”
+- “Does Peeka recognize Android Studio Logcat, and are structured details free?”
 - “Turn off Peeka's Markdown previews and keep source-code previews enabled.”
 - “My `.ts` file still shows a different preview. Help me diagnose it.”
 - “Peeka Pro was purchased before. Help me restore it.”
@@ -70,4 +72,4 @@ skills/
 
 `agents/openai.yaml` supplies optional Codex UI metadata; the portable instructions are in `SKILL.md` and `references/`. Those references travel with the installed skill and work without this repository checkout.
 
-Update the bundled facts and review date when Peeka's public capabilities change. Keep both root READMEs consistent with the skill, use the app's StoreKit price rather than a fixed amount, and verify changed settings labels against the installed macOS/app version. The app's source code is not included in this public repository.
+Maintain the skill version in `SKILL.md` under `metadata.version` as a quoted string. It identifies the skill package; installation/update behavior is determined by the installer. Update bundled facts and review dates against the app's canonical format/licensing documents and implementation. Distinguish the source baseline, published skill, and live app availability. Keep both root READMEs consistent, use StoreKit's displayed price, and verify settings labels against the installed macOS/app version. The app's source code is not included in this public repository.
