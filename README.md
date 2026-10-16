@@ -10,7 +10,7 @@ Peeka is a native macOS app that brings developer-friendly previews to Finder. S
 
 Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro. Available in **English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, and Spanish**.
 
-The capabilities below reflect the current **0.1.3 source baseline**, reviewed **2026-10-14**, including Mermaid updates. Availability in the installed App Store build and Finder provider selection may differ.
+**Peeka 0.1.3 has passed App Store review and is officially available**, as confirmed on **2026-10-16**. The capabilities below follow the 0.1.3 product baseline reviewed **2026-10-14**, including Mermaid updates. Update older installations through the App Store; preview availability also depends on file compatibility and Finder provider selection.
 
 ## Features
 
@@ -62,7 +62,7 @@ Some previews have limits:
 - SQLite record pages show up to **100 rows**, within a **1 MiB** display budget. BLOB previews read at most the first **4 KiB**. Peeka does not edit or maintain databases.
 - Signing metadata describes available signing information; it does not verify signature validity.
 - Logs and reports show only bounded source/details; statistics describe the parsed preview, not the whole file. Structured IPS support targets standard crash reports (309), without symbolication.
-- Mermaid supports 20 diagram families in the current source baseline. Unsupported syntax, directives, or resource limits fall back to highlighted source with a reason.
+- Mermaid supports 20 diagram families in the documented 0.1.3 baseline. Unsupported syntax, directives, or resource limits fall back to highlighted source with a reason.
 - Encrypted, solid, or unsupported 7z variants may not list. Archive listings are bounded and may be incomplete for large archives.
 
 Resource and compatibility limits apply to both Free and Pro previews.

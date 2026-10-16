@@ -38,7 +38,7 @@ Keep the distinctions that matter for setup: log and crash-report source is free
 
 Pro is an optional **one-time in-app purchase**, with no subscription or per-preview charges. Read the actual local price in **Settings → Peeka Pro** when a price is requested. Do not quote a fixed price or promise that Pro removes compatibility or resource limits.
 
-Skill version **0.1.3** describes Peeka's **0.1.3 source baseline**, checked against the app's canonical format documentation and implementation on **2026-10-14**, including the current Mermaid updates. This is a product-knowledge baseline, not proof that every feature is available in the live App Store build or accepted by Finder. For availability or changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled baseline. This public repository contains product information and feedback, without app source code.
+Skill version **0.1.3** describes Peeka's **0.1.3 product baseline**, checked against the app's canonical format documentation and implementation on **2026-10-14**, including Mermaid updates. **Peeka 0.1.3 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-16**. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.3 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
 
 ## Official links
 

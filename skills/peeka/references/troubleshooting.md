@@ -1,6 +1,6 @@
 # Troubleshooting Peeka
 
-Skill **0.1.3**, product baseline reviewed **2026-10-14**. Match the installed app's version and UI before assuming every current-source feature is available.
+Skill **0.1.3**, product baseline reviewed **2026-10-14**. Peeka **0.1.3** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-16**. Check for an App Store update on older builds, and match troubleshooting to the installed version and UI.
 
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
 
@@ -104,4 +104,4 @@ No Peeka-specific terminal repair commands are documented in this public skill. 
 
 ## Source
 
-Product behavior and limitations: Peeka's current 0.1.3 app source and canonical format/licensing documents, reviewed **2026-10-14**, summarized in [features and plans](features-and-plans.md). Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance, not a guarantee that every issue has a local fix or that current-source capabilities have shipped to the App Store.
+Product behavior and limitations: Peeka's 0.1.3 app source and canonical format/licensing documents, reviewed **2026-10-14**, summarized in [features and plans](features-and-plans.md). App Store approval and official availability of 0.1.3 were confirmed by the maintainer on **2026-10-16**. Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance; some issues depend on file compatibility or macOS provider selection and may not have a local fix.

@@ -1,6 +1,6 @@
 # Features, supported formats, and plans
 
-Skill **0.1.3** product baseline, checked against Peeka's 0.1.3 app source and canonical format/licensing documents on **2026-10-14**, including the current Mermaid updates. These bundled facts do not establish live App Store availability or universal Finder acceptance. Check the installed version and visible controls when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
+Skill **0.1.3** product baseline, checked against Peeka's 0.1.3 app source and canonical format/licensing documents on **2026-10-14**, including Mermaid updates. Peeka **0.1.3** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-16**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
 
 ## What Peeka does
 
@@ -44,7 +44,7 @@ For unlisted suffixes, inspect the installed format catalog or current official 
 
 ### Mermaid syntax and limits
 
-The current source baseline bundles Mermaid 12.2.0 and recognizes 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
+The documented 0.1.3 baseline bundles Mermaid 12.2.0 and recognizes 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
 
 Unsupported syntax, configuration directives/front matter, or resource limits produce highlighted source and a reason. Rendering is offline with bundled scripts; user HTML/scripts, external resources, navigation, and click callbacks are blocked. It is a preview, without editing or export.
 

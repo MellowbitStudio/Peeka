@@ -1,6 +1,6 @@
 # Peeka agent skill
 
-This folder publishes the **`peeka`** skill, version **0.1.3**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. Product knowledge follows the app's current 0.1.3 source baseline reviewed **2026-10-14**; confirm availability in the installed app rather than treating the baseline as a live App Store release.
+This folder publishes the **`peeka`** skill, version **0.1.3**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.3 has passed App Store review and is officially available**, as confirmed on **2026-10-16**. Product knowledge follows the 0.1.3 baseline reviewed **2026-10-14**; check the installed version and Finder behavior when troubleshooting.
 
 The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions and product knowledge; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
 

@@ -1,6 +1,6 @@
 # Installation and preview controls
 
-Skill **0.1.3**, reviewed **2026-10-14** against the app's current 0.1.3 source baseline. Confirm installed controls and availability; bundled knowledge does not prove a live App Store release.
+Skill **0.1.3**, product baseline reviewed **2026-10-14**. Peeka **0.1.3** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-16**. Update older installations through the App Store and match controls to the installed version.
 
 ## Install from the Mac App Store
 
