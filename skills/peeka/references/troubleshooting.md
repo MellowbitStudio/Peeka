@@ -65,6 +65,10 @@ macOS decides which Quick Look extension handles a file. Closing and reopening t
 
 If a small supported file fails despite correct switches and tier, record its actual error and reproduction steps for support. Do not infer corruption merely from an extension failure.
 
+## Framework or dSYM preview is missing
+
+These formats were implemented after the 0.1.5 tag; first check that the installed build includes them, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [development snapshot](features-and-plans.md#changes-after-the-released-baseline).
+
 ## Mermaid shows source, no diagram, or no format switch
 
 1. Check **macOS 14.4+** and an installed build containing Mermaid support. Earlier systems hide the standalone row and keep Markdown fences as highlighted source, without diagram controls.

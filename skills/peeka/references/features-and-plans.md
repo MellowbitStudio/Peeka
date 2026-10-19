@@ -2,6 +2,17 @@
 
 Skill **0.1.5** product baseline, checked against Peeka's 0.1.5 app source and canonical format/licensing documents on **2026-10-19**, including native Diff / Patch previews and Mermaid updates. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
 
+## Changes after the released baseline
+
+The following is a separate development snapshot, checked against app commit `7acb35c` on **2026-10-19**, after the `0.1.5` tag. App Store availability of these changes has not been verified. Do not assume an installed 0.1.5 build includes them.
+
+- **Framework (Pro):** `.framework` has an independent switch. Flat and versioned bundles show identity; readable Mach-O slices add architectures, UUIDs, declared platforms, and minimum system versions. Ordinary static ar frameworks show identity only. Internal version links must remain inside the bundle.
+- **dSYM (Pro):** `.dSYM` has an independent switch and shows bounded binary names and per-architecture UUIDs. It does not expand DWARF symbols, symbolicate reports, or match files automatically. UUID presence does not prove symbol completeness; absent UUIDs remain unavailable.
+- **Finder behavior:** Neither format has custom thumbnails. App validation records Space previews for both and column previews for dSYM; Framework remains a directory in Finder column view. Verify the user's installed build and actual result.
+- **Mermaid:** Pele 1.6.0 replaces Mermaid.js for the same 20 diagram families, targeting Mermaid 12.1.0 syntax. It uses an offline system font and Peeka light/dark themes. Layout, default styles, and supported syntax are engine-specific; old Mermaid.js styling and connector workarounds no longer describe this renderer. Diagram/source controls, Pro and macOS 14.4 requirements remain. Fit can scale below 10% for large canvases; manual zoom remains 10%–400%.
+
+The current renderer retains the bounded offline preview model: 1 MiB input, 50,000 UTF-16 units per diagram, 500 entities/connections, 5-second rendering, 8 MiB SVG/PDF, and at most 16 Markdown diagrams. Model and canvas-size limits can also trigger source fallback. Third-party license information is available in Settings → About → Third-party Licenses.
+
 ## What Peeka does
 
 | Capability | Behavior |
@@ -43,7 +54,7 @@ For unlisted suffixes, inspect the installed format catalog or current official 
 - **SQLite:** Select a table and switch between Structure and Data. Data and clickable BLOB prefixes require Pro; views and virtual/shadow tables expose structure only. Generated columns appear in schema and are omitted from record reads.
 - **Archives:** Switch between List and Columns; navigate folders and sort available columns. Only retained entries are browsable. These views do not extract or open entry contents.
 
-### Mermaid syntax and limits
+### Mermaid syntax and limits (released 0.1.5)
 
 The documented 0.1.5 baseline bundles Mermaid 12.2.0 and recognizes 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
 

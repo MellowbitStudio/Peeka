@@ -2,6 +2,8 @@
 
 This folder publishes the **`peeka`** skill, version **0.1.5**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.5 has passed App Store review and is officially available**, as confirmed on **2026-10-19**. Product knowledge follows the 0.1.5 baseline reviewed **2026-10-19**; check the installed version and Finder behavior when troubleshooting.
 
+The feature reference also records a separate development snapshot after the 0.1.5 tag, covering Framework/dSYM and the Pele renderer. Its App Store availability has not been verified; do not treat it as part of the released baseline.
+
 The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions and product knowledge; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
 
 ## Install from GitHub

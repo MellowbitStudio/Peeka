@@ -14,6 +14,8 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 ## 主要功能
 
+以下介绍已发布的 0.1.5 功能；该版本之后实现的能力见[后续开发进展](#后续开发进展)。
+
 - **应用软件包：** 查看 Android 与 Apple 软件包中可用的图标、名称、标识符、版本、系统要求和架构。受支持的软件包含有可用内置图标时，还可生成访达缩略图。
 - **源码：** 常见开发语言支持语法高亮、行号、原生文本选择与复制。可在 Peeka 中按语言独立开启或关闭预览。
 - **Diff / Patch：** 免费提供 Source、Fluid、Blocks 和 Unified 视图，支持文件选择、原文件行号与增删统计；仅查看补丁，不应用补丁或读取所列文件。
@@ -41,6 +43,16 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 实际预览取决于文件内容以及 macOS 是否选择 Peeka 扩展。TypeScript 的 `.ts` / `.mts`、dotenv、AAR、TXT / TEXT、IPS 及部分 plist / CSV 存在已知预览器或分发限制。YAML 与 TOML 的结构视图支持有界语法子集。TXT / TEXT 只显示普通原文，不自动识别日志或文档类型。
 
+## 后续开发进展
+
+以下内容于 **2026-10-19** 对照 App 仓库 `7acb35c` 核实，均为 `0.1.5` tag 之后的变动；尚未核实其在 App Store 构建中的可用状态。
+
+- **Framework 预览（Pro）：** 查看 `.framework` 身份，以及可读取的 Mach-O 架构、UUID、平台和最低系统版本。支持平面布局和 macOS 版本化目录；普通静态框架仅显示身份信息。
+- **调试符号包预览（Pro）：** 查看 `.dSYM` 中的二进制名称及各架构 UUID，不展开符号、不符号化崩溃报告，也不自动匹配二进制与报告。
+- **Mermaid 渲染引擎更新：** 内置 Pele 1.6.0，离线渲染 20 类图形，提供浅深色主题和原生矢量缩放、平移；布局与语法兼容性可能不同于 0.1.5 的 Mermaid.js 引擎。
+
+Framework 与 dSYM 各有独立格式开关，均不生成自定义缩略图。App 仓库的本机验收记录显示，两者空格预览及 dSYM 分栏预览通过；Framework 在访达分栏中仍作为目录展开。这些记录不代表已上架版本包含上述能力。
+
 ## 开始使用
 
 1. 从 [Mac App Store](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289) 下载 Peeka，也可访问 [Peeka 官网](https://mellowbit.studio/peeka)了解产品详情。
@@ -50,7 +62,7 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 调整格式开关或解锁 Pro 后，请关闭并重新打开快速查看窗口。主应用提供引导、格式开关、设置与购买入口，文件预览通过访达完成。
 
-预览开关不控制软件包缩略图，缩略图也不要求 Pro。主应用日志查看器的菜单和工具栏入口已隐藏；通用 Inspector、对比与导出、Peeka 字体和视频预览尚未交付。
+预览开关不控制软件包缩略图，缩略图也不要求 Pro。主应用提供格式搜索和按源码语言独立控制的开关。具体限制与常见问题见[功能参考](skills/peeka/references/features-and-plans.md)和[故障排查](skills/peeka/references/troubleshooting.md)。
 
 ## Peeka Pro
 

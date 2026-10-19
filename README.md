@@ -14,6 +14,8 @@ Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro
 
 ## Features
 
+The following describes the released 0.1.5 baseline. See [development progress](#development-progress) for capabilities implemented after that release.
+
 - **Application packages:** View available icons, names, identifiers, versions, system requirements, and architectures for Android and Apple packages. Compatible packages with embedded icons can also receive Finder thumbnails.
 - **Source code:** Read common development languages with syntax highlighting, line numbers, native text selection, and copy. Enable or disable previews for each source language in Peeka.
 - **Diff / Patch:** Free Source, Fluid, Blocks, and Unified views with file selection, original line numbers, and change counts. Inspect patches without applying them or reading referenced files.
@@ -41,6 +43,16 @@ Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro
 
 Preview availability depends on file contents and macOS choosing Peeka's extension. TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS, and some plist / CSV files have known provider or routing limitations. YAML and TOML structure views support bounded subsets of their syntax. TXT / TEXT stays plain source without automatic log or document detection.
 
+## Development progress
+
+Checked against the app repository at `7acb35c` on **2026-10-19**. These changes follow the `0.1.5` tag; their availability in an App Store build has not been verified.
+
+- **Framework previews (Pro):** Inspect `.framework` identity and available Mach-O architectures, UUIDs, platforms, and minimum system versions. Flat and versioned macOS bundles are supported; ordinary static frameworks show identity only.
+- **Debug-symbol previews (Pro):** Inspect `.dSYM` binary names and per-architecture UUIDs. This does not expand symbols, symbolicate crashes, or automatically match binaries to reports.
+- **Updated Mermaid renderer:** Bundled Pele 1.6.0 renders the 20 supported diagram families offline, with light/dark themes and native vector zoom/pan. Layout and syntax compatibility can differ from the Mermaid.js renderer in 0.1.5.
+
+Framework and dSYM have independent format switches and no custom thumbnails. Local app validation recorded working Space previews for both and a Finder column preview for dSYM; Finder expands frameworks as directories in column view. These observations do not establish availability in the released build.
+
 ## Get started
 
 1. Download Peeka from the [Mac App Store](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289), or visit the [Peeka website](https://mellowbit.studio/peeka) to learn more about the app.
@@ -50,7 +62,7 @@ Preview availability depends on file contents and macOS choosing Peeka's extensi
 
 After changing a format switch or unlocking Pro, close and reopen the Quick Look preview. The main app provides setup guidance, format controls, settings, and purchasing; file previews appear in Finder.
 
-Preview switches do not control package thumbnails, which are independent of Pro. The main-app log viewer's menu/toolbar entries are hidden; a general Inspector, comparison/export, and Peeka font/video previews are not delivered.
+Preview switches do not control package thumbnails, which are independent of Pro. The main app includes format search and separate source-language switches. For preview limitations and common problems, see the [feature reference](skills/peeka/references/features-and-plans.md) and [troubleshooting guide](skills/peeka/references/troubleshooting.md).
 
 ## Peeka Pro
 
