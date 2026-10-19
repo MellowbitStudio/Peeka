@@ -1,6 +1,6 @@
 # Troubleshooting Peeka
 
-Skill **0.1.3**, product baseline reviewed **2026-10-14**. Peeka **0.1.3** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-16**. Check for an App Store update on older builds, and match troubleshooting to the installed version and UI.
+Skill **0.1.5**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check for an App Store update on older builds, and match troubleshooting to the installed version and UI.
 
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
 
@@ -15,6 +15,10 @@ Collect or inspect the relevant details:
 - Free or Pro status, and whether another small supported file previews correctly.
 
 With local shell access, `sw_vers -productVersion` reports the macOS version. Read the Peeka version from its visible app information or installed bundle metadata; do not guess its install path or bundle identifier. Diagnose only the files relevant to the request.
+
+## Diff / Patch shows Source or partial output
+
+Enhanced Diff modes are free. A new preview always starts in Source; select Fluid, Blocks, or Unified when complete hunks are available. Binary or metadata-only patches do not contain text changes to display. Unsupported syntax, malformed counts, and truncated input can leave only Source or prior complete hunks with an explanation. Consecutive mail patches are supported, including unsigned output. For continuous selection across large-hunk fragments, switch to Source. Do not apply the patch or open its referenced files as a preview repair. See [Diff limits](features-and-plans.md#diff--patch-scope-and-limits).
 
 ## No Peeka preview, or only a generic icon
 
@@ -104,4 +108,4 @@ No Peeka-specific terminal repair commands are documented in this public skill. 
 
 ## Source
 
-Product behavior and limitations: Peeka's 0.1.3 app source and canonical format/licensing documents, reviewed **2026-10-14**, summarized in [features and plans](features-and-plans.md). App Store approval and official availability of 0.1.3 were confirmed by the maintainer on **2026-10-16**. Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance; some issues depend on file compatibility or macOS provider selection and may not have a local fix.
+Product behavior and limitations: Peeka's 0.1.5 app source and canonical format/licensing documents, reviewed **2026-10-19**, summarized in [features and plans](features-and-plans.md). App Store approval and official availability of 0.1.5 were confirmed by the maintainer on **2026-10-19**. Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance; some issues depend on file compatibility or macOS provider selection and may not have a local fix.

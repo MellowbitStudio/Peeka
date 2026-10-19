@@ -1,8 +1,8 @@
 ---
 name: peeka
-description: "Install and use Mellowbit Studio's Peeka Quick Look app on macOS. Use for App Store setup; package, source, Markdown, Mermaid, Logcat, crash-report, SQLite, and archive previews; Free versus Pro features; format and extension switches; and troubleshooting Finder previews."
+description: "Install and use Mellowbit Studio's Peeka Quick Look app on macOS. Use for App Store setup; package, source, Markdown, Mermaid, Diff / Patch, Logcat, crash-report, SQLite, and archive previews; Free versus Pro features; format and extension switches; and troubleshooting Finder previews."
 metadata:
-  version: "0.1.3"
+  version: "0.1.5"
 ---
 
 # Peeka
@@ -34,11 +34,13 @@ Read only the reference needed for the request. These files are bundled with thi
 
 Use the bundled feature matrix for the documented baseline. For a particular file, explain the supported category, the required tier, and any relevant content or routing limitation. Extension names alone do not guarantee compatibility; macOS chooses the preview provider.
 
+Diff / Patch previews are free: Source, Fluid, Blocks, and Unified modes inspect the patch only, without reading referenced files or applying changes. Read the feature reference for partial output and selection limits.
+
 Keep the distinctions that matter for setup: log and crash-report source is free while structured details require Pro; Markdown Mermaid source is free while diagrams require Pro and macOS 14.4+; DMG / flat PKG can show bounded embedded-app information without mounting or installing. The main-app log viewer's menu and toolbar entries are hidden. Do not present a general Inspector, DEX analysis, font or video previews, comparison, or export as delivered Peeka features.
 
 Pro is an optional **one-time in-app purchase**, with no subscription or per-preview charges. Read the actual local price in **Settings → Peeka Pro** when a price is requested. Do not quote a fixed price or promise that Pro removes compatibility or resource limits.
 
-Skill version **0.1.3** describes Peeka's **0.1.3 product baseline**, checked against the app's canonical format documentation and implementation on **2026-10-14**, including Mermaid updates. **Peeka 0.1.3 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-16**. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.3 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
+Skill version **0.1.5** describes Peeka's **0.1.5 product baseline**, checked against the app's canonical format documentation and implementation on **2026-10-19**, including native Diff / Patch previews and Mermaid updates. **Peeka 0.1.5 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-19**. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.5 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
 
 ## Official links
 

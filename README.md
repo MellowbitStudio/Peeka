@@ -10,12 +10,13 @@ Peeka is a native macOS app that brings developer-friendly previews to Finder. S
 
 Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro. Available in **English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, and Spanish**.
 
-**Peeka 0.1.3 has passed App Store review and is officially available**, as confirmed on **2026-10-16**. The capabilities below follow the 0.1.3 product baseline reviewed **2026-10-14**, including Mermaid updates. Update older installations through the App Store; preview availability also depends on file compatibility and Finder provider selection.
+**Peeka 0.1.5 has passed App Store review and is officially available**, as confirmed on **2026-10-19**. The capabilities below follow the 0.1.5 product baseline reviewed **2026-10-19**, including native Diff / Patch previews and Mermaid updates. Update older installations through the App Store; preview availability also depends on file compatibility and Finder provider selection.
 
 ## Features
 
 - **Application packages:** View available icons, names, identifiers, versions, system requirements, and architectures for Android and Apple packages. Compatible packages with embedded icons can also receive Finder thumbnails.
 - **Source code:** Read common development languages with syntax highlighting, line numbers, native text selection, and copy. Enable or disable previews for each source language in Peeka.
+- **Diff / Patch:** Free Source, Fluid, Blocks, and Unified views with file selection, original line numbers, and change counts. Inspect patches without applying them or reading referenced files.
 - **Markdown:** Preview formatted documents with highlighted code blocks, horizontally scrolling tables, read-only task lists, and permitted local images.
 - **Mermaid:** Preview standalone diagrams or diagrams inside Markdown, with source views and vector zoom/pan. Graphical rendering requires Pro and macOS 14.4+; Markdown fenced source remains free.
 - **Logs and crash reports:** Read highlighted log, Android Logcat, and crash-report source for free. Pro adds bounded summaries and structured details for recognized content.
@@ -62,14 +63,14 @@ Some previews have limits:
 - SQLite record pages show up to **100 rows**, within a **1 MiB** display budget. BLOB previews read at most the first **4 KiB**. Peeka does not edit or maintain databases.
 - Signing metadata describes available signing information; it does not verify signature validity.
 - Logs and reports show only bounded source/details; statistics describe the parsed preview, not the whole file. Structured IPS support targets standard crash reports (309), without symbolication.
-- Mermaid supports 20 diagram families in the documented 0.1.3 baseline. Unsupported syntax, directives, or resource limits fall back to highlighted source with a reason.
+- Mermaid supports 20 diagram families in the documented 0.1.5 baseline. Unsupported syntax, directives, or resource limits fall back to highlighted source with a reason.
 - Encrypted, solid, or unsupported 7z variants may not list. Archive listings are bounded and may be incomplete for large archives.
 
 Resource and compatibility limits apply to both Free and Pro previews.
 
 ## AI agent skill
 
-The public [`peeka` skill](skills/peeka/SKILL.md), version **0.1.3**, helps Codex, Claude Code, and other compatible agents install Peeka from the App Store, explain supported formats and Free / Pro features, enable or disable previews, and troubleshoot issues.
+The public [`peeka` skill](skills/peeka/SKILL.md), version **0.1.5**, helps Codex, Claude Code, and other compatible agents install Peeka from the App Store, explain supported formats and Free / Pro features, enable or disable previews, and troubleshoot issues.
 
 After the skill is published to this repository's default branch, install it with:
 

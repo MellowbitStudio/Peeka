@@ -1,6 +1,6 @@
 # Installation and preview controls
 
-Skill **0.1.3**, product baseline reviewed **2026-10-14**. Peeka **0.1.3** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-16**. Update older installations through the App Store and match controls to the installed version.
+Skill **0.1.5**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Update older installations through the App Store and match controls to the installed version.
 
 ## Install from the Mac App Store
 
@@ -71,6 +71,6 @@ Report the app installation state, relevant format switch, relevant extension st
 
 ## Sources
 
-Product workflow: Peeka's current 0.1.3 source and canonical format/licensing documentation, reviewed 2026-10-14; bundled behavior is summarized in [features and plans](features-and-plans.md). Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme).
+Product workflow: Peeka's current 0.1.5 source and canonical format/licensing documentation, reviewed 2026-10-19; bundled behavior is summarized in [features and plans](features-and-plans.md). Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme).
 
 System Settings paths: Apple's [Sonoma Extensions settings](https://support.apple.com/guide/mac-help/change-extensions-settings-mchl8baf92fe/14.0/mac/14.0) and [Login Items & Extensions settings](https://support.apple.com/guide/mac-help/change-login-items-extensions-settings-mtusr003/mac). Check the version selector and installed UI for version-specific labels.

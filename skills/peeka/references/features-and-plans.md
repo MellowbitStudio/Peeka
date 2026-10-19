@@ -1,6 +1,6 @@
 # Features, supported formats, and plans
 
-Skill **0.1.3** product baseline, checked against Peeka's 0.1.3 app source and canonical format/licensing documents on **2026-10-14**, including Mermaid updates. Peeka **0.1.3** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-16**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
+Skill **0.1.5** product baseline, checked against Peeka's 0.1.5 app source and canonical format/licensing documents on **2026-10-19**, including native Diff / Patch previews and Mermaid updates. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
 
 ## What Peeka does
 
@@ -37,6 +37,7 @@ For unlisted suffixes, inspect the installed format catalog or current official 
 ## Use the preview controls
 
 - **Source / Outline / Mindmap:** These free modes share expansion state; new files start in Source. Structure extraction needs complete bounded input, at most 1,000 nodes and 32 levels. YAML / TOML / INI are conservative projections, not complete syntax parsers; unsupported structures retain Source. Mindmap zoom is 25%–300%.
+- **Diff / Patch:** Free `.diff` / `.patch` previews start in Source; switch to Fluid, Blocks, or Unified for multi-file selection, old/new paths, original file line numbers, addition/deletion counts, and no-final-newline markers. Switching modes preserves the selected file and current hunk; reopening returns to Source. Copy omits line numbers and layout padding. For selection across large-hunk text fragments, use Source.
 - **Logs:** New previews start in Source. With Pro, switch to structured details for time, level, and message plus available summaries. Counts and first/last timestamps cover the parsed preview only. JSONL logs use the JSONL switch; `.log` / `.out` / `.trace` share the Logs switch. TXT / TEXT remains plain source and does not automatically detect logs, Markdown, or JSON.
 - **Mermaid:** Standalone files start in Diagram; switch to read-only Source as needed. The vector canvas supports pan, pinch zoom, 10%–400% zoom, 100%, and Fit to Window. The Mermaid switch controls standalone files; the Markdown switch controls Markdown files and their fences. On macOS before 14.4, Markdown fences retain highlighted source without diagram controls, and the standalone Mermaid catalog item is hidden.
 - **SQLite:** Select a table and switch between Structure and Data. Data and clickable BLOB prefixes require Pro; views and virtual/shadow tables expose structure only. Generated columns appear in schema and are omitted from record reads.
@@ -44,11 +45,19 @@ For unlisted suffixes, inspect the installed format catalog or current official 
 
 ### Mermaid syntax and limits
 
-The documented 0.1.3 baseline bundles Mermaid 12.2.0 and recognizes 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
+The documented 0.1.5 baseline bundles Mermaid 12.2.0 and recognizes 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
+
+The 0.1.5 update refines light/dark diagram styling, Timeline/state themes, Sankey labels, and Kanban colors, and fixes connector/arrow semantics and rendering cancellation. Explicit colors, line widths, and automatic layout remain respected.
 
 Unsupported syntax, configuration directives/front matter, or resource limits produce highlighted source and a reason. Rendering is offline with bundled scripts; user HTML/scripts, external resources, navigation, and click callbacks are blocked. It is a preview, without editing or export.
 
 Files are read up to 1 MiB; truncated source is not rendered. Each diagram is limited to 50,000 UTF-16 units, 500 entities, 500 connections, 5 seconds, and 8 MiB of generated PDF. Markdown renders at most 16 diagrams. Pro retains all budgets. New syntax and registration have local implementation/rendering evidence; actual Finder selection and minimum-system acceptance remain separate checks.
+
+### Diff / Patch scope and limits
+
+Parses unified diff and Git text patches, including consecutive `git format-patch --stdout` mail patches with or without signatures, quoted/space/Unicode paths, renames, copies, and mode metadata. Reads only the bounded patch, without opening referenced paths or repositories, applying patches, staging, or merging. It cannot compare arbitrary files or expand missing context.
+
+Input is limited to 1 MiB; enhanced views retain at most 256 files, 4,096 hunks, and 100,000 body lines across the input. Truncation or malformed counts retain prior complete hunks with a partial/damaged explanation. Unsupported constructs such as combined diff fall back to Source; binary and metadata-only changes show available metadata. No inline character differences are provided.
 
 ### Logcat and crash-report scope
 
