@@ -2,7 +2,7 @@
 
 **Ultimate Quick Look App**
 
-English · [简体中文](README.zh-CN.md)
+English · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md)
 
 Peeka is a native macOS app that brings developer-friendly previews to Finder. Select a supported file and press **Space** to explore application packages, read highlighted source code, browse structured data, inspect SQLite schemas, and view archive listings.
 
