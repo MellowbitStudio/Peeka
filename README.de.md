@@ -12,6 +12,8 @@ Erfordert **macOS 14 oder neuer**; die Darstellung von Mermaid-Diagrammen erford
 
 **Peeka 0.1.5 hat die App-Store-Prüfung bestanden und ist offiziell verfügbar**, bestätigt am **2026-10-19**. Die folgenden Angaben entsprechen dem am selben Tag geprüften Produktstand 0.1.5 einschließlich nativer Diff-/Patch-Vorschauen und Mermaid-Updates. Aktualisiere ältere Installationen über den App Store. Die Vorschau hängt auch von der Dateikompatibilität und der Auswahl des Vorschauanbieters durch den Finder ab.
 
+**0.1.6 (20261020.1) · TestFlight-Prüfung bestanden** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+
 ## Funktionen
 
 Die folgenden Funktionen gehören zur veröffentlichten Version 0.1.5. Spätere Implementierungen stehen unter [Entwicklungsstand](#entwicklungsstand).
@@ -45,13 +47,14 @@ Die Verfügbarkeit hängt vom Inhalt und davon ab, ob macOS Peekas Erweiterung a
 
 ## Entwicklungsstand
 
-Am **2026-10-19** mit dem App-Repository bei `7acb35c` abgeglichen. Diese Änderungen folgen auf das Tag `0.1.5`; ihre Verfügbarkeit in einem App-Store-Build wurde nicht bestätigt.
+Peeka 0.1.6 (20261020.1) hat die TestFlight-Prüfung bestanden. Die Beta ergänzt Pro-Vorschauen für Framework/dSYM und verbessert große Archivlisten, Dateinamencodierungen und Offline-Diagramme mit Pele. Im Mac App Store bleibt 0.1.5 aktuell. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/de/peeka/beta-release-notes/)
 
 - **Framework-Vorschauen (Pro):** Identität einer `.framework` sowie verfügbare Mach-O-Architekturen, UUIDs, Plattformen und minimale Systemversionen anzeigen. Flache und versionierte macOS-Bundles werden unterstützt; gewöhnliche statische Frameworks zeigen nur die Identität.
 - **Debugsymbole (Pro):** Binärdateinamen und UUIDs pro Architektur aus `.dSYM` anzeigen. Keine Symbolauflösung, Symbolikation von Absturzberichten oder automatische Zuordnung von Binärdateien zu Berichten.
 - **Aktualisierter Mermaid-Renderer:** Das mitgelieferte Pele 1.6.0 rendert 20 Diagrammfamilien offline, mit hellem/dunklem Design und nativem Vektorzoom und Schwenken. Layout und Syntaxkompatibilität können vom Mermaid.js-Renderer in 0.1.5 abweichen.
+- **Archive:** Metadaten großer Listen werden bei Bedarf gelesen; die feste Grenze der ersten 256 Einträge entfällt. Verbesserte Indexierung, Sortierung, Abbruch, Wiederherstellung und ältere Dateinamencodierungen in ZIP/JAR/WAR und TAR/TGZ. Pro verbessert unterstützte LZMA/LZMA2-Header und Solid-7z-Listen mit einem Coder. Ressourcenlimits und Teillisten gelten weiterhin.
 
-Framework und dSYM haben eigene Formatschalter und keine benutzerdefinierten Miniaturen. Die lokale App-Prüfung dokumentiert funktionierende Leertasten-Vorschauen für beide sowie eine Finder-Spaltenvorschau für dSYM. Frameworks werden in der Spaltenansicht als Verzeichnisse geöffnet. Das belegt keine Verfügbarkeit in der veröffentlichten Version.
+Framework und dSYM haben eigene Formatschalter und keine benutzerdefinierten Miniaturen. Die lokale App-Prüfung dokumentiert funktionierende Leertasten-Vorschauen für beide sowie eine Finder-Spaltenvorschau für dSYM. Frameworks werden in der Spaltenansicht als Verzeichnisse geöffnet.
 
 ## Erste Schritte
 

@@ -1,6 +1,8 @@
 # Troubleshooting Peeka
 
-Skill **0.1.5**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check for an App Store update on older builds, and match troubleshooting to the installed version and UI.
+Skill **0.1.6**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check for an App Store update on older builds, and match troubleshooting to the installed version and UI.
+
+Peeka **0.1.6 (20261020.1)** has passed TestFlight review, confirmed by the maintainer on **2026-10-21**. The Mac App Store release remains **0.1.5**. Match guidance to the installed channel and build; see [TestFlight 0.1.6](testflight-0.1.6.md).
 
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
 
@@ -67,7 +69,7 @@ If a small supported file fails despite correct switches and tier, record its ac
 
 ## Framework or dSYM preview is missing
 
-These formats were implemented after the 0.1.5 tag; first check that the installed build includes them, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [development snapshot](features-and-plans.md#changes-after-the-released-baseline).
+These Pro formats are included in the approved TestFlight 0.1.6 Beta; first check the installed version and channel, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [TestFlight 0.1.6 details](features-and-plans.md#testflight-016-beta).
 
 ## Mermaid shows source, no diagram, or no format switch
 

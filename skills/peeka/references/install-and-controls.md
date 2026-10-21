@@ -1,6 +1,8 @@
 # Installation and preview controls
 
-Skill **0.1.5**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Update older installations through the App Store and match controls to the installed version.
+Skill **0.1.6**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Update older installations through the App Store and match controls to the installed version.
+
+Peeka **0.1.6 (20261020.1)** has passed TestFlight review, confirmed by the maintainer on **2026-10-21**. The Mac App Store release remains **0.1.5**. Match guidance to the installed channel and build; see [TestFlight 0.1.6](testflight-0.1.6.md).
 
 ## Install from the Mac App Store
 
