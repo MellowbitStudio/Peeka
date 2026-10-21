@@ -45,6 +45,10 @@ The **Pro additions** column supplements free capabilities. The app requires **m
 
 For unlisted suffixes, inspect the installed format catalog or current official documentation. A `.db` suffix does not establish SQLite content. Internal content recognition does not guarantee that Finder routes an unknown or extensionless file to Peeka.
 
+## Development source catalog (checked 2026-10-21)
+
+The development source now has 116 free lexical profiles, including Frontend & Templates and Build Scripts, shared with Markdown fences. See the [complete source catalog and suffix/routing limits](source-coverage.md). This expansion is separate from the released 0.1.5 matrix above; App Store / TestFlight availability is unconfirmed.
+
 ## Use the preview controls
 
 - **Source / Outline / Mindmap:** These free modes share expansion state; new files start in Source. Structure extraction needs complete bounded input, at most 1,000 nodes and 32 levels. YAML / TOML / INI are conservative projections, not complete syntax parsers; unsupported structures retain Source. Mindmap zoom is 25%–300%.

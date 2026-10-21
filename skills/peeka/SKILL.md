@@ -32,7 +32,7 @@ Read only the reference needed for the request. These files are bundled with thi
 
 ## Answering product questions
 
-Use the bundled feature matrix for the released baseline. The feature reference separately records development changes after the 0.1.5 tag (Framework, dSYM, and Pele); check the installed build before promising those capabilities. For a particular file, explain the supported category, the required tier, and any relevant content or routing limitation. Extension names alone do not guarantee compatibility; macOS chooses the preview provider.
+Use the bundled feature matrix for the released baseline. The feature reference separately records development changes after the 0.1.5 tag (Framework, dSYM, and Pele); check the installed build before promising those capabilities. The [development source catalog](references/source-coverage.md) lists 116 free lexical profiles and their suffix/routing limits, checked 2026-10-21; availability in a distributed build is unconfirmed. For a particular file, explain the supported category, the required tier, and any relevant content or routing limitation. Extension names alone do not guarantee compatibility; macOS chooses the preview provider.
 
 Diff / Patch previews are free: Source, Fluid, Blocks, and Unified modes inspect the patch only, without reading referenced files or applying changes. Read the feature reference for partial output and selection limits.
 
