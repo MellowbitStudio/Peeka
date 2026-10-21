@@ -12,6 +12,8 @@ Requiere **macOS 14 o posterior**; la representación gráfica de Mermaid requie
 
 **Peeka 0.1.5 ha superado la revisión del App Store y está disponible oficialmente**, según la confirmación del **2026-10-19**. La información siguiente corresponde al producto 0.1.5 revisado ese día, con vistas previas nativas Diff / Patch y actualizaciones de Mermaid. Actualiza las instalaciones anteriores desde el App Store. La vista previa también depende de la compatibilidad del archivo y del proveedor seleccionado por el Finder.
 
+**0.1.6 (20261020.1) · Revisión de TestFlight aprobada** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+
 ## Funciones
 
 Estas son las funciones publicadas en 0.1.5. Consulta las implementaciones posteriores en [Estado del desarrollo](#estado-del-desarrollo).
@@ -45,13 +47,14 @@ La disponibilidad depende del contenido y de que macOS elija la extensión de Pe
 
 ## Estado del desarrollo
 
-Contrastado con el repositorio de la app en `7acb35c` el **2026-10-19**. Estos cambios son posteriores a la etiqueta `0.1.5`; no se ha verificado su disponibilidad en una compilación del App Store.
+Peeka 0.1.6 (20261020.1) ha superado la revisión de TestFlight. La Beta añade vistas Pro de Framework/dSYM y mejora las listas de archivos grandes, la codificación de nombres y los diagramas Pele sin conexión. La versión del Mac App Store sigue siendo la 0.1.5. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/es/peeka/beta-release-notes/)
 
 - **Vistas previas de Framework (Pro):** identidad de `.framework` y arquitecturas Mach-O, UUID, plataformas y versiones mínimas del sistema disponibles. Admite paquetes planos y versionados de macOS; los frameworks estáticos habituales solo muestran su identidad.
 - **Símbolos de depuración (Pro):** nombres de binarios y UUID por arquitectura de `.dSYM`. No expande símbolos, no simboliza informes de fallos ni relaciona automáticamente binarios con informes.
 - **Motor Mermaid actualizado:** Pele 1.6.0 integrado representa 20 familias de diagramas sin conexión, con temas claro/oscuro y zoom y desplazamiento vectoriales nativos. El diseño y la compatibilidad de sintaxis pueden diferir de Mermaid.js en 0.1.5.
+- **Archivos comprimidos:** metadatos bajo demanda para listas grandes, más allá de los primeros 256 elementos. Mejoras de indexación, ordenación, cancelación, recuperación y nombres con codificaciones antiguas en ZIP/JAR/WAR y TAR/TGZ. Pro mejora las cabeceras LZMA/LZMA2 y las listas solid 7z compatibles de un solo codificador. Siguen aplicándose límites de recursos y listas parciales.
 
-Framework y dSYM tienen interruptores independientes y no generan miniaturas personalizadas. La validación local registró vistas previas con la barra espaciadora para ambos y una vista previa en columnas del Finder para dSYM. El Finder abre los frameworks como directorios en columnas. Esto no demuestra que estén disponibles en la versión publicada.
+Framework y dSYM tienen interruptores independientes y no generan miniaturas personalizadas. La validación local registró vistas previas con la barra espaciadora para ambos y una vista previa en columnas del Finder para dSYM. El Finder abre los frameworks como directorios en columnas.
 
 ## Primeros pasos
 

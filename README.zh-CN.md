@@ -12,6 +12,8 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 **Peeka 0.1.5 已通过 App Store 审核并正式上线**，上线状态于 **2026-10-19** 确认。以下能力以 **2026-10-19** 核对的 **0.1.5 产品基线**为准，包含原生 Diff / Patch 增强预览与 Mermaid 更新。旧版用户可通过 App Store 更新；实际预览还取决于文件兼容性和访达选择的预览器。
 
+**0.1.6 (20261020.1) · 已通过 TestFlight 审核** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+
 ## 主要功能
 
 以下介绍已发布的 0.1.5 功能；该版本之后实现的能力见[后续开发进展](#后续开发进展)。
@@ -45,13 +47,14 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 ## 后续开发进展
 
-以下内容于 **2026-10-19** 对照 App 仓库 `7acb35c` 核实，均为 `0.1.5` tag 之后的变动；尚未核实其在 App Store 构建中的可用状态。
+Peeka 0.1.6（20261020.1）已通过 TestFlight 审核。本次 Beta 新增 Pro Framework/dSYM 预览，改进大型压缩包目录、文件名编码与离线 Pele 图表。Mac App Store 正式版仍为 0.1.5。 [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/zh-cn/peeka/beta-release-notes/)
 
 - **Framework 预览（Pro）：** 查看 `.framework` 身份，以及可读取的 Mach-O 架构、UUID、平台和最低系统版本。支持平面布局和 macOS 版本化目录；普通静态框架仅显示身份信息。
 - **调试符号包预览（Pro）：** 查看 `.dSYM` 中的二进制名称及各架构 UUID，不展开符号、不符号化崩溃报告，也不自动匹配二进制与报告。
 - **Mermaid 渲染引擎更新：** 内置 Pele 1.6.0，离线渲染 20 类图形，提供浅深色主题和原生矢量缩放、平移；布局与语法兼容性可能不同于 0.1.5 的 Mermaid.js 引擎。
+- **压缩包：** 大型目录按需读取元数据，不再固定为前 256 项；改进索引、排序、取消与恢复，以及 ZIP/JAR/WAR、TAR/TGZ 旧编码文件名识别；Pro 改进受支持的 LZMA/LZMA2 编码头与单编码器固实 7z 列表。仍受资源限制，可能显示不完整目录。
 
-Framework 与 dSYM 各有独立格式开关，均不生成自定义缩略图。App 仓库的本机验收记录显示，两者空格预览及 dSYM 分栏预览通过；Framework 在访达分栏中仍作为目录展开。这些记录不代表已上架版本包含上述能力。
+Framework 与 dSYM 各有独立格式开关，均不生成自定义缩略图。App 仓库的本机验收记录显示，两者空格预览及 dSYM 分栏预览通过；Framework 在访达分栏中仍作为目录展开。
 
 ## 开始使用
 

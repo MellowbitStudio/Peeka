@@ -12,6 +12,8 @@ Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro
 
 **Peeka 0.1.5 has passed App Store review and is officially available**, as confirmed on **2026-10-19**. The capabilities below follow the 0.1.5 product baseline reviewed **2026-10-19**, including native Diff / Patch previews and Mermaid updates. Update older installations through the App Store; preview availability also depends on file compatibility and Finder provider selection.
 
+**0.1.6 (20261020.1) · TestFlight review approved** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+
 ## Features
 
 The following describes the released 0.1.5 baseline. See [development progress](#development-progress) for capabilities implemented after that release.
@@ -45,13 +47,14 @@ Preview availability depends on file contents and macOS choosing Peeka's extensi
 
 ## Development progress
 
-Checked against the app repository at `7acb35c` on **2026-10-19**. These changes follow the `0.1.5` tag; their availability in an App Store build has not been verified.
+Peeka 0.1.6 (20261020.1) has passed TestFlight review. Beta changes include Pro Framework/dSYM previews, larger archive listings, filename encoding improvements and offline Pele diagrams. The Mac App Store release remains 0.1.5. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/peeka/beta-release-notes/)
 
 - **Framework previews (Pro):** Inspect `.framework` identity and available Mach-O architectures, UUIDs, platforms, and minimum system versions. Flat and versioned macOS bundles are supported; ordinary static frameworks show identity only.
 - **Debug-symbol previews (Pro):** Inspect `.dSYM` binary names and per-architecture UUIDs. This does not expand symbols, symbolicate crashes, or automatically match binaries to reports.
 - **Updated Mermaid renderer:** Bundled Pele 1.6.0 renders the 20 supported diagram families offline, with light/dark themes and native vector zoom/pan. Layout and syntax compatibility can differ from the Mermaid.js renderer in 0.1.5.
+- **Archives:** Metadata can be read on demand for larger listings, beyond the previous first-256-entry limit. Improved indexing, sorting, cancellation and recovery; ZIP/JAR/WAR and TAR/TGZ legacy filename handling; supported LZMA/LZMA2 headers and single-coder solid 7z listings (Pro). Resource limits and partial listings still apply.
 
-Framework and dSYM have independent format switches and no custom thumbnails. Local app validation recorded working Space previews for both and a Finder column preview for dSYM; Finder expands frameworks as directories in column view. These observations do not establish availability in the released build.
+Framework and dSYM have independent format switches and no custom thumbnails. Local app validation recorded working Space previews for both and a Finder column preview for dSYM; Finder expands frameworks as directories in column view.
 
 ## Get started
 

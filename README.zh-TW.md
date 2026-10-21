@@ -12,6 +12,8 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 **Peeka 0.1.5 已通過 App Store 審查並正式上架**，狀態確認日期為 **2026-10-19**。以下以同日核對的 0.1.5 產品基準為準，包含原生 Diff / Patch 預覽與 Mermaid 更新。請透過 App Store 更新舊版；實際預覽仍取決於檔案相容性與 Finder 選用的預覽器。
 
+**0.1.6 (20261020.1) · 已通過 TestFlight 審查** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+
 ## 主要功能
 
 以下介紹已發布的 0.1.5 功能。後續實作請見[開發進度](#開發進度)。
@@ -45,13 +47,14 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 ## 開發進度
 
-已於 **2026-10-19** 對照 App 儲存庫 `7acb35c` 核對。以下是 `0.1.5` tag 之後的變更，尚未確認是否包含於 App Store 版本。
+Peeka 0.1.6（20261020.1）已通過 TestFlight 審查。本次 Beta 新增 Pro Framework/dSYM 預覽，改進大型封存檔列表、檔名編碼與離線 Pele 圖表。Mac App Store 正式版仍為 0.1.5。 [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/zh-tw/peeka/beta-release-notes/)
 
 - **Framework 預覽（Pro）：** 查看 `.framework` 身分與可用的 Mach-O 架構、UUID、平台及最低系統版本。支援平面與 macOS 版本化套件；一般靜態框架只顯示身分資訊。
 - **偵錯符號預覽（Pro）：** 查看 `.dSYM` 的二進位檔名稱與各架構 UUID；不展開符號、不符號化當機報告，也不自動配對二進位檔與報告。
 - **Mermaid 引擎更新：** 內建 Pele 1.6.0，離線繪製 20 類圖表，支援淺色／深色主題與原生向量縮放、平移。版面與語法相容性可能不同於 0.1.5 的 Mermaid.js 引擎。
+- **封存檔：** 大型列表按需讀取中繼資料，不再固定為前 256 項；改進索引、排序、取消與恢復，以及 ZIP/JAR/WAR、TAR/TGZ 舊編碼檔名識別；Pro 改進支援的 LZMA/LZMA2 編碼標頭與單編碼器 solid 7z 列表。仍受資源限制，可能顯示不完整列表。
 
-Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收記錄顯示兩者的空白鍵預覽與 dSYM 的 Finder 分欄預覽可用；Framework 在分欄中仍作為目錄展開。這不代表已上架版本包含上述功能。
+Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收記錄顯示兩者的空白鍵預覽與 dSYM 的 Finder 分欄預覽可用；Framework 在分欄中仍作為目錄展開。
 
 ## 開始使用
 
