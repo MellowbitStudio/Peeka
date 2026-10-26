@@ -1,6 +1,6 @@
-# TestFlight 0.1.6
+# TestFlight 0.1.6 (historical)
 
-Peeka **0.1.6**, build **20261020.1**, has passed TestFlight review. The maintainer confirmed this status on **2026-10-21**. The current Mac App Store version remains **0.1.5**. Approval does not establish tester-group assignment, available places, or installation on a particular Mac.
+Peeka **0.1.6**, build **20261020.1**, has passed TestFlight review. The maintainer confirmed this status on **2026-10-21**. At that time, the documented Mac App Store baseline was **0.1.5**. **Peeka 0.1.7 is now officially available on the Mac App Store**, as confirmed by the maintainer on **2026-10-26**. Use the [0.1.7 feature reference](features-and-plans.md) for current guidance; this page preserves the earlier Beta scope and does not establish current TestFlight build availability. Approval does not establish tester-group assignment, available places, or installation on a particular Mac.
 
 - [Official TestFlight invitation](https://testflight.apple.com/join/5jM8yxDB)
 - [Beta release notes and testing focus](https://mellowbit.studio/peeka/beta-release-notes/)

@@ -10,13 +10,11 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 需要 **macOS 14 或以上版本**；Mermaid 圖表另需 **macOS 14.4+** 與 Pro。支援**英文、簡體中文、繁體中文、日文、韓文、德文、法文與西班牙文**。
 
-**Peeka 0.1.5 已通過 App Store 審查並正式上架**，狀態確認日期為 **2026-10-19**。以下以同日核對的 0.1.5 產品基準為準，包含原生 Diff / Patch 預覽與 Mermaid 更新。請透過 App Store 更新舊版；實際預覽仍取決於檔案相容性與 Finder 選用的預覽器。
-
-**0.1.6 (20261020.1) · 已通過 TestFlight 審查** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+**Peeka 0.1.7 已通過 App Store 審查並正式上架**，由維護者於 **2026-10-26** 確認。透過 App Store 更新，即可使用擴充的原始碼高亮、Pro Framework/dSYM 預覽、封存檔改進與離線 Pele 圖表。實際預覽仍取決於檔案相容性與 Finder 選用的預覽器。
 
 ## 主要功能
 
-以下介紹已發布的 0.1.5 功能。後續實作請見[開發進度](#開發進度)。
+以下介紹已發布的 0.1.7 功能；相較於 0.1.5 的變更請見 [0.1.7 更新內容](#017-更新內容)。
 
 - **應用程式套件：** 查看 Android 與 Apple 套件中可用的圖示、名稱、識別碼、版本、系統需求與架構。相容套件若內含可用圖示，也可產生 Finder 縮圖。
 - **原始碼：** 常見開發語言支援語法高亮、行號、原生文字選取與複製，可依語言開啟或關閉預覽。
@@ -35,8 +33,8 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 | 類別 | 免費預覽 | Peeka Pro 擴充功能 |
 | --- | --- | --- |
 | Android 套件 | APK | AAB、APKS、XAPK、APKM、AAR；適用時提供有限範圍的權限、簽署與資訊清單摘要 |
-| Apple 套件 | IPA、APP、APPEX；DMG / 平面 PKG 中繼資料與有限範圍的內嵌 App 資訊 | XCArchive、XCFramework、佈建描述檔、dylib；可用的簽署中繼資料 |
-| 原始碼 | Swift、C / C++、Objective-C、Java、Kotlin、JavaScript、TypeScript、Python、Go、Rust、Shell、HTML、CSS、SQL、Diff / Patch、Protobuf、GraphQL | — |
+| Apple 套件 | IPA、APP、APPEX；DMG / 平面 PKG 中繼資料與有限範圍的內嵌 App 資訊 | XCArchive、XCFramework、Framework、dSYM、佈建描述檔、dylib；可用的簽署中繼資料 |
+| 原始碼 | 205 個離線詞法設定，涵蓋程式語言、範本、著色器、建置腳本與設定；SQL、Diff / Patch、Protobuf、GraphQL | — |
 | 文件與設定 | Markdown、JSON / JSONL / NDJSON、XML、YAML、TOML、INI、properties、EditorConfig、plist 與相關 Apple 設定、CSV / TSV、TXT / TEXT 純文字；dotenv 僅顯示鍵名 | — |
 | Mermaid | Markdown 中 Mermaid 圍欄的高亮原始碼 | 獨立 `.mmd` / `.mermaid` 與 Markdown 圖表（macOS 14.4+） |
 | 日誌與報告 | `.log` / `.out` / `.trace`、`.crash`、`.ips` 與已識別 JSONL / NDJSON 日誌的高亮原文 | 有限範圍的摘要與結構化詳細資訊，含 Android Logcat / Android Studio 版面 |
@@ -45,10 +43,12 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 預覽取決於內容與 macOS 是否選用 Peeka 擴充功能。TypeScript `.ts` / `.mts`、dotenv、AAR、TXT / TEXT、IPS 與部分 plist / CSV 有已知預覽器或路由限制。YAML 與 TOML 結構檢視支援有限的語法子集。TXT / TEXT 保持純文字，不自動識別為日誌或文件。
 
-## 開發進度
+## 0.1.7 更新內容
 
-Peeka 0.1.6（20261020.1）已通過 TestFlight 審查。本次 Beta 新增 Pro Framework/dSYM 預覽，改進大型封存檔列表、檔名編碼與離線 Pele 圖表。Mac App Store 正式版仍為 0.1.5。 [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/zh-tw/peeka/beta-release-notes/)
+0.1.7 將以下更新帶入 Mac App Store 正式版，包含先前在 0.1.6 Beta 推出的改進。[版本說明](https://mellowbit.studio/zh-tw/peeka/release-notes/)
 
+- **原始碼高亮擴充（免費）：** 205 個離線詞法設定涵蓋程式語言、範本、著色器、建置腳本與設定檔，提供各語言獨立開關，並與 Markdown 程式碼區塊共用高亮。不執行程式碼，也不代表完整語法驗證。
+- **檔案辨識：** 改進點檔案、無副檔名建置檔案和常見鎖定檔的辨識與 Finder 分發。未辨識的通用檔案顯示基本資訊；`.ipynb` 顯示 JSON 原始碼。實際預覽仍取決於 macOS 的預覽器選擇。
 - **Framework 預覽（Pro）：** 查看 `.framework` 身分與可用的 Mach-O 架構、UUID、平台及最低系統版本。支援平面與 macOS 版本化套件；一般靜態框架只顯示身分資訊。
 - **偵錯符號預覽（Pro）：** 查看 `.dSYM` 的二進位檔名稱與各架構 UUID；不展開符號、不符號化當機報告，也不自動配對二進位檔與報告。
 - **Mermaid 引擎更新：** 內建 Pele 1.6.0，離線繪製 20 類圖表，支援淺色／深色主題與原生向量縮放、平移。版面與語法相容性可能不同於 0.1.5 的 Mermaid.js 引擎。
@@ -78,14 +78,14 @@ Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收�
 - SQLite 每頁最多 **100 列**，展示資料上限為 **1 MiB**；BLOB 最多讀取前 **4 KiB**。Peeka 不編輯或維護資料庫。
 - 簽署中繼資料只描述可用資訊，不驗證簽章有效性。
 - 日誌與報告的原文與詳細資訊有資源上限；統計只涵蓋已解析的預覽部分。結構化 IPS 支援標準當機報告（309），不執行符號化。
-- 0.1.5 文件基準支援 20 類 Mermaid 圖表。不支援的語法、指令或超出資源限制的內容會退回高亮原始碼並說明原因。
-- 加密、固實或不支援的 7z 變體可能無法列出。封存檔清單有上限，大型檔案可能只顯示部分項目。
+- 內建離線 Pele 引擎支援 20 類 Mermaid 圖表。不支援的語法、指令或超出資源限制的內容會退回高亮原始碼並說明原因。
+- Pro 可列出支援的單一編碼器固實 7z 目錄；加密標頭、篩選鏈或不支援的變體可能無法列出。封存檔列表受資源限制，大型檔案可能只顯示部分清單。
 
 免費與 Pro 預覽均受資源與相容性限制。
 
 ## AI Agent Skill
 
-公開的 [`peeka` skill（英文）](skills/peeka/SKILL.md) 版本為 **0.1.5**，協助 Codex、Claude Code 等相容 Agent 安裝 Peeka、了解格式與免費／Pro 功能、控制預覽與排解問題。
+公開的 [`peeka` skill（英文）](skills/peeka/SKILL.md) 版本為 **0.1.7**，協助 Codex、Claude Code 等相容 Agent 安裝 Peeka、了解格式與免費／Pro 功能、控制預覽與排解問題。
 
 Skill 發布至本儲存庫預設分支後，可使用：
 

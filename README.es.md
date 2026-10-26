@@ -10,13 +10,11 @@ Peeka es una app nativa de macOS que añade al Finder vistas previas pensadas pa
 
 Requiere **macOS 14 o posterior**; la representación gráfica de Mermaid requiere **macOS 14.4+** y Pro. Disponible en **inglés, chino simplificado y tradicional, japonés, coreano, alemán, francés y español**.
 
-**Peeka 0.1.5 ha superado la revisión del App Store y está disponible oficialmente**, según la confirmación del **2026-10-19**. La información siguiente corresponde al producto 0.1.5 revisado ese día, con vistas previas nativas Diff / Patch y actualizaciones de Mermaid. Actualiza las instalaciones anteriores desde el App Store. La vista previa también depende de la compatibilidad del archivo y del proveedor seleccionado por el Finder.
-
-**0.1.6 (20261020.1) · Revisión de TestFlight aprobada** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+**Peeka 0.1.7 ha superado la revisión del App Store y está disponible oficialmente**, según la confirmación del responsable del **2026-10-26**. Actualiza desde el App Store para ampliar el resaltado de código, obtener vistas Pro de Framework/dSYM y mejoras de archivos y diagramas Pele sin conexión. La vista previa depende de la compatibilidad del archivo y del proveedor seleccionado por el Finder.
 
 ## Funciones
 
-Estas son las funciones publicadas en 0.1.5. Consulta las implementaciones posteriores en [Estado del desarrollo](#estado-del-desarrollo).
+Estas son las funciones publicadas en 0.1.7. Consulta los cambios desde 0.1.5 en las [novedades](#novedades-de-017).
 
 - **Paquetes de aplicaciones:** consulta los iconos, nombres, identificadores, versiones, requisitos del sistema y arquitecturas disponibles en paquetes Android y Apple. Los paquetes compatibles con iconos integrados también pueden generar miniaturas del Finder.
 - **Código fuente:** resaltado de sintaxis, números de línea, selección y copia de texto nativas para lenguajes habituales. Activa o desactiva las vistas previas por lenguaje.
@@ -35,8 +33,8 @@ Estas son las funciones publicadas en 0.1.5. Consulta las implementaciones poste
 | Categoría | Vistas previas gratuitas | Funciones adicionales de Peeka Pro |
 | --- | --- | --- |
 | Paquetes Android | APK | AAB, APKS, XAPK, APKM, AAR; resúmenes limitados de permisos, firma y manifiesto cuando estén disponibles |
-| Paquetes Apple | IPA, APP, APPEX; metadatos DMG / PKG planos e información limitada de apps integradas | XCArchive, XCFramework, perfiles de aprovisionamiento, dylib; metadatos de firma disponibles |
-| Código fuente | Swift, C / C++, Objective-C, Java, Kotlin, JavaScript, TypeScript, Python, Go, Rust, Shell, HTML, CSS, SQL, Diff / Patch, Protobuf, GraphQL | — |
+| Paquetes Apple | IPA, APP, APPEX; metadatos DMG / PKG planos e información limitada de apps integradas | XCArchive, XCFramework, Framework, dSYM, perfiles de aprovisionamiento, dylib; metadatos de firma disponibles |
+| Código fuente | 205 perfiles léxicos sin conexión para lenguajes, plantillas, sombreadores, scripts de compilación y configuración; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | Documentos y configuración | Markdown, JSON / JSONL / NDJSON, XML, YAML, TOML, INI, properties, EditorConfig, plist y configuraciones Apple relacionadas, CSV / TSV, TXT / TEXT como texto sin formato; solo nombres de claves en dotenv | — |
 | Mermaid | Código resaltado de bloques Mermaid en Markdown | Archivos `.mmd` / `.mermaid` independientes y diagramas Markdown (macOS 14.4+) |
 | Registros e informes | Texto resaltado de `.log` / `.out` / `.trace`, `.crash`, `.ips` y registros JSONL / NDJSON reconocidos | Resúmenes limitados y detalles estructurados, con diseños Android Logcat / Android Studio |
@@ -45,10 +43,12 @@ Estas son las funciones publicadas en 0.1.5. Consulta las implementaciones poste
 
 La disponibilidad depende del contenido y de que macOS elija la extensión de Peeka. TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS y algunos plist / CSV tienen limitaciones conocidas de proveedor o asignación. Las vistas estructuradas YAML y TOML admiten un subconjunto limitado de su sintaxis. TXT / TEXT se mantiene como texto sin formato, sin detección automática de registros o documentos.
 
-## Estado del desarrollo
+## Novedades de 0.1.7
 
-Peeka 0.1.6 (20261020.1) ha superado la revisión de TestFlight. La Beta añade vistas Pro de Framework/dSYM y mejora las listas de archivos grandes, la codificación de nombres y los diagramas Pele sin conexión. La versión del Mac App Store sigue siendo la 0.1.5. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/es/peeka/beta-release-notes/)
+La versión 0.1.7 lleva las siguientes novedades al Mac App Store, incluidas las mejoras de la Beta 0.1.6. [Notas de la versión](https://mellowbit.studio/es/peeka/release-notes/)
 
+- **Resaltado de código ampliado (gratis):** 205 perfiles léxicos sin conexión para lenguajes, plantillas, sombreadores, scripts de compilación y configuración, con interruptores por lenguaje y resaltado compartido con bloques Markdown. No ejecuta código ni valida toda la sintaxis.
+- **Reconocimiento de archivos:** Mejor reconocimiento y asignación de Finder para archivos ocultos, archivos de compilación sin extensión y archivos de bloqueo habituales. Los archivos genéricos no reconocidos muestran información básica; `.ipynb` muestra código JSON. macOS sigue eligiendo el proveedor de vista previa.
 - **Vistas previas de Framework (Pro):** identidad de `.framework` y arquitecturas Mach-O, UUID, plataformas y versiones mínimas del sistema disponibles. Admite paquetes planos y versionados de macOS; los frameworks estáticos habituales solo muestran su identidad.
 - **Símbolos de depuración (Pro):** nombres de binarios y UUID por arquitectura de `.dSYM`. No expande símbolos, no simboliza informes de fallos ni relaciona automáticamente binarios con informes.
 - **Motor Mermaid actualizado:** Pele 1.6.0 integrado representa 20 familias de diagramas sin conexión, con temas claro/oscuro y zoom y desplazamiento vectoriales nativos. El diseño y la compatibilidad de sintaxis pueden diferir de Mermaid.js en 0.1.5.
@@ -78,14 +78,14 @@ Algunas vistas previas tienen límites:
 - SQLite muestra hasta **100 filas** por página, con un límite de visualización de **1 MiB**. Los BLOB se leen hasta los primeros **4 KiB**. Peeka no edita ni mantiene bases de datos.
 - Los metadatos de firma describen la información disponible; no verifican la validez de la firma.
 - El texto y los detalles de registros e informes tienen límites. Las estadísticas corresponden a la parte analizada de la vista previa. Los IPS estructurados se orientan a informes de fallos estándar (309), sin simbolización.
-- La base documentada de 0.1.5 admite 20 familias de diagramas Mermaid. Si la sintaxis o las directivas no son compatibles, o se superan los recursos, se muestra el código resaltado con el motivo.
-- Algunas variantes 7z cifradas, sólidas o no compatibles pueden no mostrar su listado. Las listas tienen límites y pueden quedar incompletas en archivos grandes.
+- El motor Pele integrado admite 20 familias de diagramas Mermaid sin conexión. Si la sintaxis o las directivas no son compatibles, o se superan los recursos, se muestra el código resaltado con el motivo.
+- Pro puede mostrar listas de archivos 7z sólidos compatibles de un solo codificador. Los encabezados cifrados, las cadenas de filtros o las variantes no compatibles pueden impedirlo. Las listas tienen límites y pueden quedar incompletas en archivos grandes.
 
 Los límites de recursos y compatibilidad se aplican tanto a las vistas gratuitas como a Pro.
 
 ## Skill para agentes de IA
 
-El [skill público `peeka` (inglés)](skills/peeka/SKILL.md), versión **0.1.5**, ayuda a Codex, Claude Code y otros agentes compatibles a instalar la app, explicar formatos y funciones gratuitas/Pro, controlar vistas previas y resolver problemas.
+El [skill público `peeka` (inglés)](skills/peeka/SKILL.md), versión **0.1.7**, ayuda a Codex, Claude Code y otros agentes compatibles a instalar la app, explicar formatos y funciones gratuitas/Pro, controlar vistas previas y resolver problemas.
 
 Cuando se publique en la rama predeterminada del repositorio, instálalo con:
 

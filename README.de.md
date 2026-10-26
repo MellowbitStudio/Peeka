@@ -10,13 +10,11 @@ Peeka ist eine native macOS-App für entwicklerfreundliche Dateivorschauen im Fi
 
 Erfordert **macOS 14 oder neuer**; die Darstellung von Mermaid-Diagrammen erfordert **macOS 14.4+** und Pro. Verfügbar auf **Englisch, vereinfachtem und traditionellem Chinesisch, Japanisch, Koreanisch, Deutsch, Französisch und Spanisch**.
 
-**Peeka 0.1.5 hat die App-Store-Prüfung bestanden und ist offiziell verfügbar**, bestätigt am **2026-10-19**. Die folgenden Angaben entsprechen dem am selben Tag geprüften Produktstand 0.1.5 einschließlich nativer Diff-/Patch-Vorschauen und Mermaid-Updates. Aktualisiere ältere Installationen über den App Store. Die Vorschau hängt auch von der Dateikompatibilität und der Auswahl des Vorschauanbieters durch den Finder ab.
-
-**0.1.6 (20261020.1) · TestFlight-Prüfung bestanden** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+**Peeka 0.1.7 hat die App-Store-Prüfung bestanden und ist offiziell verfügbar**, vom Maintainer am **2026-10-26** bestätigt. Aktualisiere über den App Store für erweiterte Quellcode-Hervorhebung, Pro-Vorschauen für Framework/dSYM, Archivverbesserungen und Offline-Diagramme mit Pele. Vorschauen hängen von Dateikompatibilität und der Anbieterwahl durch den Finder ab.
 
 ## Funktionen
 
-Die folgenden Funktionen gehören zur veröffentlichten Version 0.1.5. Spätere Implementierungen stehen unter [Entwicklungsstand](#entwicklungsstand).
+Die folgenden Funktionen gehören zur veröffentlichten Version 0.1.7. Änderungen seit 0.1.5 stehen unter [Neu in 0.1.7](#neu-in-017).
 
 - **App-Pakete:** Verfügbare Symbole, Namen, Kennungen, Versionen, Systemanforderungen und Architekturen von Android- und Apple-Paketen anzeigen. Kompatible Pakete mit eingebetteten Symbolen können auch Finder-Miniaturen erhalten.
 - **Quellcode:** Syntaxhervorhebung, Zeilennummern sowie native Textauswahl und Kopieren für gängige Programmiersprachen. Vorschauen lassen sich pro Sprache ein- und ausschalten.
@@ -35,8 +33,8 @@ Die folgenden Funktionen gehören zur veröffentlichten Version 0.1.5. Spätere 
 | Kategorie | Kostenlose Vorschauen | Zusätzliche Funktionen mit Peeka Pro |
 | --- | --- | --- |
 | Android-Pakete | APK | AAB, APKS, XAPK, APKM, AAR; begrenzte Zusammenfassungen von Berechtigungen, Signierung und Manifestdaten, soweit verfügbar |
-| Apple-Pakete | IPA, APP, APPEX; Metadaten von DMG / flachen PKG und begrenzte Informationen zu eingebetteten Apps | XCArchive, XCFramework, Bereitstellungsprofile, dylib; verfügbare Signierungsmetadaten |
-| Quellcode | Swift, C / C++, Objective-C, Java, Kotlin, JavaScript, TypeScript, Python, Go, Rust, Shell, HTML, CSS, SQL, Diff / Patch, Protobuf, GraphQL | — |
+| Apple-Pakete | IPA, APP, APPEX; Metadaten von DMG / flachen PKG und begrenzte Informationen zu eingebetteten Apps | XCArchive, XCFramework, Framework, dSYM, Bereitstellungsprofile, dylib; verfügbare Signierungsmetadaten |
+| Quellcode | 205 Offline-Lexikprofile für Sprachen, Vorlagen, Shader, Buildskripte und Konfigurationen; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | Dokumente und Konfiguration | Markdown, JSON / JSONL / NDJSON, XML, YAML, TOML, INI, properties, EditorConfig, plist und verwandte Apple-Konfigurationen, CSV / TSV, TXT / TEXT als Klartext; dotenv nur mit Schlüsselnamen | — |
 | Mermaid | Hervorgehobener Mermaid-Quelltext in Markdown-Codeblöcken | Eigenständige `.mmd` / `.mermaid` und Diagramme in Markdown (macOS 14.4+) |
 | Logs und Berichte | Hervorgehobener Quelltext von `.log` / `.out` / `.trace`, `.crash`, `.ips` und erkannten JSONL-/NDJSON-Logs | Begrenzte Zusammenfassungen und strukturierte Details, einschließlich Android-Logcat-/Android-Studio-Layouts |
@@ -45,10 +43,12 @@ Die folgenden Funktionen gehören zur veröffentlichten Version 0.1.5. Spätere 
 
 Die Verfügbarkeit hängt vom Inhalt und davon ab, ob macOS Peekas Erweiterung auswählt. Für TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS und manche plist-/CSV-Dateien gelten bekannte Einschränkungen bei Anbieterwahl oder Zuordnung. Die Strukturansichten für YAML und TOML unterstützen begrenzte Syntaxteilmengen. TXT / TEXT bleibt Klartext ohne automatische Log- oder Dokumenterkennung.
 
-## Entwicklungsstand
+## Neu in 0.1.7
 
-Peeka 0.1.6 (20261020.1) hat die TestFlight-Prüfung bestanden. Die Beta ergänzt Pro-Vorschauen für Framework/dSYM und verbessert große Archivlisten, Dateinamencodierungen und Offline-Diagramme mit Pele. Im Mac App Store bleibt 0.1.5 aktuell. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/de/peeka/beta-release-notes/)
+Version 0.1.7 bringt die folgenden Neuerungen in den Mac App Store, einschließlich der Verbesserungen aus der 0.1.6 Beta. [Versionshinweise](https://mellowbit.studio/de/peeka/release-notes/)
 
+- **Erweiterte Quellcode-Hervorhebung (kostenlos):** 205 Offline-Lexikprofile für Sprachen, Vorlagen, Shader, Buildskripte und Konfigurationen, mit eigenen Sprachschaltern und gemeinsamer Hervorhebung in Markdown-Codeblöcken. Keine Codeausführung oder vollständige Syntaxprüfung.
+- **Dateierkennung:** Verbesserte Erkennung und Finder-Zuordnung für Punktdateien, Builddateien ohne Erweiterung und gängige Lockdateien. Unbekannte allgemeine Dateien zeigen Basisinformationen; `.ipynb` zeigt JSON-Quelltext. Die Anbieterwahl bleibt bei macOS.
 - **Framework-Vorschauen (Pro):** Identität einer `.framework` sowie verfügbare Mach-O-Architekturen, UUIDs, Plattformen und minimale Systemversionen anzeigen. Flache und versionierte macOS-Bundles werden unterstützt; gewöhnliche statische Frameworks zeigen nur die Identität.
 - **Debugsymbole (Pro):** Binärdateinamen und UUIDs pro Architektur aus `.dSYM` anzeigen. Keine Symbolauflösung, Symbolikation von Absturzberichten oder automatische Zuordnung von Binärdateien zu Berichten.
 - **Aktualisierter Mermaid-Renderer:** Das mitgelieferte Pele 1.6.0 rendert 20 Diagrammfamilien offline, mit hellem/dunklem Design und nativem Vektorzoom und Schwenken. Layout und Syntaxkompatibilität können vom Mermaid.js-Renderer in 0.1.5 abweichen.
@@ -78,14 +78,14 @@ Für einige Vorschauen gelten Grenzen:
 - SQLite zeigt maximal **100 Zeilen** pro Seite bei einem Anzeigebudget von **1 MiB**. BLOB-Vorschauen lesen höchstens die ersten **4 KiB**. Peeka bearbeitet oder wartet keine Datenbanken.
 - Signierungsmetadaten beschreiben verfügbare Informationen und bestätigen keine Signaturgültigkeit.
 - Log- und Berichtsquellen sowie Details sind begrenzt; Statistiken beziehen sich auf den eingelesenen Vorschauabschnitt. Strukturierte IPS-Unterstützung gilt für Standard-Absturzberichte (309), ohne Symbolikation.
-- Der dokumentierte Stand 0.1.5 unterstützt 20 Mermaid-Diagrammfamilien. Nicht unterstützte Syntax, Direktiven oder Ressourcenüberschreitungen führen zu hervorgehobenem Quelltext mit Begründung.
-- Verschlüsselte, solide komprimierte oder nicht unterstützte 7z-Varianten lassen sich eventuell nicht auflisten. Archivlisten sind begrenzt und bei großen Archiven möglicherweise unvollständig.
+- Der integrierte Offline-Renderer Pele unterstützt 20 Mermaid-Diagrammfamilien. Nicht unterstützte Syntax, Direktiven oder Ressourcenüberschreitungen führen zu hervorgehobenem Quelltext mit Begründung.
+- Pro kann unterstützte Solid-7z-Layouts mit einem Coder auflisten. Verschlüsselte Header, Filterketten oder nicht unterstützte Varianten können scheitern. Archivlisten sind begrenzt und bei großen Archiven möglicherweise unvollständig.
 
 Ressourcen- und Kompatibilitätsgrenzen gelten für kostenlose und Pro-Vorschauen.
 
 ## KI-Agenten-Skill
 
-Der öffentliche [`peeka`-Skill (Englisch)](skills/peeka/SKILL.md), Version **0.1.5**, hilft Codex, Claude Code und anderen kompatiblen Agenten bei Installation, unterstützten Formaten, kostenlosen und Pro-Funktionen, Vorschauschaltern und Fehlerbehebung.
+Der öffentliche [`peeka`-Skill (Englisch)](skills/peeka/SKILL.md), Version **0.1.7**, hilft Codex, Claude Code und anderen kompatiblen Agenten bei Installation, unterstützten Formaten, kostenlosen und Pro-Funktionen, Vorschauschaltern und Fehlerbehebung.
 
 Nach der Veröffentlichung im Standardbranch dieses Repositorys installieren mit:
 

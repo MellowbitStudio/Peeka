@@ -1,8 +1,8 @@
 # Peeka agent skill
 
-This folder publishes the **`peeka`** skill, version **0.1.5**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.5 has passed App Store review and is officially available**, as confirmed on **2026-10-19**. Product knowledge follows the 0.1.5 baseline reviewed **2026-10-19**; check the installed version and Finder behavior when troubleshooting.
+This folder publishes the **`peeka`** skill, version **0.1.7**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**. Product knowledge follows app tag `0.1.7` (`a06048c`), reviewed **2026-10-26**; check the installed version and Finder behavior when troubleshooting.
 
-The feature reference also records a separate development snapshot after the 0.1.5 tag, covering Framework/dSYM and the Pele renderer. Its App Store availability has not been verified; do not treat it as part of the released baseline.
+The released baseline includes 205 free offline lexical profiles, improved dotfile/build-file/lockfile recognition, Pro Framework/dSYM previews, larger archive listings, filename encoding improvements, and offline Pele diagrams. The 0.1.6 TestFlight reference is retained as historical documentation.
 
 The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions and product knowledge; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
 
@@ -69,6 +69,8 @@ skills/
     └── references/
         ├── install-and-controls.md
         ├── features-and-plans.md
+        ├── source-coverage.md
+        ├── testflight-0.1.6.md
         └── troubleshooting.md
 ```
 

@@ -10,13 +10,11 @@ Peeka는 Finder에 개발자를 위한 파일 미리보기를 더하는 네이�
 
 **macOS 14 이상**이 필요합니다. Mermaid 다이어그램 렌더링에는 **macOS 14.4 이상**과 Pro가 필요합니다. **영어, 중국어 간체·번체, 일본어, 한국어, 독일어, 프랑스어, 스페인어**를 지원합니다.
 
-**Peeka 0.1.5는 App Store 심사를 통과하여 정식 출시되었습니다**(**2026-10-19** 확인). 아래 내용은 같은 날짜에 검토한 0.1.5 제품 기준이며, 네이티브 Diff / Patch 미리보기와 Mermaid 업데이트를 포함합니다. 이전 버전은 App Store에서 업데이트하세요. 실제 미리보기는 파일 호환성과 Finder가 선택하는 제공자에 따라 달라집니다.
-
-**0.1.6 (20261020.1) · TestFlight 심사 통과** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+**Peeka 0.1.7은 App Store 심사를 통과하여 정식 출시되었습니다**(관리자가 **2026-10-26** 확인). App Store에서 업데이트하면 확장된 소스 강조 표시, Pro Framework/dSYM 미리보기, 아카이브 개선과 오프라인 Pele 다이어그램을 사용할 수 있습니다. 실제 미리보기는 파일 호환성과 Finder가 선택하는 제공자에 따라 달라집니다.
 
 ## 주요 기능
 
-다음은 출시된 0.1.5 기능입니다. 이후 구현된 기능은 [개발 현황](#개발-현황)을 참고하세요.
+다음은 출시된 0.1.7 기능입니다. 0.1.5 이후 변경 사항은 [0.1.7의 새로운 기능](#017의-새로운-기능)을 참고하세요.
 
 - **앱 패키지:** Android 및 Apple 패키지에 있는 아이콘, 이름, 식별자, 버전, 시스템 요구 사항, 아키텍처를 표시합니다. 호환 패키지에 내장 아이콘이 있으면 Finder 축소판도 생성할 수 있습니다.
 - **소스 코드:** 일반적인 개발 언어의 구문 강조, 줄 번호, 네이티브 텍스트 선택과 복사를 지원합니다. 언어별로 미리보기를 켜거나 끌 수 있습니다.
@@ -35,8 +33,8 @@ Peeka는 Finder에 개발자를 위한 파일 미리보기를 더하는 네이�
 | 분류 | 무료 미리보기 | Peeka Pro 추가 기능 |
 | --- | --- | --- |
 | Android 패키지 | APK | AAB, APKS, XAPK, APKM, AAR 및 가능한 경우 정해진 범위의 권한·서명·매니페스트 요약 |
-| Apple 패키지 | IPA, APP, APPEX; DMG / 평면 PKG 메타데이터와 제한된 내장 앱 정보 | XCArchive, XCFramework, 프로비저닝 프로파일, dylib 및 사용 가능한 서명 메타데이터 |
-| 소스 코드 | Swift, C / C++, Objective-C, Java, Kotlin, JavaScript, TypeScript, Python, Go, Rust, Shell, HTML, CSS, SQL, Diff / Patch, Protobuf, GraphQL | — |
+| Apple 패키지 | IPA, APP, APPEX; DMG / 평면 PKG 메타데이터와 제한된 내장 앱 정보 | XCArchive, XCFramework, Framework, dSYM, 프로비저닝 프로파일, dylib 및 사용 가능한 서명 메타데이터 |
+| 소스 코드 | 언어, 템플릿, 셰이더, 빌드 스크립트와 설정을 위한 205개 오프라인 어휘 프로필; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | 문서 및 설정 | Markdown, JSON / JSONL / NDJSON, XML, YAML, TOML, INI, properties, EditorConfig, plist 및 관련 Apple 설정, CSV / TSV, TXT / TEXT 일반 텍스트; dotenv는 키 이름만 | — |
 | Mermaid | Markdown 안 Mermaid 코드 펜스의 구문 강조 소스 | 독립 `.mmd` / `.mermaid` 및 Markdown 다이어그램(macOS 14.4 이상) |
 | 로그 및 보고서 | `.log` / `.out` / `.trace`, `.crash`, `.ips`, 인식된 JSONL / NDJSON 로그의 구문 강조 원문 | 정해진 범위의 요약과 구조화된 상세 정보. Android Logcat / Android Studio 레이아웃 포함 |
@@ -45,10 +43,12 @@ Peeka는 Finder에 개발자를 위한 파일 미리보기를 더하는 네이�
 
 미리보기는 내용과 macOS의 Peeka 확장 선택 여부에 따라 달라집니다. TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS 및 일부 plist / CSV에는 알려진 제공자 또는 라우팅 제약이 있습니다. YAML과 TOML 구조 보기는 문법의 일부를 지원합니다. TXT / TEXT는 일반 텍스트로 유지하며 로그나 문서 유형을 자동 감지하지 않습니다.
 
-## 개발 현황
+## 0.1.7의 새로운 기능
 
-Peeka 0.1.6(20261020.1)이 TestFlight 심사를 통과했습니다. Beta에서 Pro Framework/dSYM 미리보기를 추가하고 대용량 아카이브 목록, 파일명 인코딩과 오프라인 Pele 다이어그램을 개선했습니다. Mac App Store 정식 버전은 0.1.5입니다. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/ko/peeka/beta-release-notes/)
+0.1.7은 0.1.6 Beta에서 도입된 개선을 포함한 다음 업데이트를 Mac App Store 정식 버전에 제공합니다. [릴리스 노트](https://mellowbit.studio/ko/peeka/release-notes/)
 
+- **소스 강조 표시 확장(무료):** 205개의 오프라인 어휘 프로필로 언어, 템플릿, 셰이더, 빌드 스크립트와 설정 파일을 지원합니다. 언어별 스위치와 Markdown 코드 블록이 같은 강조 표시를 사용합니다. 코드 실행이나 완전한 구문 검증은 하지 않습니다.
+- **파일 인식:** 점으로 시작하는 파일, 확장자 없는 빌드 파일과 일반적인 잠금 파일의 인식 및 Finder 라우팅을 개선했습니다. 인식하지 못한 일반 파일은 기본 정보, `.ipynb`는 JSON 소스를 표시합니다. 실제 미리보기는 macOS의 제공자 선택에 따라 달라집니다.
 - **Framework 미리보기(Pro):** `.framework` 식별 정보와 사용 가능한 Mach-O 아키텍처, UUID, 플랫폼, 최소 시스템 버전을 표시합니다. 평면 및 macOS 버전별 번들을 지원하며 일반적인 정적 프레임워크는 식별 정보만 표시합니다.
 - **디버그 심볼 미리보기(Pro):** `.dSYM`의 바이너리 이름과 아키텍처별 UUID를 표시합니다. 심볼 확장, 충돌 보고서 심볼리케이션, 바이너리와 보고서의 자동 연결은 수행하지 않습니다.
 - **Mermaid 렌더러 업데이트:** Pele 1.6.0을 포함하여 20개 다이어그램 유형을 오프라인으로 렌더링합니다. 밝은·어두운 테마와 네이티브 벡터 확대·축소 및 이동을 지원합니다. 배치와 문법 호환성은 0.1.5의 Mermaid.js와 다를 수 있습니다.
@@ -78,14 +78,14 @@ Framework와 dSYM에는 별도 형식 스위치가 있으며 사용자 지정 �
 - SQLite는 페이지당 최대 **100행**, 표시 데이터는 **1 MiB**까지입니다. BLOB는 앞 **4 KiB**만 읽습니다. 데이터베이스를 편집하거나 유지 관리하지 않습니다.
 - 서명 메타데이터는 사용 가능한 정보를 설명하며 서명의 유효성을 검증하지 않습니다.
 - 로그와 보고서의 원문·상세 정보에는 상한이 있습니다. 통계는 파싱된 미리보기 부분을 대상으로 합니다. 구조화된 IPS는 표준 충돌 보고서(309)를 지원하며 심볼리케이션은 수행하지 않습니다.
-- 0.1.5 문서 기준으로 Mermaid는 20개 유형을 지원합니다. 지원하지 않는 문법·지시문 또는 리소스 한도 초과 시 이유와 함께 구문 강조 소스를 표시합니다.
-- 암호화, 솔리드 압축 또는 지원하지 않는 7z 변형은 목록이 표시되지 않을 수 있습니다. 목록에는 상한이 있으므로 큰 압축 파일은 일부만 표시될 수 있습니다.
+- 내장 오프라인 Pele 엔진은 20개 Mermaid 다이어그램 유형을 지원합니다. 지원하지 않는 구문·지시문이나 리소스 한도 초과 시 이유와 함께 강조된 소스를 표시합니다.
+- Pro는 지원되는 단일 코더 솔리드 7z 목록을 표시할 수 있습니다. 암호화된 헤더, 필터 체인이나 지원하지 않는 변형은 목록을 표시하지 못할 수 있습니다. 목록에는 리소스 한도가 있어 큰 아카이브는 일부만 표시될 수 있습니다.
 
 리소스와 호환성 제한은 무료 및 Pro 미리보기에 모두 적용됩니다.
 
 ## AI 에이전트 스킬
 
-공개 [`peeka` 스킬(영어)](skills/peeka/SKILL.md)의 버전은 **0.1.5**입니다. Codex, Claude Code 등 호환 에이전트의 App Store 설치, 지원 형식 및 무료·Pro 기능 설명, 미리보기 제어, 문제 해결을 돕습니다.
+공개 [`peeka` 스킬(영어)](skills/peeka/SKILL.md)의 버전은 **0.1.7**입니다. Codex, Claude Code 등 호환 에이전트의 App Store 설치, 지원 형식 및 무료·Pro 기능 설명, 미리보기 제어, 문제 해결을 돕습니다.
 
 파일이 저장소 기본 브랜치에 게시된 후 다음 명령으로 설치하세요.
 

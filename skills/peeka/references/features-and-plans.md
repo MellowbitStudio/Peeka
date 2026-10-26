@@ -1,10 +1,13 @@
 # Features, supported formats, and plans
 
-Skill **0.1.6**, stable **0.1.5** product baseline, checked against Peeka's 0.1.5 app source and canonical format/licensing documents on **2026-10-19**, including native Diff / Patch previews and Mermaid updates. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
+Skill **0.1.7**, stable **0.1.7** product baseline, checked against app tag `0.1.7` (`a06048c`), canonical format/licensing documents, and release materials on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
 
-## TestFlight 0.1.6 Beta
+## App Store 0.1.7
 
-Peeka **0.1.6 (20261020.1)** has passed TestFlight review, as confirmed by the maintainer on **2026-10-21**. These changes are included in the 0.1.6 tag (`76658ef`). The current Mac App Store release remains **0.1.5**. See the [Beta reference](testflight-0.1.6.md) for archive changes and testing focus. Check the installed build; an installed 0.1.5 build does not include these additions.
+Version **0.1.7** brings the following changes to the Mac App Store, including improvements introduced in the 0.1.6 Beta. App tag `0.1.7` records source build `20261023.1`. The [0.1.6 Beta reference](testflight-0.1.6.md) is historical; check the installed version rather than treating its TestFlight approval as current Beta availability.
+
+- **Source and configuration (Free):** 205 offline lexical profiles cover languages, templates, shaders, build scripts, and configurations. Supported embedded script/style regions share highlighting with Markdown fences. Individual language switches remain available. Highlighting does not execute code, validate full syntax, or render notebook cells.
+- **File recognition:** Improved dotfile, extensionless build-file, and common lockfile recognition and Finder routing. Unrecognized generic files show basic file information. `.ipynb` uses JSON source and `.storyboard` / `.xib` use XML source. See [source coverage and routing limits](source-coverage.md).
 
 - **Framework (Pro):** `.framework` has an independent switch. Flat and versioned bundles show identity; readable Mach-O slices add architectures, UUIDs, declared platforms, and minimum system versions. Ordinary static ar frameworks show identity only. Internal version links must remain inside the bundle.
 - **dSYM (Pro):** `.dSYM` has an independent switch and shows bounded binary names and per-architecture UUIDs. It does not expand DWARF symbols, symbolicate reports, or match files automatically. UUID presence does not prove symbol completeness; absent UUIDs remain unavailable.
@@ -36,8 +39,8 @@ The **Pro additions** column supplements free capabilities. The app requires **m
 | Category | Free | Peeka Pro additions |
 | --- | --- | --- |
 | Android packages | APK identity, icon, version, SDK, architecture, and permission count | AAB, APKS, XAPK, APKM, AAR; bounded permission/signing and manifest-derived summaries where available |
-| Apple packages | IPA, APP, APPEX; DMG / flat PKG metadata and bounded embedded-app information | XCArchive, XCFramework, `.mobileprovision` / `.provisionprofile`, dylib; signing metadata where available |
-| Source code | Swift, C / C++, Objective-C, Java, Kotlin, JavaScript, TypeScript, Python, Go, Rust, shell, HTML, CSS, SQL, Diff / Patch, Protobuf, GraphQL | — |
+| Apple packages | IPA, APP, APPEX; DMG / flat PKG metadata and bounded embedded-app information | XCArchive, XCFramework, Framework, dSYM, `.mobileprovision` / `.provisionprofile`, dylib; signing metadata where available |
+| Source code | 205 offline lexical profiles for languages, templates, shaders, build scripts, and configuration; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | Documents and configuration | Markdown; JSON / JSONL / NDJSON; XML; YAML; TOML; INI; properties; EditorConfig; plist / entitlements / xcprivacy / strings / stringsdict; CSV / TSV; dotenv key names only; TXT / TEXT plain source | — |
 | Mermaid | Highlighted `mermaid` fenced source inside Markdown | Standalone `.mmd` / `.mermaid` previews and Markdown Mermaid diagrams, on macOS 14.4+ |
 | Logs and reports | Highlighted source for `.log` / `.out` / `.trace`, `.crash`, `.ips`, and recognized JSONL / NDJSON logs | Detailed summaries and structured log/crash details, including recognized Android Logcat / Android Studio layouts |
@@ -46,9 +49,9 @@ The **Pro additions** column supplements free capabilities. The app requires **m
 
 For unlisted suffixes, inspect the installed format catalog or current official documentation. A `.db` suffix does not establish SQLite content. Internal content recognition does not guarantee that Finder routes an unknown or extensionless file to Peeka.
 
-## Development source catalog (checked 2026-10-21)
+## Released source catalog (0.1.7)
 
-The development source now has 116 free lexical profiles, including Frontend & Templates and Build Scripts, shared with Markdown fences. See the [complete source catalog and suffix/routing limits](source-coverage.md). This expansion is separate from the released 0.1.5 matrix above; App Store / TestFlight availability is unconfirmed.
+The released baseline has **205 free offline lexical profiles**, including Frontend & Templates and Build Scripts, shared with Markdown fences. See the [complete source catalog and suffix/routing limits](source-coverage.md). Common lockfiles reuse matching source or structured-data previews; unknown `.lock` files do not imply dependency inspection.
 
 ## Use the preview controls
 
@@ -59,11 +62,11 @@ The development source now has 116 free lexical profiles, including Frontend & T
 - **SQLite:** Select a table and switch between Structure and Data. Data and clickable BLOB prefixes require Pro; views and virtual/shadow tables expose structure only. Generated columns appear in schema and are omitted from record reads.
 - **Archives:** Switch between List and Columns; navigate folders and sort available columns. Only retained entries are browsable. These views do not extract or open entry contents.
 
-### Mermaid syntax and limits (released 0.1.5)
+### Mermaid syntax and limits (released 0.1.7)
 
-The documented 0.1.5 baseline bundles Mermaid 12.2.0 and recognizes 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
+The released baseline bundles **Pele 1.6.0**, targeting Mermaid 12.1.0 syntax, for 20 diagram families: flowchart, sequence, class, state, ER, Gantt, pie, mindmap, timeline, Git graph, journey, quadrant, requirement, Sankey, XY chart, block, packet, kanban, radar, and treemap. Common aliases include `graph`, `stateDiagram-v2`, `sankey-beta`, `xychart-beta`, `block-beta`, `packet-beta`, `radar-beta`, and `treemap-beta`.
 
-The 0.1.5 update refines light/dark diagram styling, Timeline/state themes, Sankey labels, and Kanban colors, and fixes connector/arrow semantics and rendering cancellation. Explicit colors, line widths, and automatic layout remain respected.
+Pele replaces the earlier Mermaid.js renderer. Layout, default styling, and syntax compatibility can differ; do not promise identical output for an older diagram.
 
 Unsupported syntax, configuration directives/front matter, or resource limits produce highlighted source and a reason. Rendering is offline with bundled scripts; user HTML/scripts, external resources, navigation, and click callbacks are blocked. It is a preview, without editing or export.
 
@@ -83,13 +86,13 @@ Recognized Logcat layouts include `brief`, `process`, `tag`, `thread`, `time`, `
 
 ## Other limits that affect answers
 
-- **Finder routing:** `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS, and some plist / CSV files may use system or other providers. Pro does not force provider selection. No blanket claim to arbitrary files or extensionless SQLite is provided.
+- **Finder routing:** Peeka registers additional exact filename/type routes, including code-first handling of conflicting suffixes such as `.ts` / `.mts` and `.cue`; actual provider selection remains with macOS. Dotfiles and extensionless files with exact `public.data` type can reach the generic fallback; SQLite still requires its magic bytes. AAR, TXT / TEXT, IPS, other dotenv suffixes, and other provider conflicts remain limited. See [routing details](source-coverage.md#finder-routing-and-conflicts). Pro does not force provider selection or add arbitrary-file support.
 - **Markdown and text:** Most source previews read at most 1 MiB of UTF-8. Markdown images require authorized regular local files inside the document directory; remote/data URLs, path traversal, and symlinks are rejected. Missing or inaccessible images show alternate text/reasons. Raw HTML is displayed safely, without execution. CSV / TSV shows source and summaries, not a spreadsheet editor.
 - **Plist and dotenv:** Binary/OpenStep plist can show key-name summaries instead of full source; invalid binary plist does not fall back to garbled text. dotenv intentionally exposes keys only, including names such as `.env.local` and `.env.txt`; no Outline/Mindmap or secret-value display.
 - **Android:** Pro permission lists are capped at 12; available manifest summaries include application flags, component counts, declared deep-link rules, technologies, resources, and contents. Missing flags are not inferred as false; links are not domain-verified. Split containers summarize base-APK details, not an exhaustive aggregation of every split. AAR is an Android library, not an APK-set container.
 - **Signing:** Available identities, schemes, and certificate summaries do not verify signature validity or installer trust. Provisioning profiles show bounded capabilities and certificate counts, not full certificate dumps.
 - **SQLite:** Record pages contain at most 100 rows within 1 MiB; text cells are limited to 512 Unicode scalars. BLOB previews show at most 4 KiB; large WITHOUT ROWID BLOBs may remain size-only. No editing, repair, total row counting, record search/filter/sort, or export. A readonly recovery/locking error is not a request to modify the database.
-- **Archives:** Listings retain at most 256 entries. Encrypted, solid, or unsupported 7z variants may yield only type, size, and an unable-to-list state. GZ shows header metadata rather than payload browsing or a verified total uncompressed size.
+- **Archives:** Listings are no longer fixed to 256 entries. They remain bounded by entry, index-memory, scan, and cooperative time budgets, with partial-result explanations. Supported single-coder solid 7z layouts can list metadata with Pro; encrypted headers, external metadata, filter chains, and unsupported layouts may yield an unable-to-list state. GZ shows header metadata rather than payload browsing or a verified total uncompressed size.
 - **DMG / PKG:** Supported variants permit bounded app/icon discovery, not general payload browsing. Encrypted or unsupported variants and resource limits can leave partial results. Old directory-style PKG is unsupported. Finder thumbnails remain system icons.
 - **Product scope:** No delivered general Inspector, DEX analysis, comparison/export, Peeka font/video previews, or `.logarchive` support. The retained main-app log viewer has hidden menu/toolbar entries; use Finder Quick Look as the normal workflow.
 
