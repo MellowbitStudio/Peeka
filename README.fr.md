@@ -10,13 +10,11 @@ Peeka est une app macOS native qui ajoute au Finder des aperçus adaptés aux d�
 
 Nécessite **macOS 14 ou ultérieur** ; le rendu des diagrammes Mermaid nécessite **macOS 14.4+** et Pro. Disponible en **anglais, chinois simplifié et traditionnel, japonais, coréen, allemand, français et espagnol**.
 
-**Peeka 0.1.5 a été approuvé par l’App Store et est officiellement disponible**, état confirmé le **2026-10-19**. Les fonctions ci-dessous correspondent à la version 0.1.5 vérifiée à cette date, y compris les aperçus natifs Diff / Patch et les mises à jour Mermaid. Mettez les anciennes installations à jour via l’App Store. Les aperçus dépendent aussi de la compatibilité des fichiers et du fournisseur choisi par le Finder.
-
-**0.1.6 (20261020.1) · Validation TestFlight approuvée** · 2026-10-21 · [TestFlight](https://testflight.apple.com/join/5jM8yxDB)
+**Peeka 0.1.7 a été approuvé par l’App Store et est officiellement disponible**, état confirmé par le mainteneur le **2026-10-26**. Mettez l’app à jour via l’App Store pour la coloration du code étendue, les aperçus Pro Framework/dSYM, les améliorations d’archives et les diagrammes Pele hors ligne. Les aperçus dépendent de la compatibilité des fichiers et du fournisseur choisi par le Finder.
 
 ## Fonctionnalités
 
-Voici les fonctions publiées dans la version 0.1.5. Pour les implémentations ultérieures, consultez l’[avancement du développement](#avancement-du-développement).
+Voici les fonctions publiées dans la version 0.1.7. Consultez les changements depuis 0.1.5 dans les [nouveautés](#nouveautés-de-la-version-017).
 
 - **Paquets d’applications :** consultez les icônes, noms, identifiants, versions, exigences système et architectures disponibles dans les paquets Android et Apple. Les paquets compatibles contenant une icône peuvent aussi recevoir une vignette dans le Finder.
 - **Code source :** coloration syntaxique, numéros de ligne, sélection et copie natives pour les langages courants. Activez ou désactivez les aperçus par langage.
@@ -35,8 +33,8 @@ Voici les fonctions publiées dans la version 0.1.5. Pour les implémentations u
 | Catégorie | Aperçus gratuits | Ajouts de Peeka Pro |
 | --- | --- | --- |
 | Paquets Android | APK | AAB, APKS, XAPK, APKM, AAR ; résumés limités des autorisations, de la signature et du manifeste, selon disponibilité |
-| Paquets Apple | IPA, APP, APPEX ; métadonnées DMG / PKG plats et informations limitées sur les apps intégrées | XCArchive, XCFramework, profils de provisionnement, dylib ; métadonnées de signature disponibles |
-| Code source | Swift, C / C++, Objective-C, Java, Kotlin, JavaScript, TypeScript, Python, Go, Rust, Shell, HTML, CSS, SQL, Diff / Patch, Protobuf, GraphQL | — |
+| Paquets Apple | IPA, APP, APPEX ; métadonnées DMG / PKG plats et informations limitées sur les apps intégrées | XCArchive, XCFramework, Framework, dSYM, profils de provisionnement, dylib ; métadonnées de signature disponibles |
+| Code source | 205 profils lexicaux hors ligne pour langages, modèles, shaders, scripts de compilation et configurations ; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | Documents et configuration | Markdown, JSON / JSONL / NDJSON, XML, YAML, TOML, INI, properties, EditorConfig, plist et configurations Apple associées, CSV / TSV, TXT / TEXT en texte brut ; noms de clés uniquement pour dotenv | — |
 | Mermaid | Code coloré des blocs Mermaid dans Markdown | Fichiers `.mmd` / `.mermaid` autonomes et diagrammes Markdown (macOS 14.4+) |
 | Journaux et rapports | Texte coloré des `.log` / `.out` / `.trace`, `.crash`, `.ips` et journaux JSONL / NDJSON reconnus | Résumés limités et détails structurés, avec présentations Android Logcat / Android Studio |
@@ -45,10 +43,12 @@ Voici les fonctions publiées dans la version 0.1.5. Pour les implémentations u
 
 L’aperçu dépend du contenu et du choix de l’extension Peeka par macOS. TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS et certains fichiers plist / CSV ont des limites connues de fournisseur ou d’acheminement. Les vues structurées YAML et TOML prennent en charge un sous-ensemble limité de leur syntaxe. TXT / TEXT reste du texte brut, sans détection automatique de journal ou de document.
 
-## Avancement du développement
+## Nouveautés de la version 0.1.7
 
-Peeka 0.1.6 (20261020.1) a passé la validation TestFlight. La Beta ajoute les aperçus Pro Framework/dSYM et améliore les grandes listes d’archives, l’encodage des noms et les diagrammes Pele hors ligne. La version Mac App Store reste la 0.1.5. [TestFlight](https://testflight.apple.com/join/5jM8yxDB) · [0.1.6 Beta](https://mellowbit.studio/fr/peeka/beta-release-notes/)
+La version 0.1.7 apporte les mises à jour suivantes au Mac App Store, y compris les améliorations de la Beta 0.1.6. [Notes de version](https://mellowbit.studio/fr/peeka/release-notes/)
 
+- **Coloration du code étendue (gratuite) :** 205 profils lexicaux hors ligne couvrent langages, modèles, shaders, scripts de compilation et configurations, avec des interrupteurs par langage et une coloration partagée avec les blocs Markdown. Sans exécution du code ni validation syntaxique complète.
+- **Reconnaissance des fichiers :** Reconnaissance et routage Finder améliorés pour les fichiers cachés, les fichiers de compilation sans extension et les fichiers de verrouillage courants. Les fichiers génériques non reconnus affichent les informations de base ; `.ipynb` affiche le code JSON. macOS choisit toujours le fournisseur d’aperçu.
 - **Aperçus Framework (Pro) :** identité des `.framework` et architectures Mach-O, UUID, plateformes et versions système minimales disponibles. Les paquets plats et versionnés macOS sont pris en charge ; les frameworks statiques ordinaires affichent uniquement leur identité.
 - **Symboles de débogage (Pro) :** noms des binaires et UUID par architecture dans les `.dSYM`. Pas de développement des symboles, de symbolication des rapports ni d’association automatique entre binaires et rapports.
 - **Moteur Mermaid mis à jour :** Pele 1.6.0 est intégré pour afficher hors ligne 20 familles de diagrammes, avec thèmes clair/sombre, zoom et déplacement vectoriels natifs. La mise en page et la compatibilité syntaxique peuvent différer du moteur Mermaid.js de 0.1.5.
@@ -78,14 +78,14 @@ Certains aperçus sont limités :
 - SQLite affiche au plus **100 lignes** par page, dans une limite d’affichage de **1 MiB**. Les aperçus BLOB lisent les **4 KiB** initiaux au maximum. Peeka ne modifie pas les bases et n’en assure pas la maintenance.
 - Les métadonnées de signature décrivent les informations disponibles, sans vérifier la validité de la signature.
 - Le texte et les détails des journaux et rapports sont limités ; les statistiques concernent la partie analysée de l’aperçu. Les IPS structurés visent les rapports de plantage standard (309), sans symbolication.
-- Le périmètre documenté de 0.1.5 comprend 20 familles Mermaid. Une syntaxe ou des directives non prises en charge, ou le dépassement des ressources, entraînent l’affichage du code coloré avec une explication.
-- Les variantes 7z chiffrées, solides ou non prises en charge peuvent ne pas être listées. Les listes sont limitées et peuvent être incomplètes pour les grandes archives.
+- Le moteur Pele intégré prend en charge 20 familles de diagrammes Mermaid hors ligne. Une syntaxe ou des directives non prises en charge, ou le dépassement des ressources, entraînent l’affichage du code coloré avec une explication.
+- Pro peut afficher les listes 7z solides compatibles à un seul codeur. Les en-têtes chiffrés, chaînes de filtres ou variantes non prises en charge peuvent empêcher l’affichage. Les listes sont limitées et peuvent être incomplètes pour les grandes archives.
 
 Les limites de ressources et de compatibilité s’appliquent aux aperçus gratuits comme à Pro.
 
 ## Skill pour agents IA
 
-Le [skill public `peeka` (anglais)](skills/peeka/SKILL.md), version **0.1.5**, aide Codex, Claude Code et d’autres agents compatibles à installer l’app, expliquer les formats et fonctions gratuites/Pro, gérer les aperçus et résoudre les problèmes.
+Le [skill public `peeka` (anglais)](skills/peeka/SKILL.md), version **0.1.7**, aide Codex, Claude Code et d’autres agents compatibles à installer l’app, expliquer les formats et fonctions gratuites/Pro, gérer les aperçus et résoudre les problèmes.
 
 Après publication dans la branche par défaut du dépôt, installez-le avec :
 

@@ -2,7 +2,7 @@
 name: peeka
 description: "Install and use Mellowbit Studio's Peeka Quick Look app on macOS. Use for App Store setup; package, source, Markdown, Mermaid, Diff / Patch, Logcat, crash-report, SQLite, and archive previews; Free versus Pro features; format and extension switches; and troubleshooting Finder previews."
 metadata:
-  version: "0.1.6"
+  version: "0.1.7"
 ---
 
 # Peeka
@@ -19,7 +19,8 @@ Read only the reference needed for the request. These files are bundled with thi
 | --- | --- |
 | Download from the App Store, first launch, preview a file, enable or disable a format or Peeka's extension | [Installation and preview controls](references/install-and-controls.md) |
 | Explain features, check a file format, use Mermaid or Logcat previews, compare Free and Pro, purchase or restore Pro | [Features, formats, and plans](references/features-and-plans.md) |
-| TestFlight 0.1.6 status, Beta changes, or testing focus | [TestFlight 0.1.6](references/testflight-0.1.6.md) |
+| Source languages, templates, build files, lockfiles, suffix conflicts, or filename recognition | [Source and configuration coverage](references/source-coverage.md) |
+| Historical TestFlight 0.1.6 changes or testing focus | [TestFlight 0.1.6 archive](references/testflight-0.1.6.md) |
 | Missing or incorrect preview, extension problems, routing conflicts, limited output, purchase problems, support report | [Troubleshooting](references/troubleshooting.md) |
 
 ## Working with the user's Mac
@@ -33,7 +34,7 @@ Read only the reference needed for the request. These files are bundled with thi
 
 ## Answering product questions
 
-Use the bundled feature matrix for the released baseline. Peeka 0.1.6 (20261020.1) has passed TestFlight review, confirmed by the maintainer on 2026-10-21. The [Beta reference](references/testflight-0.1.6.md) covers Framework/dSYM, archive and encoding changes, and Pele. Check the installed build and distribution channel before promising these capabilities. For a particular file, explain the supported category, the required tier, and any relevant content or routing limitation. Extension names alone do not guarantee compatibility; macOS chooses the preview provider.
+Use the bundled feature matrix for the released **0.1.7** baseline. It includes Pro Framework/dSYM previews, larger archive listings, filename encoding improvements, and offline Pele diagrams. The [source catalog](references/source-coverage.md) covers **205 free offline lexical profiles**, filename recognition, and routing limits, including dotfiles, extensionless build files, and common lockfiles. Check the installed version before guiding users on older builds. For a particular file, explain the supported category, required tier, and relevant content or routing limitation. Extension names alone do not guarantee compatibility; macOS chooses the preview provider.
 
 Diff / Patch previews are free: Source, Fluid, Blocks, and Unified modes inspect the patch only, without reading referenced files or applying changes. Read the feature reference for partial output and selection limits.
 
@@ -41,11 +42,12 @@ Keep the distinctions that matter for setup: log and crash-report source is free
 
 Pro is an optional **one-time in-app purchase**, with no subscription or per-preview charges. Read the actual local price in **Settings → Peeka Pro** when a price is requested. Do not quote a fixed price or promise that Pro removes compatibility or resource limits.
 
-Skill version **0.1.6** covers the approved TestFlight 0.1.6 Beta alongside the stable baseline. The stable feature matrix describes Peeka's **0.1.5 product baseline**, checked against the app's canonical format documentation and implementation on **2026-10-19**, including native Diff / Patch previews and Mermaid updates. **Peeka 0.1.5 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-19**. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.5 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
+Skill version **0.1.7** describes Peeka's **0.1.7 product baseline**, checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.7 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
 
 ## Official links
 
 - [Mac App Store — Peeka, ID 6813012289](https://apps.apple.com/app/peeka-ultimate-quicklook-app/id6813012289)
+- [Stable release notes](https://mellowbit.studio/peeka/release-notes/)
 - [TestFlight Beta](https://testflight.apple.com/join/5jM8yxDB)
 - [Beta release notes](https://mellowbit.studio/peeka/beta-release-notes/)
 - [Peeka website](https://mellowbit.studio/peeka)

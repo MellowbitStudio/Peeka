@@ -1,8 +1,6 @@
 # Troubleshooting Peeka
 
-Skill **0.1.6**, product baseline reviewed **2026-10-19**. Peeka **0.1.5** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-19**. Check for an App Store update on older builds, and match troubleshooting to the installed version and UI.
-
-Peeka **0.1.6 (20261020.1)** has passed TestFlight review, confirmed by the maintainer on **2026-10-21**. The Mac App Store release remains **0.1.5**. Match guidance to the installed channel and build; see [TestFlight 0.1.6](testflight-0.1.6.md).
+Skill **0.1.7**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
 
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
 
@@ -37,7 +35,7 @@ App Store download failures occur before Peeka's preview extension is available.
 
 macOS decides which Quick Look extension handles a file. Closing and reopening the preview is necessary after switch changes, but an enabled switch cannot force macOS to choose Peeka.
 
-- For **`.ts` / `.mts`**, **dotenv**, **AAR**, **TXT / TEXT**, **IPS**, and some plist / CSV files, account for documented system-provider/type conflicts. Android AAR may be identified as Apple Archive; Peeka does not claim that broad type. Do not promise that a cache reset or Pro purchase resolves routing.
+- For **AAR**, **TXT / TEXT**, **IPS**, other dotenv suffixes, and some plist / CSV files, account for documented system-provider/type conflicts. Android AAR may be identified as Apple Archive; the 0.1.7 baseline does not claim that broad type. Version 0.1.7 also registers code-first routes for conflicting source suffixes such as **`.ts` / `.mts`**, **`.cue`**, and **`.mpp`**. Actual media or binary files with these types can reach source previews or a recoverable binary-input error. Peeka registers `.env` through the generic data fallback and `.env.local` through an exact suffix route; this does not cover every `.env.*` suffix. See [routing details](source-coverage.md#finder-routing-and-conflicts). Do not promise that a cache reset or Pro purchase resolves routing.
 - A `.mmd` file may be assigned another app's Markdown type (including Ulysses). Current source declares a relevant candidate, but registration/type matching alone does not establish that Finder selected Peeka. Compare the observed preview and the installed build before calling it fixed.
 - Check for another Quick Look provider if the visible preview appears to belong to another app. When testing a conflict, change one relevant provider at a time, record its prior setting, and restore settings after the comparison unless the user requested the new state.
 - If Peeka was switched off, a macOS preview or another provider may still appear. Confirm that Peeka's handling is disabled rather than treating any remaining preview as a failed switch.
@@ -48,10 +46,10 @@ macOS decides which Quick Look extension handles a file. Closing and reopening t
 | Symptom | What to check or explain |
 | --- | --- |
 | `.db` does not show database tables | The suffix is ambiguous; verify that it actually contains a SQLite database. |
-| An extensionless database or unknown suffix gets a generic preview | Internal SQLite/content recognition does not guarantee Finder routing. Do not change the original filename or claim arbitrary-file support. |
+| An extensionless database or unknown suffix gets a generic preview | Version 0.1.7 can receive extensionless files whose exact type is `public.data`; SQLite still requires its magic bytes. Other types may not route to Peeka. Unknown generic files show basic information. Do not change the original filename or claim arbitrary-file support. |
 | SQLite shows schema but no records | Schema is free; records and BLOB prefixes require Pro. Restore an existing purchase before suggesting a new purchase. |
 | SQLite records or BLOBs are truncated | Pages have a 100-row and 1 MiB display limit; BLOBs show only the first 4 KiB. Pro retains these limits. |
-| 7z listing is absent | Requires Pro and a supported variant. Encrypted, solid, or unsupported variants can still fail. |
+| 7z listing is absent | Requires Pro and a supported variant. Compatible single-coder solid layouts can list; encrypted headers, external metadata, filter chains, and unsupported layouts can still fail. |
 | A large archive listing stops early | Bounded listings may be incomplete. No unlimited listing guarantee is documented. |
 | YAML/TOML outline or mindmap differs from the full document | Structure views support bounded syntax subsets. Inspect the source view if available before concluding that data was lost. |
 | dotenv shows keys without values | Key-name-only display is the documented behavior. Do not expose secret values in a support report. |
@@ -69,7 +67,7 @@ If a small supported file fails despite correct switches and tier, record its ac
 
 ## Framework or dSYM preview is missing
 
-These Pro formats are included in the approved TestFlight 0.1.6 Beta; first check the installed version and channel, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [TestFlight 0.1.6 details](features-and-plans.md#testflight-016-beta).
+These Pro formats are included in the released App Store 0.1.7 baseline; first check the installed version and channel, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [0.1.7 details](features-and-plans.md#app-store-017).
 
 ## Mermaid shows source, no diagram, or no format switch
 
@@ -114,4 +112,4 @@ No Peeka-specific terminal repair commands are documented in this public skill. 
 
 ## Source
 
-Product behavior and limitations: Peeka's 0.1.5 app source and canonical format/licensing documents, reviewed **2026-10-19**, summarized in [features and plans](features-and-plans.md). App Store approval and official availability of 0.1.5 were confirmed by the maintainer on **2026-10-19**. Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance; some issues depend on file compatibility or macOS provider selection and may not have a local fix.
+Product behavior and limitations: Peeka app tag `0.1.7` and canonical format/licensing documents, reviewed **2026-10-26**, summarized in [features and plans](features-and-plans.md). App Store approval and official availability of 0.1.7 were confirmed by the maintainer on **2026-10-26**. Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance; some issues depend on file compatibility or macOS provider selection and may not have a local fix.
