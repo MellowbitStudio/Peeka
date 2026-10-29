@@ -20,6 +20,7 @@ Read only the reference needed for the request. These files are bundled with thi
 | Download from the App Store, first launch, preview a file, enable or disable a format or Peeka's extension | [Installation and preview controls](references/install-and-controls.md) |
 | Explain features, check a file format, use Mermaid or Logcat previews, compare Free and Pro, purchase or restore Pro | [Features, formats, and plans](references/features-and-plans.md) |
 | Source languages, templates, build files, lockfiles, suffix conflicts, or filename recognition | [Source and configuration coverage](references/source-coverage.md) |
+| Current TestFlight approval status | [TestFlight 0.1.8](references/testflight-0.1.8.md) |
 | Historical TestFlight 0.1.6 changes or testing focus | [TestFlight 0.1.6 archive](references/testflight-0.1.6.md) |
 | Missing or incorrect preview, extension problems, routing conflicts, limited output, purchase problems, support report | [Troubleshooting](references/troubleshooting.md) |
 
@@ -43,6 +44,8 @@ Keep the distinctions that matter for setup: log and crash-report source is free
 Pro is an optional **one-time in-app purchase**, with no subscription or per-preview charges. Read the actual local price in **Settings → Peeka Pro** when a price is requested. Do not quote a fixed price or promise that Pro removes compatibility or resource limits.
 
 Skill version **0.1.7** describes Peeka's **0.1.7 product baseline**, checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.7 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
+
+TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](references/testflight-0.1.8.md); keep its approval status separate from the stable 0.1.7 feature baseline.
 
 ## Official links
 

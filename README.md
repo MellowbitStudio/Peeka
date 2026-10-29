@@ -12,6 +12,8 @@ Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro
 
 **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**. Update through the App Store for expanded source highlighting, Pro Framework/dSYM previews, archive improvements, and offline Pele diagrams. Preview availability depends on file compatibility and Finder provider selection.
 
+**TestFlight Beta 0.1.8 has passed review**, as confirmed by the maintainer on **2026-10-29**. [Join TestFlight](https://testflight.apple.com/join/5jM8yxDB). The Mac App Store baseline remains 0.1.7.
+
 ## Features
 
 The following describes the released 0.1.7 features. See [what’s new](#whats-new-in-017) for changes since 0.1.5.

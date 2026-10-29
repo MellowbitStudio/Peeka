@@ -12,6 +12,8 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 **Peeka 0.1.7 已通過 App Store 審查並正式上架**，由維護者於 **2026-10-26** 確認。透過 App Store 更新，即可使用擴充的原始碼高亮、Pro Framework/dSYM 預覽、封存檔改進與離線 Pele 圖表。實際預覽仍取決於檔案相容性與 Finder 選用的預覽器。
 
+**TestFlight 測試版 0.1.8 已通過審核**，由維護者於 **2026-10-29** 確認。[加入 TestFlight](https://testflight.apple.com/join/5jM8yxDB)。Mac App Store 正式版基準仍為 0.1.7。
+
 ## 主要功能
 
 以下介紹已發布的 0.1.7 功能；相較於 0.1.5 的變更請見 [0.1.7 更新內容](#017-更新內容)。

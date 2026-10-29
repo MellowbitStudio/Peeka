@@ -12,6 +12,8 @@ Requiere **macOS 14 o posterior**; la representación gráfica de Mermaid requie
 
 **Peeka 0.1.7 ha superado la revisión del App Store y está disponible oficialmente**, según la confirmación del responsable del **2026-10-26**. Actualiza desde el App Store para ampliar el resaltado de código, obtener vistas Pro de Framework/dSYM y mejoras de archivos y diagramas Pele sin conexión. La vista previa depende de la compatibilidad del archivo y del proveedor seleccionado por el Finder.
 
+**La beta 0.1.8 de TestFlight ha sido aprobada**, según confirmó el mantenedor el **2026-10-29**. [Unirse a TestFlight](https://testflight.apple.com/join/5jM8yxDB). La versión de referencia de Mac App Store sigue siendo la 0.1.7.
+
 ## Funciones
 
 Estas son las funciones publicadas en 0.1.7. Consulta los cambios desde 0.1.5 en las [novedades](#novedades-de-017).

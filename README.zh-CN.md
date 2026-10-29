@@ -12,6 +12,8 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 **Peeka 0.1.7 已通过 App Store 审核并正式上线**，由维护者于 **2026-10-26** 确认。通过 App Store 更新，即可使用扩展的源码高亮、Pro Framework/dSYM 预览、归档改进与离线 Pele 图表。实际预览仍取决于文件兼容性和访达选择的预览器。
 
+**TestFlight 测试版 0.1.8 已通过审核**，由维护者于 **2026-10-29** 确认。[加入 TestFlight](https://testflight.apple.com/join/5jM8yxDB)。Mac App Store 正式版基线仍为 0.1.7。
+
 ## 主要功能
 
 以下介绍已发布的 0.1.7 功能；相较于 0.1.5 的变化见 [0.1.7 更新内容](#017-更新内容)。

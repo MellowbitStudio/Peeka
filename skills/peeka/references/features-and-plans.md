@@ -2,6 +2,8 @@
 
 Skill **0.1.7**, stable **0.1.7** product baseline, checked against app tag `0.1.7` (`a06048c`), canonical format/licensing documents, and release materials on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
 
+TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](testflight-0.1.8.md) for status; the feature baseline below remains the stable 0.1.7 release.
+
 ## App Store 0.1.7
 
 Version **0.1.7** brings the following changes to the Mac App Store, including improvements introduced in the 0.1.6 Beta. App tag `0.1.7` records source build `20261023.1`. The [0.1.6 Beta reference](testflight-0.1.6.md) is historical; check the installed version rather than treating its TestFlight approval as current Beta availability.

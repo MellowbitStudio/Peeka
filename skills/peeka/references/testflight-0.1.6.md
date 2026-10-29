@@ -6,6 +6,8 @@ Peeka **0.1.6**, build **20261020.1**, has passed TestFlight review. The maintai
 - [Beta release notes and testing focus](https://mellowbit.studio/peeka/beta-release-notes/)
 - [Stable release notes](https://mellowbit.studio/peeka/release-notes/)
 
+For the latest maintainer-confirmed TestFlight approval, see [TestFlight 0.1.8](testflight-0.1.8.md), confirmed on **2026-10-29**.
+
 ## Changes since 0.1.5
 
 - **Framework and dSYM (Pro):** Separate format switches, bundle identity and available Mach-O architectures, UUIDs, platforms and minimum system versions. Static ar frameworks show identity only. dSYM does not expand DWARF symbols, symbolicate reports or automatically match binaries. Neither format adds custom thumbnails. Finder may expand frameworks as directories in column view; select the bundle and press Space.

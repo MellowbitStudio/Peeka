@@ -12,6 +12,8 @@ Erfordert **macOS 14 oder neuer**; die Darstellung von Mermaid-Diagrammen erford
 
 **Peeka 0.1.7 hat die App-Store-Prüfung bestanden und ist offiziell verfügbar**, vom Maintainer am **2026-10-26** bestätigt. Aktualisiere über den App Store für erweiterte Quellcode-Hervorhebung, Pro-Vorschauen für Framework/dSYM, Archivverbesserungen und Offline-Diagramme mit Pele. Vorschauen hängen von Dateikompatibilität und der Anbieterwahl durch den Finder ab.
 
+**TestFlight-Beta 0.1.8 hat die Prüfung bestanden**, vom Maintainer am **2026-10-29** bestätigt. [An TestFlight teilnehmen](https://testflight.apple.com/join/5jM8yxDB). Die Mac-App-Store-Basisversion bleibt 0.1.7.
+
 ## Funktionen
 
 Die folgenden Funktionen gehören zur veröffentlichten Version 0.1.7. Änderungen seit 0.1.5 stehen unter [Neu in 0.1.7](#neu-in-017).
