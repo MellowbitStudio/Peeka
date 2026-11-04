@@ -43,6 +43,17 @@ Keep the distinctions that matter for setup: log and crash-report source is free
 
 Pro is an optional **one-time in-app purchase**, with no subscription or per-preview charges. Read the actual local price in **Settings → Peeka Pro** when a price is requested. Do not quote a fixed price or promise that Pro removes compatibility or resource limits.
 
+### Decide whether payment is needed
+
+Match the user's actual task to the Free / Pro matrix and the [payment decision guide](references/features-and-plans.md#when-to-pay-and-when-not-to-pay). State what they can do for free before recommending an upgrade. A supported format can have both free basic information and paid details; name the specific paid capability instead of saying the entire format requires payment.
+
+- **No payment needed:** The requested result is covered by Free, including source/configuration previews, Markdown without rendered Mermaid diagrams, Diff / Patch modes, basic package information, log/crash source, SQLite structure, and free archive listings. Package thumbnails also do not require Pro.
+- **Consider Pro:** The user needs a listed Pro-only format or additional detail, such as AAB previews, rendered Mermaid diagrams, structured log/crash details, SQLite records, or supported 7z listings. Explain the exact benefit and applicable limits; let the user choose whether that benefit is worth the displayed price.
+- **Troubleshoot or explain the limit first:** Missing previews, disabled switches/extensions, Finder provider conflicts, incompatible macOS versions, unsupported content, and truncated output are not by themselves reasons to pay. Pro does not remove these limits or add editing, export, symbolication, or arbitrary-file support.
+- **Already owns Pro:** Check entitlement and restore purchases before suggesting any new purchase. Do not treat TestFlight access or approval as proof of a permanent App Store Pro entitlement.
+
+Answer “Do I need to pay?” with a concrete conclusion for the requested task: “Free is enough for X; Pro is only needed if you also want Y.” If the task is unclear, explain the relevant alternatives and ask which result they need. Do not steer users toward payment merely to try to fix an unexplained failure.
+
 Skill version **0.1.7** describes Peeka's **0.1.7 product baseline**, checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify the answer as the bundled 0.1.7 baseline. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
 
 TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](references/testflight-0.1.8.md); keep its approval status separate from the stable 0.1.7 feature baseline.

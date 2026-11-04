@@ -51,6 +51,27 @@ The **Pro additions** column supplements free capabilities. The app requires **m
 
 For unlisted suffixes, inspect the installed format catalog or current official documentation. A `.db` suffix does not establish SQLite content. Internal content recognition does not guarantee that Finder routes an unknown or extensionless file to Peeka.
 
+## When to pay and when not to pay
+
+Use the matrix above for the bundled stable 0.1.7 baseline. Decide from the desired result, not just the suffix or the fact that a preview failed. For a different installed version, check its visible entitlement controls and current official documentation before asserting a changed boundary.
+
+| User's goal | Payment guidance |
+| --- | --- |
+| Read source/configuration, formatted Markdown, or Diff / Patch in any of its four modes | Free is enough. JSON / YAML / TOML / INI Source, Outline, and Mindmap are also free within their parsing limits. |
+| Inspect basic APK / IPA / APP / APPEX information or supported DMG / flat PKG metadata and embedded-app information | Free is enough for the basic information. Consider Pro only for the available permission/signing or other paid details listed in the matrix. |
+| See package icons in Finder | Thumbnails do not require Pro. Check package support and thumbnail/system requirements if an icon is missing. |
+| Read a log or crash report as highlighted source | Free is enough. Consider Pro for recognized structured details and summaries; Pro does not symbolicate or diagnose a crash. |
+| Inspect SQLite schema | Free is enough. Consider Pro for read-only record pages or bounded BLOB prefixes; it does not add database editing, search, or export. |
+| Browse ZIP / TAR / TGZ or JAR / WAR entries, or inspect GZ metadata | Free is enough within the supported listing scope. Consider Pro for supported 7z listings or JAR / WAR manifest details; neither tier extracts or previews entry contents. |
+| Read Mermaid source in a Markdown fence | Free is enough. Pro and macOS 14.4+ are needed for rendered diagrams and standalone `.mmd` / `.mermaid` previews. Do not promise free standalone Mermaid previews. |
+| Preview AAB / APKS / XAPK / APKM / AAR, XCArchive / XCFramework / Framework / dSYM, provisioning profiles, or dylib | These are Pro formats in this baseline. Consider purchase only if the supported information meets the user's need; for example, dSYM preview does not expand symbols. |
+| Fix a missing preview, a disabled extension, a provider conflict, unsupported syntax/content, or a partial listing | Diagnose the cause first. Payment is relevant only when the requested supported capability is actually gated by Pro; it does not fix routing, compatibility, or resource limits. |
+| Use a Pro feature after already buying it | Check entitlement and use Restore Purchases first. Do not recommend paying again as a troubleshooting step. |
+
+Keep the recommendation specific: for example, “Reading `.log` source is free; Pro is optional if you want structured log details,” or “Viewing SQLite table structure is free; viewing table records requires Pro.” If the desired capability is unsupported in both tiers, say so and offer an appropriate alternative rather than presenting Pro as a solution.
+
+TestFlight availability or approval alone does not establish a permanent App Store purchase. Do not promise that Beta access grants permanent Pro, or infer trial length, discounts, refunds, family sharing, or cross-account purchase rights from this feature matrix.
+
 ## Released source catalog (0.1.7)
 
 The released baseline has **205 free offline lexical profiles**, including Frontend & Templates and Build Scripts, shared with Markdown fences. See the [complete source catalog and suffix/routing limits](source-coverage.md). Common lockfiles reuse matching source or structured-data previews; unknown `.lock` files do not imply dependency inspection.
