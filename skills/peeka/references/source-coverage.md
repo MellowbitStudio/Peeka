@@ -2,6 +2,9 @@
 
 Checked **2026-10-26** against app tag **0.1.7** (`a06048c`) and its canonical format documentation. **Peeka 0.1.7 is officially available on the Mac App Store**, as confirmed by the maintainer on **2026-10-26**. This reference replaces the earlier 116-profile development snapshot and describes the released baseline.
 
+
+For the newer dedicated Xcode / Swift Package previews and AAR routing, use the separately dated [source feature matrix](features-and-plans.md#free-and-pro-format-matrix). This historical lexical catalog does not override those structured-preview or routing boundaries.
+
 The release contains **205 free offline lexical profiles**, shared by standalone source previews and explicit Markdown fence hints. The app groups them into Source Code, Frontend & Templates, and Build Scripts; SQL, Diff / Patch, Protobuf, and GraphQL remain separate. Each language has a format switch; aliases share its switch. These are bounded, read-only previews, without code execution, full syntax validation, build inspection, or notebook-cell rendering.
 
 ## Profile catalog

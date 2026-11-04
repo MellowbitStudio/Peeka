@@ -2,7 +2,7 @@
 
 Skill **0.1.7**, stable **0.1.7** product baseline, checked against app tag `0.1.7` (`a06048c`), canonical format/licensing documents, and release materials on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Check the installed version, visible controls, file compatibility, and Finder provider selection when behavior differs; use [official product documentation](https://github.com/MellowbitStudio/Peeka#readme) for public updates.
 
-TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](testflight-0.1.8.md) for status; the feature baseline below remains the stable 0.1.7 release.
+TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](testflight-0.1.8.md) for status. The App Store section below preserves the stable 0.1.7 record; the feature matrix and payment guide describe the separately dated source snapshot.
 
 ## App Store 0.1.7
 
@@ -19,11 +19,17 @@ Version **0.1.7** brings the following changes to the Mac App Store, including i
 
 The current renderer retains the bounded offline preview model: 1 MiB input, 50,000 UTF-16 units per diagram, 500 entities/connections, 5-second rendering, 8 MiB SVG/PDF, and at most 16 Markdown diagrams. Model and canvas-size limits can also trigger source fallback. Third-party license information is available in Settings → About → Third-party Licenses.
 
+## Source snapshot checked 2026-11-04
+
+The capability overview, Free / Pro matrix, and payment guide below were checked against app source commit `0ac0cd9` on **2026-11-04**, using the canonical supported-format, feature, and commercial-policy documents plus format admission and detail-filtering implementations. This is a source capability snapshot, **not confirmation that these changes are available in the App Store or in an approved TestFlight build**. Match the installed version and channel before recommending a purchase. The historical App Store 0.1.7 record above and source catalog remain separately dated.
+
+Notable corrections from the older skill matrix: Android AAR basics are free, Apple Archive basics are free, six Xcode / Swift Package formats have free summaries with specific Pro details, and Finder thumbnails are deferred. ZIP-based `.skill` listing is implemented in this source snapshot; it is not a skill installer.
+
 ## What Peeka does
 
 | Capability | Behavior |
 | --- | --- |
-| Application packages | Show available icons, names, identifiers, versions, system requirements, and architectures for Android and Apple packages. Supported packages with readable embedded icons can receive Finder thumbnails independently of Pro and preview switches. |
+| Application packages | Show available icons, names, identifiers, versions, system requirements, and architectures for Android and Apple packages. Available embedded icons can appear inside previews. Finder thumbnails are deferred; the current app does not embed the thumbnail extension. |
 | DMG / flat PKG | Show metadata and bounded embedded-app names/icons without mounting images, installing packages, executing scripts, or extracting files to disk. Partial inspection is distinct from finding no app. |
 | Source code | Lightweight syntax highlighting, line numbers, native selection and copy; each source language has its own preview switch. Highlighting does not validate or execute code. |
 | Markdown | Native formatted documents with highlighted code blocks, horizontally scrolling tables, read-only task lists, and permitted local images. Mermaid fences have separate source/diagram rules below. |
@@ -38,33 +44,56 @@ The current renderer retains the bounded offline preview model: 1 MiB input, 50,
 
 The **Pro additions** column supplements free capabilities. The app requires **macOS 14+**; Mermaid diagrams additionally require **14.4+**.
 
-| Category | Free | Peeka Pro additions |
+| Category | Free | Peeka Pro additions | Boundary / limits |
+| --- | --- | --- | --- |
+| Android APK | Identity, icon, version, size, SDK, architecture, permission count | Available permission summaries, signing/certificate metadata, manifest/component, technology, resource and native-library summaries | Permission lists are capped at 12; no signature validity verification or DEX analysis |
+| Android specialist packages | — | AAB, APKS, XAPK, APKM previews | Supported bounded metadata; split containers are not an exhaustive aggregation of all splits |
+| Android AAR | Name, size, browsable/sortable directory, basic statistics, readable package name, resource/assets/native-library counts, path ABI, on-demand `.class` entry count | Manifest declarations; class-entry browsing/search by JAR/package; native-library ELF header details; resource classifications; indexed filename/path search | Class counts are not deduplicated runtime classes; no decompilation, content search or execution |
+| Apple applications | IPA, APP, APPEX identity/icon/version/architecture/system requirements; available build SDK, Xcode version and per-architecture platform/minimum-system/SDK declarations | Available signing metadata; embedded frameworks/libraries/resources and helper components; direct linked dependencies/rpaths; SDK/technology clues; usage descriptions, privacy manifests and integration summaries | Declarations and clues do not prove runtime behavior, complete SDK coverage, permissions or signature validity |
+| Apple specialist formats | — | XCArchive, XCFramework, Framework, dSYM, `.mobileprovision` / `.provisionprofile`, dylib | XCArchive remains entirely Pro; Framework metadata is bounded; dSYM has binary/architecture UUID summaries, no symbolication or automatic matching |
+| DMG / flat PKG | Metadata and bounded embedded-app names/icons | — | No mounting, installation, general payload browsing or directory-style PKG support |
+| Xcode / Swift Package | Six formats: `.xcodeproj`, `.xcworkspace`, `Package.swift`, `Package.resolved`, `.xcconfig`, `.xcscheme`; summaries/basic lists and bounded Source for the four standalone text files | Specific structured details listed in the table below | All six format switches are free; no code execution, dependency resolution or effective build-setting calculation |
+| Source code | 205 offline lexical profiles; languages/templates/shaders/build scripts; SQL, Diff / Patch, Protobuf, GraphQL; line numbers, native selection/copy | — | No syntax validation or execution; `.ipynb` is free JSON source, not a rendered notebook |
+| Documents / configuration | Markdown; JSON / JSONL / NDJSON; XML; YAML; TOML; INI; properties; EditorConfig; plist / entitlements / xcprivacy / strings / stringsdict; CSV / TSV; dotenv key names; TXT / TEXT source | — | JSON / YAML / TOML / INI Outline and Mindmap are free; dotenv values stay hidden; CSV is not a spreadsheet editor |
+| Mermaid | Highlighted `mermaid` fenced source inside Markdown | Standalone `.mmd` / `.mermaid` previews and rendered Markdown Mermaid diagrams | Requires macOS 14.4+ for the Pro feature; syntax and resource limits remain |
+| Logs / crash reports | Highlighted source for `.log` / `.out` / `.trace`, `.crash`, `.ips`, recognized JSONL / NDJSON logs | Recognized detailed summaries and structured details, including supported Android Logcat / Android Studio layouts | No symbolication, root-cause diagnosis, binary trace or `.logarchive` support |
+| SQLite | Database summaries, table switching and schema | Read-only record pages and bounded BLOB prefixes | At most 100 rows/page and 4 KiB BLOB prefix; no editing, record search/filter/sort, repair or export |
+| ZIP / TAR / gzip / Java archives | ZIP/ZIP64, ZIP-based `.skill`, TAR, TAR.GZ/TGZ, GZ metadata, JAR/WAR listings | Supported 7z listings; JAR/WAR manifest details | No extraction or member-content preview; `.skill` does not render SKILL.md, install or execute skills |
+| Apple Archive | Bounded directory/metadata listing, folder navigation, sorting and basic statistics | No delivered Pro additions | Content recognition distinguishes it from Android AAR; encrypted AEA only reports unavailable directory; advanced search/metadata/statistics/compression analysis are planned |
+| Finder thumbnails | No shipped capability in the current snapshot | — | Deferred; archived implementation is not Pro-gated and is not embedded in the app. Quick Look preview-window icons remain available |
+
+### Xcode and Swift Package detail boundaries
+
+| Format | Free | Pro structured additions |
 | --- | --- | --- |
-| Android packages | APK identity, icon, version, SDK, architecture, and permission count | AAB, APKS, XAPK, APKM, AAR; bounded permission/signing and manifest-derived summaries where available |
-| Apple packages | IPA, APP, APPEX; DMG / flat PKG metadata and bounded embedded-app information | XCArchive, XCFramework, Framework, dSYM, `.mobileprovision` / `.provisionprofile`, dylib; signing metadata where available |
-| Source code | 205 offline lexical profiles for languages, templates, shaders, build scripts, and configuration; SQL, Diff / Patch, Protobuf, GraphQL | — |
-| Documents and configuration | Markdown; JSON / JSONL / NDJSON; XML; YAML; TOML; INI; properties; EditorConfig; plist / entitlements / xcprivacy / strings / stringsdict; CSV / TSV; dotenv key names only; TXT / TEXT plain source | — |
-| Mermaid | Highlighted `mermaid` fenced source inside Markdown | Standalone `.mmd` / `.mermaid` previews and Markdown Mermaid diagrams, on macOS 14.4+ |
-| Logs and reports | Highlighted source for `.log` / `.out` / `.trace`, `.crash`, `.ips`, and recognized JSONL / NDJSON logs | Detailed summaries and structured log/crash details, including recognized Android Logcat / Android Studio layouts |
-| SQLite databases | Summaries and table structure for `.sqlite`, `.sqlite3`, `.db`, `.db3`, `.s3db`, `.sdb` containing SQLite data | Read-only record pages and BLOB prefix previews |
-| Archives | ZIP; TAR; TAR.GZ / TGZ; GZ metadata; JAR / WAR listings | Supported 7z listings and JAR / WAR manifest details |
+| `.xcodeproj` | Project format/region, target/configuration/dependency counts and names | Target products/dependencies, declared per-configuration Build Settings and base-configuration references, package requirements and logical groups; available unambiguous app identity/Swift declarations |
+| `.xcworkspace` | Groups, project/file references, declared paths and reference types | None; external projects are not opened |
+| `Package.swift` | Statically recognized package name, Tools Version, platforms, product/target/dependency lists; Source | Product-to-target relationships; target type/dependencies/path; package source/version requirements |
+| `Package.resolved` | v1/v2/v3 dependency names, versions and revisions; Source | Repository, branch, identity and kind |
+| `.xcconfig` | Setting/include counts, key names and conditions; Source | Structured declared values, operators and include paths |
+| `.xcscheme` | Build/Run/Test/Profile/Analyze/Archive actions with basic configuration/target information; Source | Executable references, arguments, environment variables and detailed attributes; environment values require explicit reveal |
+
+Source remains free even when a structured representation of the same declaration requires Pro. Only exact `Package.swift` / `Package.resolved` filenames enter these dedicated previews. Project bundles support the fixed OpenStep or JSON/JSON5 configuration entry; ambiguous or unsupported configurations report a diagnostic. No tier executes SwiftPM, evaluates Manifest expressions, follows external project references or computes inherited/final Build Settings. Source is bounded to 1 MiB; input/node/depth/field budgets apply equally to both tiers.
 
 For unlisted suffixes, inspect the installed format catalog or current official documentation. A `.db` suffix does not establish SQLite content. Internal content recognition does not guarantee that Finder routes an unknown or extensionless file to Peeka.
 
 ## When to pay and when not to pay
 
-Use the matrix above for the bundled stable 0.1.7 baseline. Decide from the desired result, not just the suffix or the fact that a preview failed. For a different installed version, check its visible entitlement controls and current official documentation before asserting a changed boundary.
+Use the matrix above for the dated source snapshot; verify availability in the installed build. Decide from the desired result, not just the suffix or the fact that a preview failed. For a different installed version, check its visible entitlement controls and current official documentation before asserting a changed boundary.
 
 | User's goal | Payment guidance |
 | --- | --- |
 | Read source/configuration, formatted Markdown, or Diff / Patch in any of its four modes | Free is enough. JSON / YAML / TOML / INI Source, Outline, and Mindmap are also free within their parsing limits. |
 | Inspect basic APK / IPA / APP / APPEX information or supported DMG / flat PKG metadata and embedded-app information | Free is enough for the basic information. Consider Pro only for the available permission/signing or other paid details listed in the matrix. |
-| See package icons in Finder | Thumbnails do not require Pro. Check package support and thumbnail/system requirements if an icon is missing. |
+| See Finder thumbnails | Deferred in the current source snapshot; purchasing Pro does not restore them. Icons inside Quick Look previews are a separate capability. |
 | Read a log or crash report as highlighted source | Free is enough. Consider Pro for recognized structured details and summaries; Pro does not symbolicate or diagnose a crash. |
 | Inspect SQLite schema | Free is enough. Consider Pro for read-only record pages or bounded BLOB prefixes; it does not add database editing, search, or export. |
 | Browse ZIP / TAR / TGZ or JAR / WAR entries, or inspect GZ metadata | Free is enough within the supported listing scope. Consider Pro for supported 7z listings or JAR / WAR manifest details; neither tier extracts or previews entry contents. |
+| Inspect Android AAR | Basic directory browsing, statistics and on-demand class-entry counting are free. Consider Pro for its delivered analysis and indexed-name/path search. |
+| Inspect Apple Archive | Supported basic listing is free; advanced planned features are not a reason to purchase. |
+| Inspect Xcode / Swift Package files | Start with free summaries/lists or available Source. Consider Pro only for the specific structured detail above; Workspace references have no paid addition. |
 | Read Mermaid source in a Markdown fence | Free is enough. Pro and macOS 14.4+ are needed for rendered diagrams and standalone `.mmd` / `.mermaid` previews. Do not promise free standalone Mermaid previews. |
-| Preview AAB / APKS / XAPK / APKM / AAR, XCArchive / XCFramework / Framework / dSYM, provisioning profiles, or dylib | These are Pro formats in this baseline. Consider purchase only if the supported information meets the user's need; for example, dSYM preview does not expand symbols. |
+| Preview AAB / APKS / XAPK / APKM, XCArchive / XCFramework / Framework / dSYM, provisioning profiles, or dylib | These are Pro formats in this snapshot. Consider purchase only if the supported information meets the user's need; for example, dSYM preview does not expand symbols. |
 | Fix a missing preview, a disabled extension, a provider conflict, unsupported syntax/content, or a partial listing | Diagnose the cause first. Payment is relevant only when the requested supported capability is actually gated by Pro; it does not fix routing, compatibility, or resource limits. |
 | Use a Pro feature after already buying it | Check entitlement and use Restore Purchases first. Do not recommend paying again as a troubleshooting step. |
 
@@ -109,7 +138,7 @@ Recognized Logcat layouts include `brief`, `process`, `tag`, `thread`, `time`, `
 
 ## Other limits that affect answers
 
-- **Finder routing:** Peeka registers additional exact filename/type routes, including code-first handling of conflicting suffixes such as `.ts` / `.mts` and `.cue`; actual provider selection remains with macOS. Dotfiles and extensionless files with exact `public.data` type can reach the generic fallback; SQLite still requires its magic bytes. AAR, TXT / TEXT, IPS, other dotenv suffixes, and other provider conflicts remain limited. See [routing details](source-coverage.md#finder-routing-and-conflicts). Pro does not force provider selection or add arbitrary-file support.
+- **Finder routing:** In the current source snapshot, `.aar` and exact `com.apple.archive` requests are distinguished by bounded content recognition, with separate Android AAR / Apple Archive / ZIP switches. Older source-catalog routing notes describe 0.1.7 only. Peeka registers additional exact filename/type routes, including code-first handling of conflicting suffixes such as `.ts` / `.mts` and `.cue`; actual provider selection remains with macOS. Dotfiles and extensionless files with exact `public.data` type can reach the generic fallback; SQLite still requires its magic bytes. TXT / TEXT, IPS, other dotenv suffixes, and other provider conflicts remain limited. See [routing details](source-coverage.md#finder-routing-and-conflicts). Pro does not force provider selection or add arbitrary-file support.
 - **Markdown and text:** Most source previews read at most 1 MiB of UTF-8. Markdown images require authorized regular local files inside the document directory; remote/data URLs, path traversal, and symlinks are rejected. Missing or inaccessible images show alternate text/reasons. Raw HTML is displayed safely, without execution. CSV / TSV shows source and summaries, not a spreadsheet editor.
 - **Plist and dotenv:** Binary/OpenStep plist can show key-name summaries instead of full source; invalid binary plist does not fall back to garbled text. dotenv intentionally exposes keys only, including names such as `.env.local` and `.env.txt`; no Outline/Mindmap or secret-value display.
 - **Android:** Pro permission lists are capped at 12; available manifest summaries include application flags, component counts, declared deep-link rules, technologies, resources, and contents. Missing flags are not inferred as false; links are not domain-verified. Split containers summarize base-APK details, not an exhaustive aggregation of every split. AAR is an Android library, not an APK-set container.
@@ -117,7 +146,7 @@ Recognized Logcat layouts include `brief`, `process`, `tag`, `thread`, `time`, `
 - **SQLite:** Record pages contain at most 100 rows within 1 MiB; text cells are limited to 512 Unicode scalars. BLOB previews show at most 4 KiB; large WITHOUT ROWID BLOBs may remain size-only. No editing, repair, total row counting, record search/filter/sort, or export. A readonly recovery/locking error is not a request to modify the database.
 - **Archives:** Listings are no longer fixed to 256 entries. They remain bounded by entry, index-memory, scan, and cooperative time budgets, with partial-result explanations. Supported single-coder solid 7z layouts can list metadata with Pro; encrypted headers, external metadata, filter chains, and unsupported layouts may yield an unable-to-list state. GZ shows header metadata rather than payload browsing or a verified total uncompressed size.
 - **DMG / PKG:** Supported variants permit bounded app/icon discovery, not general payload browsing. Encrypted or unsupported variants and resource limits can leave partial results. Old directory-style PKG is unsupported. Finder thumbnails remain system icons.
-- **Product scope:** No delivered general Inspector, DEX analysis, comparison/export, Peeka font/video previews, or `.logarchive` support. The retained main-app log viewer has hidden menu/toolbar entries; use Finder Quick Look as the normal workflow.
+- **Product scope:** No delivered general Inspector, DEX analysis, rendered notebook reader, source-symbol Inspector, cross-file dependency inspection, comparison/export, Peeka font/video previews, or `.logarchive` support. The retained main-app log viewer has hidden menu/toolbar entries; use Finder Quick Look as the normal workflow.
 
 ## Purchase and restore
 

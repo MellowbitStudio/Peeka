@@ -48,7 +48,7 @@ When purchase/restore newly grants Pro, the app enables Pro-format previews auto
 
 Switching a format off stops Peeka's handling for that format. Finder may show a macOS preview, a preview from another extension, or a generic file display. Do not promise that Finder will show no preview at all.
 
-Preview switches do not control Finder package thumbnails. Those are independent of Pro, require a readable embedded icon and an enabled thumbnail extension, and remain subject to Finder icon settings and caching.
+Current source update (2026-11-04, `0ac0cd9`): Finder thumbnails are deferred and the app does not embed the thumbnail extension. The archived implementation is independent of Pro and preview switches; do not recommend purchasing Pro or enabling a missing thumbnail extension. Icons inside Quick Look previews are separate. Match older-build guidance to the installed bundle.
 
 ## Enable or disable Peeka's Quick Look extension
 
