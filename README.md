@@ -87,13 +87,15 @@ Resource and compatibility limits apply to both Free and Pro previews.
 
 ## AI agent skill
 
-The public [`peeka` skill](skills/peeka/SKILL.md), version **0.1.8**, helps Codex, Claude Code, and other compatible agents install Peeka from the App Store, explain supported formats and Free / Pro features, enable or disable previews, and troubleshoot issues.
+The public [`peeka` skill](skills/peeka/SKILL.md), version **0.1.9**, helps Codex, Claude Code, and other compatible agents install Peeka from the App Store, explain supported formats and Free / Pro features, enable or disable previews, and troubleshoot issues.
 
 After the skill is published to this repository's default branch, install it with:
 
 ```sh
 npx skills add MellowbitStudio/Peeka --skill peeka
 ```
+
+The skill includes [Preview Doctor](skills/peeka/references/preview-doctor.md), a local Python 3.9+ helper for file types, candidate preview providers, bounded tracing, and recoverable extension repair. For supported formats, the agent prefers Peeka and directly enables the matching format switch; necessary Pro purchases are explained and confirmed by you. Unsupported formats prompt research; unresolved issues produce a redacted GitHub draft for approval before submission. Actual provider selection remains unconfirmed when evidence is unavailable.
 
 This installs the agent skill; download the Peeka app separately from the Mac App Store. See the [skill installation guide](skills/README.md) for targeting agents, global installation, and local testing. Desktop actions require local tools; Apple Account authentication and purchase confirmation remain with you.
 

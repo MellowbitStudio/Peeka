@@ -1,6 +1,6 @@
 # Installation and preview controls
 
-Skill **0.1.8**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
+Skill **0.1.9**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
 
 ## Install from the Mac App Store
 
@@ -38,7 +38,7 @@ Replace the sample path with the actual path and quote it correctly. Revealing t
 Use this for requests such as “turn off Markdown previews” or “enable Python previews.”
 
 1. Launch **Peeka**.
-2. Search the app's **format list** by name, extension, or description and set the target row's switch to the requested state. Match the installed UI; exact labels and grouping may vary by app version or language. Enabling an unentitled Pro format opens the app's purchase page; continue only within the user's purchase authorization.
+2. Search the app's **format list** by name, extension, or description and set the target row's switch to the requested state. For setup, preview, or repair requests, directly turn on a disabled matching switch with available desktop tools; no additional confirmation is needed for this requested format change. Match the installed UI; labels/grouping vary. If a necessary capability requires Pro, check entitlement/restore first; otherwise explain its paid benefit and guide to the purchase page. The user completes authentication and final payment confirmation.
 3. Close any open Quick Look window and reopen the file in Finder.
 4. Verify the resulting behavior. An enabled Pro format still requires Pro. An enabled format also requires the system extension to be enabled.
 
@@ -66,6 +66,8 @@ Inspect the current UI or search System Settings for **Quick Look** or **Extensi
 Close and reopen Finder Quick Look afterward. This controls Peeka's extension, while the format switches control individual supported formats. macOS Quick Look can continue using its own or other providers when Peeka is disabled.
 
 ## Verify and report
+
+For file type or competing-provider problems, use the [bundled Python Preview Doctor](preview-doctor.md). It requires Python 3.9+, provides read-only diagnosis by default, and keeps targeted extension repairs recoverable. It does not replace the visible per-format controls or prove that Finder rendered a preview.
 
 Report the app installation state, relevant format switch, relevant extension state, and observed preview result only as far as they were actually checked. If authentication or a manual UI step remains, say exactly which step the user must finish. If previewing still fails, continue with [troubleshooting](troubleshooting.md).
 

@@ -1,10 +1,10 @@
 # Peeka agent skill
 
-This folder publishes the **`peeka`** skill, version **0.1.7**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**. Product knowledge follows app tag `0.1.7` (`a06048c`), reviewed **2026-10-26**; check the installed version and Finder behavior when troubleshooting.
+This folder publishes the **`peeka`** skill, version **0.1.9**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**. Product knowledge follows app tag `0.1.7` (`a06048c`), reviewed **2026-10-26**; check the installed version and Finder behavior when troubleshooting.
 
 The released baseline includes 205 free offline lexical profiles, improved dotfile/build-file/lockfile recognition, Pro Framework/dSYM previews, larger archive listings, filename encoding improvements, and offline Pele diagrams. TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**; see the [current Beta reference](peeka/references/testflight-0.1.8.md). The 0.1.6 TestFlight reference is retained as historical documentation.
 
-The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions and product knowledge; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
+The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions, product knowledge, and the bundled Python Preview Doctor; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
 
 ## Install from GitHub
 
@@ -45,6 +45,20 @@ npx skills add ./skills --skill peeka --agent codex claude-code
 
 Installation requires a Node.js/npm environment capable of running `npx skills`. The Skills CLI handles each agent's installation location; keep the distributable source in `skills/peeka/`.
 
+## Local preview diagnostics
+
+[Preview Doctor](peeka/references/preview-doctor.md) requires **Python 3.9+** and macOS 14+, with no third-party Python dependencies. It works from an installed skill without the repository checkout. If Python is unavailable, install it separately; neither the skill nor helper installs dependencies automatically.
+
+From the repository root:
+
+```sh
+python3 skills/peeka/scripts/preview_doctor.py diagnose '/path/to/file.mmd' --json
+python3 skills/peeka/scripts/preview_doctor.py repair '/path/to/file.mmd'
+python3 skills/peeka/scripts/preview_doctor.py report '/path/to/file.mmd' --output '/tmp/peeka-issue.md'
+```
+
+Diagnosis is read-only; repair/restore require `--apply` to change settings. Disabling any whole competing extension requires separate confirmation. The agent directly enables a supported format's switch through Peeka's UI, explains necessary Pro features, and leaves final payment confirmation to the user. Unsupported formats prompt AI research; GitHub drafts are reviewed before submission. Normal JSON is local diagnostic data containing paths; use `report` for a redacted draft.
+
 ## Example requests
 
 - “Use the Peeka skill to install the app from the Mac App Store and set up Finder previews.”
@@ -53,6 +67,8 @@ Installation requires a Node.js/npm environment capable of running `npx skills`.
 - “Does Peeka recognize Android Studio Logcat, and are structured details free?”
 - “Turn off Peeka's Markdown previews and keep source-code previews enabled.”
 - “My `.ts` file still shows a different preview. Help me diagnose it.”
+- “Diagnose this `.mmd` file, enable Peeka’s Mermaid switch if off, and explain whether Pro is needed.”
+- “Find a preview solution for this unsupported format, or prepare a GitHub issue draft if appropriate.”
 - “Peeka Pro was purchased before. Help me restore it.”
 - “使用 Peeka skill，帮我开启 JSON 文件预览。”
 
@@ -66,15 +82,21 @@ skills/
 └── peeka/
     ├── SKILL.md
     ├── agents/openai.yaml
+    ├── scripts/
+    │   ├── preview_doctor.py
+    │   ├── macos_types.js
+    │   └── test_preview_doctor.py
     └── references/
         ├── install-and-controls.md
         ├── features-and-plans.md
         ├── source-coverage.md
         ├── testflight-0.1.6.md
         ├── testflight-0.1.8.md
-        └── troubleshooting.md
+        ├── troubleshooting.md
+        ├── preview-doctor.md
+        └── format-catalog.json
 ```
 
-`agents/openai.yaml` supplies optional Codex UI metadata; the portable instructions are in `SKILL.md` and `references/`. Those references travel with the installed skill and work without this repository checkout.
+`agents/openai.yaml` supplies optional Codex UI metadata; the portable instructions are in `SKILL.md` and `references/`, with executable helpers in `scripts/`. Those references travel with the installed skill and work without this repository checkout.
 
 Maintain the skill version in `SKILL.md` under `metadata.version` as a quoted string. It identifies the skill package; installation/update behavior is determined by the installer. Update bundled facts and review dates against the app's canonical format/licensing documents and implementation. Distinguish the source baseline, published skill, and live app availability. Keep all eight root READMEs consistent (English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, and Spanish), use StoreKit's displayed price, and verify settings labels against the installed macOS/app version. The app's source code is not included in this public repository.

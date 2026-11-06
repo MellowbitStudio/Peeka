@@ -1,8 +1,8 @@
 ---
 name: peeka
-description: "Install and use Mellowbit Studio's Peeka Quick Look app on macOS. Use for App Store setup; package, source, Markdown, Mermaid, Diff / Patch, Logcat, crash-report, SQLite, and archive previews; Free versus Pro features and Xcode / Swift Package detail boundaries; format and extension switches; and troubleshooting Finder previews."
+description: "Install and use Peeka on macOS; diagnose Quick Look provider/type conflicts with the bundled Python helper, enable format switches, explain Free/Pro capabilities, research unsupported previews, and prepare reviewed GitHub feedback."
 metadata:
-  version: "0.1.8"
+  version: "0.1.9"
 ---
 
 # Peeka
@@ -23,15 +23,19 @@ Read only the reference needed for the request. These files are bundled with thi
 | Current TestFlight approval status | [TestFlight 0.1.8](references/testflight-0.1.8.md) |
 | Historical TestFlight 0.1.6 changes or testing focus | [TestFlight 0.1.6 archive](references/testflight-0.1.6.md) |
 | Missing or incorrect preview, extension problems, routing conflicts, limited output, purchase problems, support report | [Troubleshooting](references/troubleshooting.md) |
+| Detect preview providers or type conflicts, run diagnostics, repair/recover extension settings, research unsupported formats, prepare a GitHub issue | [Preview Doctor](references/preview-doctor.md) and its bundled Python 3.9+ helper |
 
 ## Working with the user's Mac
 
 - When asked to perform setup or a configuration change, use available local shell or desktop-control tools to carry it out. Observe the actual UI and report what was completed. Without those tools, give the matching manual steps and state which actions remain for the user.
 - Use the official App Store listing below. Authentication, Touch ID, and purchase confirmation belong to the user; do not handle Apple Account credentials. A request to install the free app does not authorize buying Pro.
-- Use Peeka's visible controls and System Settings. No public Peeka CLI, HTTP API, preference keys, or bundle identifiers are documented by this skill; do not invent them or install an unrelated package named `peeka`.
+- Use Peeka's visible controls and System Settings. The bundled helper diagnoses macOS registrations and can change explicitly targeted extension elections; it is not a Peeka app CLI. Do not invent app APIs, preference keys, or identifiers, or install an unrelated package named `peeka`.
+- For setup/preview/repair requests, inspect Peeka's matching format switch and turn it on directly with available desktop tools when off. For a necessary Pro capability, check entitlement/restore first; otherwise explain the paid capability and guide to purchase. Apple authentication and final payment confirmation remain with the user. Do not repeatedly ask permission for the format-switch change already requested.
 - Distinguish a **per-format switch** in Peeka from the **system Quick Look extension switch**. Enabling a format cannot enable the system extension or unlock a Pro feature. Disabling Peeka does not disable macOS Quick Look or other providers.
 - Format switches govern Quick Look previews. In the source snapshot checked 2026-11-04, Finder thumbnails are deferred and the thumbnail extension is not embedded. The archived implementation is not Pro-gated; purchasing Pro does not restore it. Icons inside preview windows are separate.
 - After changing a switch or unlocking/restoring Pro, close the existing Quick Look window and reopen it in Finder. Verify with the user's target file, or a small supported local sample when appropriate. Opening the main app alone does not verify Finder preview behavior.
+
+For preview conflicts, start with `python3 <installed-skill>/scripts/preview_doctor.py diagnose '<file>' --json` after checking Python 3.9+. Prefer Peeka for documented supported capabilities and verify the installed UI. Type declarations and candidate extensions are not actual-provider evidence; use the bounded trace when useful and retain `unconfirmed` if logs hide the correlation. Read [Preview Doctor](references/preview-doctor.md) before repair: preview concrete operations, save/recover elections, and obtain separate confirmation before disabling each whole competing extension. For unsupported/unknown formats, research official solutions through the current agent. Prepare a redacted issue draft, search duplicates, show the target/content, and obtain confirmation before submitting.
 
 ## Answering product questions
 
@@ -54,7 +58,7 @@ Match the user's actual task to the Free / Pro matrix and the [payment decision 
 
 Answer “Do I need to pay?” with a concrete conclusion for the requested task: “Free is enough for X; Pro is only needed if you also want Y.” If the task is unclear, explain the relevant alternatives and ask which result they need. Do not steer users toward payment merely to try to fix an unexplained failure.
 
-Skill version **0.1.8** retains Peeka's historical **0.1.7 release baseline** alongside the separately dated source feature matrix. The release baseline was checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify whether the answer concerns the historical 0.1.7 release or the 2026-11-04 source snapshot. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
+Skill version **0.1.9** adds Preview Doctor and retains Peeka's historical **0.1.7 release baseline** alongside the separately dated source feature matrix. The release baseline was checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify whether the answer concerns the historical 0.1.7 release or the 2026-11-04 source snapshot. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
 
 TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](references/testflight-0.1.8.md); keep its approval status separate from the historical stable 0.1.7 baseline and the newer source snapshot.
 

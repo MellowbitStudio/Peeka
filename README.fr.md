@@ -87,13 +87,15 @@ Les limites de ressources et de compatibilité s’appliquent aux aperçus gratu
 
 ## Skill pour agents IA
 
-Le [skill public `peeka` (anglais)](skills/peeka/SKILL.md), version **0.1.8**, aide Codex, Claude Code et d’autres agents compatibles à installer l’app, expliquer les formats et fonctions gratuites/Pro, gérer les aperçus et résoudre les problèmes.
+Le [skill public `peeka` (anglais)](skills/peeka/SKILL.md), version **0.1.9**, aide Codex, Claude Code et d’autres agents compatibles à installer l’app, expliquer les formats et fonctions gratuites/Pro, gérer les aperçus et résoudre les problèmes.
 
 Après publication dans la branche par défaut du dépôt, installez-le avec :
 
 ```sh
 npx skills add MellowbitStudio/Peeka --skill peeka
 ```
+
+Le skill inclut [Preview Doctor](skills/peeka/references/preview-doctor.md) pour Python 3.9+ : diagnostic des types et fournisseurs possibles, observation limitée dans le temps et modification réversible des extensions. Pour les formats pris en charge, l’agent privilégie Peeka et active directement le bon interrupteur. Il explique les fonctions nécessitant Pro et vous guide vers l’achat, dont vous confirmez le paiement. Pour les autres formats, l’IA recherche une solution. Les problèmes non résolus donnent lieu à un brouillon GitHub expurgé, soumis après votre accord. Sans preuve suffisante, le fournisseur réel reste non confirmé.
 
 Cette commande installe le skill ; téléchargez l’app séparément sur le Mac App Store. Le [guide d’installation (anglais)](skills/README.md) décrit le choix des agents, l’installation globale et les essais locaux. Les actions sur le bureau nécessitent des outils locaux ; vous effectuez l’authentification Apple et confirmez les achats. Les agents répondent dans votre langue.
 

@@ -87,13 +87,15 @@ Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收�
 
 ## AI Agent Skill
 
-公開的 [`peeka` skill（英文）](skills/peeka/SKILL.md) 版本為 **0.1.8**，協助 Codex、Claude Code 等相容 Agent 安裝 Peeka、了解格式與免費／Pro 功能、控制預覽與排解問題。
+公開的 [`peeka` skill（英文）](skills/peeka/SKILL.md) 版本為 **0.1.9**，協助 Codex、Claude Code 等相容 Agent 安裝 Peeka、了解格式與免費／Pro 功能、控制預覽與排解問題。
 
 Skill 發布至本儲存庫預設分支後，可使用：
 
 ```sh
 npx skills add MellowbitStudio/Peeka --skill peeka
 ```
+
+Skill 內建 [Preview Doctor](skills/peeka/references/preview-doctor.md)，使用 Python 3.9+ 檢查檔案類型與候選預覽器，支援有界追蹤及可復原的擴充功能修復。支援的格式優先使用 Peeka，由 Agent 直接開啟對應格式開關；需要 Pro 時說明具體功能並引導購買，最終付款由你確認。不支援的格式由 AI 查詢方案，未解決的問題會產生去識別化的 GitHub 草稿，經確認後提交。證據不足時，實際預覽器會標示為尚未確認。
 
 這會安裝 Agent skill；Peeka App 需另從 Mac App Store 下載。指定 Agent、全域安裝與本機測試請見 [skill 安裝說明（英文）](skills/README.md)。桌面操作需要本機工具；Apple 帳號驗證與購買確認由你完成。Agent 依使用者語言回覆。
 

@@ -1,8 +1,10 @@
 # Troubleshooting Peeka
 
-Skill **0.1.8**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
+Skill **0.1.9**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
 
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
+
+For local provider/type conflicts, start with the bundled [Preview Doctor](preview-doctor.md). It distinguishes type declarations, eligible providers, and actual-provider evidence; supports targeted extension repair with recovery; and generates a redacted issue draft. Per-format switches and entitlement remain visible-UI checks: when asked to make previews work, operate Peeka directly to enable the relevant switch and guide purchase only for a necessary Pro capability.
 
 ## Establish the symptom
 
@@ -108,7 +110,7 @@ Optional redacted screenshot or small non-sensitive sample:
 
 Prepare the report in the chat or a local file. Send an email or submit an issue only when the user asks to do so. Omit credentials, dotenv values, private database records, signing keys, and other sensitive material from attached evidence; a minimal sanitized sample is preferable.
 
-No Peeka-specific terminal repair commands are documented in this public skill. Use supported UI controls and observed evidence rather than guessed `defaults` keys, extension identifiers, preference deletion, or global Quick Look resets.
+The bundled [Preview Doctor](preview-doctor.md) provides documented local diagnosis and targeted PlugInKit repair; it is not a Peeka app CLI. Use observed extension identifiers and recoverable operations, never guessed `defaults` keys, preference deletion, or global Quick Look resets. Obtain separate confirmation before disabling a whole competing extension. Show a complete issue draft and target repository and obtain confirmation before submission.
 
 ## Source
 

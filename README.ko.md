@@ -87,13 +87,15 @@ Framework와 dSYM에는 별도 형식 스위치가 있으며 사용자 지정 �
 
 ## AI 에이전트 스킬
 
-공개 [`peeka` 스킬(영어)](skills/peeka/SKILL.md)의 버전은 **0.1.8**입니다. Codex, Claude Code 등 호환 에이전트의 App Store 설치, 지원 형식 및 무료·Pro 기능 설명, 미리보기 제어, 문제 해결을 돕습니다.
+공개 [`peeka` 스킬(영어)](skills/peeka/SKILL.md)의 버전은 **0.1.9**입니다. Codex, Claude Code 등 호환 에이전트의 App Store 설치, 지원 형식 및 무료·Pro 기능 설명, 미리보기 제어, 문제 해결을 돕습니다.
 
 파일이 저장소 기본 브랜치에 게시된 후 다음 명령으로 설치하세요.
 
 ```sh
 npx skills add MellowbitStudio/Peeka --skill peeka
 ```
+
+스킬에는 Python 3.9+용 [Preview Doctor](skills/peeka/references/preview-doctor.md)가 포함되어 파일 유형과 후보 제공자를 진단하고, 제한된 시간 동안 추적하며, 복원 가능한 확장 설정 수정을 지원합니다. 지원 형식은 Peeka를 우선 사용하고 에이전트가 해당 스위치를 직접 켭니다. Pro가 필요하면 해당 기능과 구매 방법을 안내하며 최종 결제는 사용자가 확인합니다. 미지원 형식은 AI가 해결책을 조사하고, 미해결 문제는 민감 정보를 제외한 GitHub 초안을 확인받은 후 제출합니다. 증거가 부족하면 실제 제공자를 미확인으로 표시합니다.
 
 이 명령은 에이전트 스킬을 설치합니다. Peeka 앱은 Mac App Store에서 별도로 다운로드하세요. 에이전트 지정, 전역 설치, 로컬 테스트는 [스킬 설치 안내(영어)](skills/README.md)를 참고하세요. 데스크톱 작업에는 로컬 도구가 필요하며 Apple 계정 인증과 구매 확인은 사용자가 수행합니다. 에이전트는 사용자의 언어로 응답합니다.
 

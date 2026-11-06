@@ -1,0 +1,3878 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "released": "0.1.7 (a06048c), 2026-10-26",
+    "source_snapshot": "0ac0cd9, 2026-11-04",
+    "availability": "Source capabilities do not establish availability in the installed release. Verify visible UI.",
+    "references": [
+      "features-and-plans.md",
+      "source-coverage.md"
+    ]
+  },
+  "formats": [
+    {
+      "id": "xcode-project",
+      "name": "Xcode Project",
+      "suffixes": [
+        ".xcodeproj"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Xcode Project",
+      "support": "documented",
+      "pro_details": "Declared build settings, dependencies and logical groups"
+    },
+    {
+      "id": "xcode-workspace",
+      "name": "Xcode Workspace",
+      "suffixes": [
+        ".xcworkspace"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Xcode Workspace",
+      "support": "documented"
+    },
+    {
+      "id": "swift-package",
+      "name": "Swift Package Manifest",
+      "suffixes": [],
+      "filenames": [
+        "Package.swift"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Swift Package Manifest",
+      "support": "documented",
+      "pro_details": "Structured target and dependency declarations"
+    },
+    {
+      "id": "swift-resolved",
+      "name": "Swift Package Resolved",
+      "suffixes": [],
+      "filenames": [
+        "Package.resolved"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Swift Package Resolved",
+      "support": "documented",
+      "pro_details": "Repository, branch, identity and kind"
+    },
+    {
+      "id": "xcconfig",
+      "name": "Xcode Configuration",
+      "suffixes": [
+        ".xcconfig"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Xcode Configuration",
+      "support": "documented",
+      "pro_details": "Structured declared values, conditions and include paths"
+    },
+    {
+      "id": "xcscheme",
+      "name": "Xcode Scheme",
+      "suffixes": [
+        ".xcscheme"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Xcode Scheme",
+      "support": "documented",
+      "pro_details": "Structured arguments, environment and executable references"
+    },
+    {
+      "id": "apk",
+      "name": "Android APK",
+      "suffixes": [
+        ".apk"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Android APK",
+      "support": "documented",
+      "pro_details": "Available manifest, permission, signing and technology details"
+    },
+    {
+      "id": "aar",
+      "name": "Android AAR / Apple Archive",
+      "suffixes": [
+        ".aar"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Android AAR / Apple Archive",
+      "support": "documented",
+      "pro_details": "Android AAR analysis and indexed-name/path search",
+      "notes": "Ambiguous: Android AAR, Apple Archive or ZIP. The actual content and installed build determine the preview."
+    },
+    {
+      "id": "apple-app-app",
+      "name": "APP",
+      "suffixes": [
+        ".app"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "APP",
+      "support": "documented",
+      "pro_details": "Available signing metadata and application structure"
+    },
+    {
+      "id": "apple-app-appex",
+      "name": "APPEX",
+      "suffixes": [
+        ".appex"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "APPEX",
+      "support": "documented",
+      "pro_details": "Available signing metadata and application structure"
+    },
+    {
+      "id": "apple-app-ipa",
+      "name": "IPA",
+      "suffixes": [
+        ".ipa"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "IPA",
+      "support": "documented",
+      "pro_details": "Available signing metadata and application structure"
+    },
+    {
+      "id": "jar",
+      "name": "Java Archive",
+      "suffixes": [
+        ".jar",
+        ".war"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Java Archive",
+      "support": "documented",
+      "pro_details": "Manifest details"
+    },
+    {
+      "id": "json",
+      "name": "JSON",
+      "suffixes": [
+        ".json",
+        ".ipynb",
+        ".xctestplan",
+        ".storekit",
+        ".har",
+        ".topojson"
+      ],
+      "filenames": [
+        "composer.lock",
+        "flake.lock"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "JSON",
+      "support": "documented"
+    },
+    {
+      "id": "jsonl",
+      "name": "JSON Lines",
+      "suffixes": [
+        ".jsonl",
+        ".ndjson"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "JSON Lines",
+      "support": "documented",
+      "pro_details": "Recognized structured log details"
+    },
+    {
+      "id": "xml",
+      "name": "XML",
+      "suffixes": [
+        ".xml",
+        ".storyboard",
+        ".xib",
+        ".csproj",
+        ".vbproj",
+        ".props",
+        ".targets",
+        ".ps1xml",
+        ".svg",
+        ".mobileconfig",
+        ".rss"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "XML",
+      "support": "documented",
+      "notes": "XML source, not image rendering."
+    },
+    {
+      "id": "yaml",
+      "name": "YAML",
+      "suffixes": [
+        ".yaml",
+        ".yml",
+        ".sls",
+        ".raml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "YAML",
+      "support": "documented"
+    },
+    {
+      "id": "toml",
+      "name": "TOML",
+      "suffixes": [
+        ".toml"
+      ],
+      "filenames": [
+        "Cargo.lock"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "TOML",
+      "support": "documented"
+    },
+    {
+      "id": "ini",
+      "name": "INI",
+      "suffixes": [
+        ".ini",
+        ".service",
+        ".timer",
+        ".socket",
+        ".mount",
+        ".target",
+        ".desktop"
+      ],
+      "filenames": [
+        ".gitconfig",
+        ".buckconfig"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "INI",
+      "support": "documented"
+    },
+    {
+      "id": "properties",
+      "name": "Properties",
+      "suffixes": [
+        ".properties"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Properties",
+      "support": "documented"
+    },
+    {
+      "id": "plist",
+      "name": "Property List",
+      "suffixes": [
+        ".plist",
+        ".entitlements",
+        ".xcprivacy",
+        ".strings",
+        ".stringsdict"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Property List",
+      "support": "documented"
+    },
+    {
+      "id": "csv",
+      "name": "CSV / TSV",
+      "suffixes": [
+        ".csv",
+        ".tsv"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "CSV / TSV",
+      "support": "documented"
+    },
+    {
+      "id": "text",
+      "name": "Plain Text",
+      "suffixes": [
+        ".txt",
+        ".text"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Plain Text",
+      "support": "documented"
+    },
+    {
+      "id": "logs",
+      "name": "Logs",
+      "suffixes": [
+        ".log",
+        ".out",
+        ".trace"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Logs",
+      "support": "documented",
+      "pro_details": "Recognized structured summaries and log details"
+    },
+    {
+      "id": "crash",
+      "name": "Crash Reports",
+      "suffixes": [
+        ".crash",
+        ".ips"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Crash Reports",
+      "support": "documented",
+      "pro_details": "Recognized structured crash details; no symbolication"
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "suffixes": [
+        ".sqlite",
+        ".sqlite3",
+        ".db",
+        ".db3",
+        ".s3db",
+        ".sdb"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SQLite",
+      "support": "documented",
+      "pro_details": "Read-only records and bounded BLOB prefixes"
+    },
+    {
+      "id": "markdown",
+      "name": "Markdown",
+      "suffixes": [
+        ".md",
+        ".markdown",
+        ".mdown",
+        ".mkdn",
+        ".mdwn",
+        ".mdtxt",
+        ".mdtext"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Markdown",
+      "support": "documented",
+      "pro_details": "Rendered Mermaid diagrams on macOS 14.4+",
+      "notes": "Markdown text is free; diagram rendering requires Pro and macOS 14.4+."
+    },
+    {
+      "id": "zip",
+      "name": "ZIP",
+      "suffixes": [
+        ".zip",
+        ".skill"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ZIP",
+      "support": "documented"
+    },
+    {
+      "id": "tar",
+      "name": "TAR",
+      "suffixes": [
+        ".tar"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "TAR",
+      "support": "documented"
+    },
+    {
+      "id": "tgz",
+      "name": "TAR.GZ / TGZ",
+      "suffixes": [
+        ".tar.gz",
+        ".tgz"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "TAR.GZ / TGZ",
+      "support": "documented"
+    },
+    {
+      "id": "gzip",
+      "name": "Gzip Metadata",
+      "suffixes": [
+        ".gz"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Gzip Metadata",
+      "support": "documented"
+    },
+    {
+      "id": "dmg",
+      "name": "Disk Image Metadata",
+      "suffixes": [
+        ".dmg"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Disk Image Metadata",
+      "support": "documented"
+    },
+    {
+      "id": "pkg",
+      "name": "Flat Package Metadata",
+      "suffixes": [
+        ".pkg"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Flat Package Metadata",
+      "support": "documented",
+      "notes": "Flat PKG metadata only; directory-style PKG is outside this capability."
+    },
+    {
+      "id": "apple-archive",
+      "name": "Apple Archive",
+      "suffixes": [
+        ".aa",
+        ".aea"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Apple Archive",
+      "support": "documented"
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "suffixes": [
+        ".sql"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SQL",
+      "support": "documented"
+    },
+    {
+      "id": "diff",
+      "name": "Diff / Patch",
+      "suffixes": [
+        ".diff",
+        ".patch"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Diff / Patch",
+      "support": "documented"
+    },
+    {
+      "id": "protobuf",
+      "name": "Protobuf",
+      "suffixes": [
+        ".proto"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Protobuf",
+      "support": "documented"
+    },
+    {
+      "id": "graphql",
+      "name": "GraphQL",
+      "suffixes": [
+        ".graphql",
+        ".gql"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "GraphQL",
+      "support": "documented"
+    },
+    {
+      "id": "android-pro-aab",
+      "name": "AAB",
+      "suffixes": [
+        ".aab"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "AAB",
+      "support": "documented"
+    },
+    {
+      "id": "android-pro-apks",
+      "name": "APKS",
+      "suffixes": [
+        ".apks"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "APKS",
+      "support": "documented"
+    },
+    {
+      "id": "android-pro-xapk",
+      "name": "XAPK",
+      "suffixes": [
+        ".xapk"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "XAPK",
+      "support": "documented"
+    },
+    {
+      "id": "android-pro-apkm",
+      "name": "APKM",
+      "suffixes": [
+        ".apkm"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "APKM",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-xcarchive",
+      "name": "XCARCHIVE",
+      "suffixes": [
+        ".xcarchive"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "XCARCHIVE",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-xcframework",
+      "name": "XCFRAMEWORK",
+      "suffixes": [
+        ".xcframework"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "XCFRAMEWORK",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-framework",
+      "name": "FRAMEWORK",
+      "suffixes": [
+        ".framework"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "FRAMEWORK",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-dsym",
+      "name": "dSYM",
+      "suffixes": [
+        ".dsym"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "dSYM",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-mobileprovision",
+      "name": "Mobile Provisioning Profile",
+      "suffixes": [
+        ".mobileprovision"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "Mobile Provisioning Profile",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-provisionprofile",
+      "name": "Provisioning Profile",
+      "suffixes": [
+        ".provisionprofile"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "Provisioning Profile",
+      "support": "documented"
+    },
+    {
+      "id": "apple-pro-dylib",
+      "name": "Dynamic Library",
+      "suffixes": [
+        ".dylib"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "Dynamic Library",
+      "support": "documented"
+    },
+    {
+      "id": "7z",
+      "name": "7z Archive",
+      "suffixes": [
+        ".7z"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.0",
+      "switch": "7z Archive",
+      "support": "documented"
+    },
+    {
+      "id": "mermaid",
+      "name": "Mermaid",
+      "suffixes": [
+        ".mmd",
+        ".mermaid"
+      ],
+      "filenames": [],
+      "tier": "pro",
+      "min_macos": "14.4",
+      "switch": "Mermaid",
+      "support": "documented"
+    },
+    {
+      "id": "editorconfig",
+      "name": "EditorConfig",
+      "suffixes": [],
+      "filenames": [
+        ".editorconfig"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "EditorConfig",
+      "support": "documented"
+    },
+    {
+      "id": "dotenv",
+      "name": "dotenv",
+      "suffixes": [],
+      "filenames": [
+        ".env",
+        ".env.local"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "dotenv",
+      "support": "documented",
+      "notes": "Keys only; other .env.* suffixes depend on system routing."
+    },
+    {
+      "id": "source-swift",
+      "name": "Swift",
+      "suffixes": [
+        ".swift",
+        ".swiftinterface"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Swift",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-c",
+      "name": "C",
+      "suffixes": [
+        ".c",
+        ".h"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "C",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-c++",
+      "name": "C++",
+      "suffixes": [
+        ".cc",
+        ".cpp",
+        ".cxx",
+        ".hh",
+        ".hpp",
+        ".hxx",
+        ".cu",
+        ".cuh",
+        ".ipp",
+        ".tpp",
+        ".inl",
+        ".ixx",
+        ".cppm",
+        ".mpp",
+        ".tcc"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "C++",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-objective-c",
+      "name": "Objective-C",
+      "suffixes": [
+        ".m",
+        ".mm",
+        ".pch"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Objective-C",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-java",
+      "name": "Java",
+      "suffixes": [
+        ".java",
+        ".jsp"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Java",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-kotlin",
+      "name": "Kotlin",
+      "suffixes": [
+        ".kt",
+        ".kts"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Kotlin",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-javascript",
+      "name": "JavaScript",
+      "suffixes": [
+        ".js",
+        ".mjs",
+        ".cjs",
+        ".jsx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "JavaScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-typescript",
+      "name": "TypeScript",
+      "suffixes": [
+        ".ts",
+        ".mts",
+        ".cts",
+        ".tsx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "TypeScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7",
+      "notes": "Ambiguous with media; code-first registration does not make video content source code."
+    },
+    {
+      "id": "source-python",
+      "name": "Python",
+      "suffixes": [
+        ".py",
+        ".pyw",
+        ".pyi"
+      ],
+      "filenames": [
+        "SConstruct",
+        "SConscript"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Python",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-go",
+      "name": "Go",
+      "suffixes": [
+        ".go"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Go",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-rust",
+      "name": "Rust",
+      "suffixes": [
+        ".rs"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Rust",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-shell",
+      "name": "Shell",
+      "suffixes": [
+        ".sh",
+        ".bash",
+        ".zsh",
+        ".ksh",
+        ".csh",
+        ".bashrc",
+        ".zshrc",
+        ".zprofile"
+      ],
+      "filenames": [
+        ".bashrc",
+        ".zshrc",
+        ".zprofile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Shell",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-html",
+      "name": "HTML",
+      "suffixes": [
+        ".html",
+        ".htm"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "HTML",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-css",
+      "name": "CSS",
+      "suffixes": [
+        ".css",
+        ".pcss"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "CSS",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-csharp",
+      "name": "C#",
+      "suffixes": [
+        ".cs",
+        ".csx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "C#",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ruby",
+      "name": "Ruby",
+      "suffixes": [
+        ".rb",
+        ".rake",
+        ".gemspec"
+      ],
+      "filenames": [
+        "Gemfile",
+        "Rakefile",
+        "Podfile",
+        "Fastfile",
+        "Brewfile",
+        "Vagrantfile",
+        "Appfile",
+        "Matchfile",
+        "Gymfile",
+        "Scanfile",
+        "Snapfile",
+        "Deliverfile",
+        "Dangerfile",
+        "Guardfile",
+        "Capfile",
+        "Berksfile",
+        "Thorfile",
+        "Puppetfile",
+        "Steepfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Ruby",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-php",
+      "name": "PHP",
+      "suffixes": [
+        ".php",
+        ".phtml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "PHP",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-scala",
+      "name": "Scala",
+      "suffixes": [
+        ".scala",
+        ".sc",
+        ".sbt"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Scala",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-groovy-gradle",
+      "name": "Groovy / Gradle",
+      "suffixes": [
+        ".groovy",
+        ".gradle"
+      ],
+      "filenames": [
+        "Jenkinsfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Groovy / Gradle",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-dart",
+      "name": "Dart",
+      "suffixes": [
+        ".dart"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Dart",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-lua",
+      "name": "Lua",
+      "suffixes": [
+        ".lua"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Lua",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-perl",
+      "name": "Perl",
+      "suffixes": [
+        ".pl",
+        ".pm",
+        ".t",
+        ".pod"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Perl",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-r",
+      "name": "R",
+      "suffixes": [
+        ".r"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "R",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-elixir",
+      "name": "Elixir",
+      "suffixes": [
+        ".ex",
+        ".exs",
+        ".heex",
+        ".leex"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Elixir",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-erlang",
+      "name": "Erlang",
+      "suffixes": [
+        ".erl",
+        ".hrl",
+        ".escript"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Erlang",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-haskell",
+      "name": "Haskell",
+      "suffixes": [
+        ".hs",
+        ".lhs"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Haskell",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-fsharp",
+      "name": "F#",
+      "suffixes": [
+        ".fs",
+        ".fsi",
+        ".fsx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "F#",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ocaml",
+      "name": "OCaml",
+      "suffixes": [
+        ".ml",
+        ".mli",
+        ".mll",
+        ".mly"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "OCaml",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-clojure",
+      "name": "Clojure",
+      "suffixes": [
+        ".clj",
+        ".cljs",
+        ".cljc",
+        ".edn"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Clojure",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-julia",
+      "name": "Julia",
+      "suffixes": [
+        ".jl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Julia",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-zig",
+      "name": "Zig",
+      "suffixes": [
+        ".zig",
+        ".zon"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Zig",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-nim",
+      "name": "Nim",
+      "suffixes": [
+        ".nim",
+        ".nims"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Nim",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-crystal",
+      "name": "Crystal",
+      "suffixes": [
+        ".cr"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Crystal",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-solidity",
+      "name": "Solidity",
+      "suffixes": [
+        ".sol"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Solidity",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-powershell",
+      "name": "PowerShell",
+      "suffixes": [
+        ".ps1",
+        ".psm1",
+        ".psd1"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "PowerShell",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-windows-batch",
+      "name": "Windows Batch",
+      "suffixes": [
+        ".bat",
+        ".cmd"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Windows Batch",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-visual-basic",
+      "name": "Visual Basic",
+      "suffixes": [
+        ".vb",
+        ".vbs",
+        ".bas",
+        ".frm"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Visual Basic",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-assembly",
+      "name": "Assembly",
+      "suffixes": [
+        ".asm",
+        ".s",
+        ".inc",
+        ".nasm"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Assembly",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-fortran",
+      "name": "Fortran",
+      "suffixes": [
+        ".f",
+        ".for",
+        ".f77",
+        ".f90",
+        ".f95",
+        ".f03",
+        ".f08"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Fortran",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-pascal",
+      "name": "Pascal",
+      "suffixes": [
+        ".pas",
+        ".pp",
+        ".dpr",
+        ".lpr"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Pascal",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-scss",
+      "name": "SCSS",
+      "suffixes": [
+        ".scss"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SCSS",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-sass",
+      "name": "Sass",
+      "suffixes": [
+        ".sass"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Sass",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-less",
+      "name": "Less",
+      "suffixes": [
+        ".less"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Less",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-stylus",
+      "name": "Stylus",
+      "suffixes": [
+        ".styl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Stylus",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-vue",
+      "name": "Vue",
+      "suffixes": [
+        ".vue"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Vue",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-svelte",
+      "name": "Svelte",
+      "suffixes": [
+        ".svelte"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Svelte",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-astro",
+      "name": "Astro",
+      "suffixes": [
+        ".astro"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Astro",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ejs",
+      "name": "EJS",
+      "suffixes": [
+        ".ejs"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "EJS",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-handlebars",
+      "name": "Handlebars",
+      "suffixes": [
+        ".hbs",
+        ".handlebars",
+        ".mustache"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Handlebars",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-pug",
+      "name": "Pug",
+      "suffixes": [
+        ".pug",
+        ".jade"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Pug",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-liquid",
+      "name": "Liquid",
+      "suffixes": [
+        ".liquid"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Liquid",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-twig",
+      "name": "Twig",
+      "suffixes": [
+        ".twig"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Twig",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-erb",
+      "name": "ERB",
+      "suffixes": [
+        ".erb"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ERB",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-makefile",
+      "name": "Makefile",
+      "suffixes": [
+        ".mk",
+        ".makefile"
+      ],
+      "filenames": [
+        "Makefile",
+        "makefile",
+        "GNUmakefile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Makefile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cmake",
+      "name": "CMake",
+      "suffixes": [
+        ".cmake"
+      ],
+      "filenames": [
+        "CMakeLists.txt"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "CMake",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-dockerfile",
+      "name": "Dockerfile",
+      "suffixes": [
+        ".dockerfile"
+      ],
+      "filenames": [
+        "Dockerfile",
+        "Containerfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Dockerfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7",
+      "prefixes": [
+        "Dockerfile."
+      ]
+    },
+    {
+      "id": "source-xcode-configuration",
+      "name": "Xcode Configuration",
+      "suffixes": [
+        ".xcconfig"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Xcode Configuration",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-clang-module-map",
+      "name": "Clang Module Map",
+      "suffixes": [
+        ".modulemap"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Clang Module Map",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-metal",
+      "name": "Metal",
+      "suffixes": [
+        ".metal"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Metal",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cython",
+      "name": "Cython",
+      "suffixes": [
+        ".pyx",
+        ".pxd",
+        ".pxi"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Cython",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-thrift",
+      "name": "Thrift",
+      "suffixes": [
+        ".thrift"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Thrift",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-flatbuffers",
+      "name": "FlatBuffers",
+      "suffixes": [
+        ".fbs"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "FlatBuffers",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-webassembly-text",
+      "name": "WebAssembly Text",
+      "suffixes": [
+        ".wat",
+        ".wast"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "WebAssembly Text",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-glsl",
+      "name": "GLSL",
+      "suffixes": [
+        ".glsl",
+        ".vert",
+        ".frag",
+        ".geom",
+        ".tesc",
+        ".tese",
+        ".comp",
+        ".rgen",
+        ".rchit",
+        ".rahit",
+        ".rmiss",
+        ".rint",
+        ".rcall",
+        ".gsh",
+        ".fsh",
+        ".glslv",
+        ".glslf",
+        ".mesh",
+        ".task"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "GLSL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-hlsl",
+      "name": "HLSL",
+      "suffixes": [
+        ".hlsl",
+        ".hlsli",
+        ".cginc",
+        ".fx",
+        ".fxh"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "HLSL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-tex",
+      "name": "TeX",
+      "suffixes": [
+        ".tex",
+        ".sty",
+        ".cls",
+        ".bib",
+        ".ltx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "TeX",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-fish",
+      "name": "Fish",
+      "suffixes": [
+        ".fish"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Fish",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-lisp-scheme-racket-emacs-lisp",
+      "name": "Lisp / Scheme / Racket / Emacs Lisp",
+      "suffixes": [
+        ".lisp",
+        ".lsp",
+        ".scm",
+        ".rkt",
+        ".el"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Lisp / Scheme / Racket / Emacs Lisp",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-prolog",
+      "name": "Prolog",
+      "suffixes": [
+        ".pro",
+        ".prolog"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Prolog",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-tcl",
+      "name": "Tcl",
+      "suffixes": [
+        ".tcl",
+        ".tk",
+        ".xdc",
+        ".sdc",
+        ".qsf",
+        ".ucf"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Tcl",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-awk",
+      "name": "Awk",
+      "suffixes": [
+        ".awk"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Awk",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-vim-script",
+      "name": "Vim Script",
+      "suffixes": [
+        ".vim"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Vim Script",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-applescript",
+      "name": "AppleScript",
+      "suffixes": [
+        ".applescript"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "AppleScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-autohotkey",
+      "name": "AutoHotkey",
+      "suffixes": [
+        ".ahk"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "AutoHotkey",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-gdscript",
+      "name": "GDScript",
+      "suffixes": [
+        ".gd"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "GDScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ren-py",
+      "name": "Ren’Py",
+      "suffixes": [
+        ".rpy"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Ren’Py",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ada",
+      "name": "Ada",
+      "suffixes": [
+        ".adb",
+        ".ads",
+        ".ada"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Ada",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cobol",
+      "name": "COBOL",
+      "suffixes": [
+        ".cob",
+        ".cbl",
+        ".cpy"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "COBOL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-d",
+      "name": "D",
+      "suffixes": [
+        ".d",
+        ".di"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "D",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-vala",
+      "name": "Vala",
+      "suffixes": [
+        ".vala",
+        ".vapi"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Vala",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-haxe",
+      "name": "Haxe",
+      "suffixes": [
+        ".hx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Haxe",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-elm",
+      "name": "Elm",
+      "suffixes": [
+        ".elm"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Elm",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-purescript",
+      "name": "PureScript",
+      "suffixes": [
+        ".purs"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "PureScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-reason",
+      "name": "Reason",
+      "suffixes": [
+        ".re",
+        ".rei"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Reason",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-rescript",
+      "name": "ReScript",
+      "suffixes": [
+        ".res",
+        ".resi"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ReScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ballerina",
+      "name": "Ballerina",
+      "suffixes": [
+        ".bal"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Ballerina",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-v",
+      "name": "V",
+      "suffixes": [
+        ".vsh"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "V",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-odin",
+      "name": "Odin",
+      "suffixes": [
+        ".odin"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Odin",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-wolfram-language",
+      "name": "Wolfram Language",
+      "suffixes": [
+        ".wl",
+        ".wls",
+        ".nb"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Wolfram Language",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-sas",
+      "name": "SAS",
+      "suffixes": [
+        ".sas"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SAS",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-stata",
+      "name": "Stata",
+      "suffixes": [
+        ".do",
+        ".ado"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Stata",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-spss-syntax",
+      "name": "SPSS Syntax",
+      "suffixes": [
+        ".sps"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SPSS Syntax",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-verilog-systemverilog",
+      "name": "Verilog / SystemVerilog",
+      "suffixes": [
+        ".v",
+        ".sv",
+        ".svh",
+        ".vh"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Verilog / SystemVerilog",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-vhdl",
+      "name": "VHDL",
+      "suffixes": [
+        ".vhd",
+        ".vhdl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "VHDL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-move",
+      "name": "Move",
+      "suffixes": [
+        ".move"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Move",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cairo",
+      "name": "Cairo",
+      "suffixes": [
+        ".cairo"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Cairo",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-vyper",
+      "name": "Vyper",
+      "suffixes": [
+        ".vy"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Vyper",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-jinja-nunjucks",
+      "name": "Jinja / Nunjucks",
+      "suffixes": [
+        ".j2",
+        ".jinja",
+        ".jinja2",
+        ".njk"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Jinja / Nunjucks",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-haml",
+      "name": "Haml",
+      "suffixes": [
+        ".haml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Haml",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-slim",
+      "name": "Slim",
+      "suffixes": [
+        ".slim"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Slim",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-razor",
+      "name": "Razor",
+      "suffixes": [
+        ".cshtml",
+        ".razor"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Razor",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-marko",
+      "name": "Marko",
+      "suffixes": [
+        ".marko"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Marko",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-json5-jsonc",
+      "name": "JSON5 / JSONC",
+      "suffixes": [
+        ".json5",
+        ".jsonc"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "JSON5 / JSONC",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-jsonnet",
+      "name": "Jsonnet",
+      "suffixes": [
+        ".jsonnet",
+        ".libsonnet"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Jsonnet",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-prisma",
+      "name": "Prisma",
+      "suffixes": [
+        ".prisma"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Prisma",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cue",
+      "name": "CUE",
+      "suffixes": [
+        ".cue"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "CUE",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-rego",
+      "name": "Rego",
+      "suffixes": [
+        ".rego"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Rego",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-xcode-project",
+      "name": "Xcode Project",
+      "suffixes": [
+        ".pbxproj"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Xcode Project",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-net-solution",
+      "name": ".NET Solution",
+      "suffixes": [
+        ".sln"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": ".NET Solution",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-nix",
+      "name": "Nix",
+      "suffixes": [
+        ".nix"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Nix",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-terraform-hcl",
+      "name": "Terraform / HCL",
+      "suffixes": [
+        ".tf",
+        ".tfvars",
+        ".hcl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Terraform / HCL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-bazel-starlark",
+      "name": "Bazel / Starlark",
+      "suffixes": [
+        ".bzl",
+        ".bazel"
+      ],
+      "filenames": [
+        "BUCK",
+        "BUILD",
+        "BUILD.bazel",
+        "WORKSPACE",
+        "WORKSPACE.bazel",
+        "MODULE.bazel"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Bazel / Starlark",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-meson",
+      "name": "Meson",
+      "suffixes": [],
+      "filenames": [
+        "meson.build",
+        "meson_options.txt"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Meson",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-just",
+      "name": "Just",
+      "suffixes": [
+        ".just"
+      ],
+      "filenames": [
+        "Justfile",
+        "justfile",
+        ".justfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Just",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ignore-rules",
+      "name": "Ignore Rules",
+      "suffixes": [
+        ".gitignore",
+        ".dockerignore"
+      ],
+      "filenames": [
+        ".gitignore",
+        ".dockerignore",
+        ".npmignore",
+        ".eslintignore",
+        ".prettierignore"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Ignore Rules",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-r-markdown-quarto-julia-markdown",
+      "name": "R Markdown / Quarto / Julia Markdown",
+      "suffixes": [
+        ".rmd",
+        ".qmd",
+        ".jmd"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "R Markdown / Quarto / Julia Markdown",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-gleam",
+      "name": "Gleam",
+      "suffixes": [
+        ".gleam"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Gleam",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-typst",
+      "name": "Typst",
+      "suffixes": [
+        ".typ"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Typst",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-wgsl",
+      "name": "WGSL",
+      "suffixes": [
+        ".wgsl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "WGSL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-qml",
+      "name": "QML",
+      "suffixes": [
+        ".qml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "QML",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-actionscript",
+      "name": "ActionScript",
+      "suffixes": [
+        ".as"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ActionScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-coffeescript",
+      "name": "CoffeeScript",
+      "suffixes": [
+        ".coffee"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "CoffeeScript",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-standard-ml",
+      "name": "Standard ML",
+      "suffixes": [
+        ".sml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Standard ML",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-raku",
+      "name": "Raku",
+      "suffixes": [
+        ".raku",
+        ".rakumod",
+        ".rakutest"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Raku",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-nushell",
+      "name": "Nushell",
+      "suffixes": [
+        ".nu"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Nushell",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-luau",
+      "name": "Luau",
+      "suffixes": [
+        ".luau"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Luau",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-llvm-ir",
+      "name": "LLVM IR",
+      "suffixes": [
+        ".ll"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "LLVM IR",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-yacc-bison",
+      "name": "Yacc / Bison",
+      "suffixes": [
+        ".y",
+        ".yacc"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Yacc / Bison",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-lex-flex",
+      "name": "Lex / Flex",
+      "suffixes": [
+        ".l",
+        ".lex"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Lex / Flex",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-antlr",
+      "name": "ANTLR",
+      "suffixes": [
+        ".g4"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ANTLR",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-forth",
+      "name": "Forth",
+      "suffixes": [
+        ".fth",
+        ".forth",
+        ".4th"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Forth",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-apl",
+      "name": "APL",
+      "suffixes": [
+        ".apl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "APL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-bqn",
+      "name": "BQN",
+      "suffixes": [
+        ".bqn"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "BQN",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-j",
+      "name": "J",
+      "suffixes": [
+        ".ijs"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "J",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-k",
+      "name": "K",
+      "suffixes": [
+        ".k"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "K",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-lean",
+      "name": "Lean",
+      "suffixes": [
+        ".lean"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Lean",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-agda",
+      "name": "Agda",
+      "suffixes": [
+        ".agda",
+        ".lagda"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Agda",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-idris",
+      "name": "Idris",
+      "suffixes": [
+        ".idr",
+        ".lidr"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Idris",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-pkl",
+      "name": "Pkl",
+      "suffixes": [
+        ".pkl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Pkl",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-dhall",
+      "name": "Dhall",
+      "suffixes": [
+        ".dhall"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Dhall",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-bicep",
+      "name": "Bicep",
+      "suffixes": [
+        ".bicep",
+        ".bicepparam"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Bicep",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cap-n-proto",
+      "name": "Cap’n Proto",
+      "suffixes": [
+        ".capnp"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Cap’n Proto",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-avro-idl",
+      "name": "Avro IDL",
+      "suffixes": [
+        ".avdl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Avro IDL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-smithy",
+      "name": "Smithy",
+      "suffixes": [
+        ".smithy"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Smithy",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-yul",
+      "name": "Yul",
+      "suffixes": [
+        ".yul"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Yul",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-huff",
+      "name": "Huff",
+      "suffixes": [
+        ".huff"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Huff",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-motoko",
+      "name": "Motoko",
+      "suffixes": [
+        ".mo"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Motoko",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-tact",
+      "name": "Tact",
+      "suffixes": [
+        ".tact"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Tact",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-func",
+      "name": "FunC",
+      "suffixes": [
+        ".fc",
+        ".func"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "FunC",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-clarity",
+      "name": "Clarity",
+      "suffixes": [
+        ".clar"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Clarity",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-teal",
+      "name": "TEAL",
+      "suffixes": [
+        ".teal"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "TEAL",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-ligo",
+      "name": "LIGO",
+      "suffixes": [
+        ".ligo",
+        ".mligo",
+        ".jsligo"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "LIGO",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-scilla",
+      "name": "Scilla",
+      "suffixes": [
+        ".scilla"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Scilla",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-pact",
+      "name": "Pact",
+      "suffixes": [
+        ".pact"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Pact",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-sway",
+      "name": "Sway",
+      "suffixes": [
+        ".sw"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Sway",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-unity-shaderlab",
+      "name": "Unity ShaderLab",
+      "suffixes": [
+        ".shader"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Unity ShaderLab",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-spir-v-assembly",
+      "name": "SPIR-V Assembly",
+      "suffixes": [
+        ".spvasm"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SPIR-V Assembly",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-device-tree",
+      "name": "Device Tree",
+      "suffixes": [
+        ".dts",
+        ".dtsi"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Device Tree",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-linker-script",
+      "name": "Linker Script",
+      "suffixes": [
+        ".ld",
+        ".lds"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Linker Script",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-mdx",
+      "name": "MDX",
+      "suffixes": [
+        ".mdx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "MDX",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-asciidoc",
+      "name": "AsciiDoc",
+      "suffixes": [
+        ".adoc",
+        ".asciidoc"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "AsciiDoc",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-restructuredtext",
+      "name": "reStructuredText",
+      "suffixes": [
+        ".rst"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "reStructuredText",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-org",
+      "name": "Org",
+      "suffixes": [
+        ".org"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Org",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-texinfo",
+      "name": "Texinfo",
+      "suffixes": [
+        ".texi",
+        ".texinfo"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Texinfo",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-mako",
+      "name": "Mako",
+      "suffixes": [
+        ".mako"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Mako",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-eex",
+      "name": "EEx",
+      "suffixes": [
+        ".eex"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "EEx",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-smarty",
+      "name": "Smarty",
+      "suffixes": [
+        ".tpl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Smarty",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-latte",
+      "name": "Latte",
+      "suffixes": [
+        ".latte"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Latte",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-volt",
+      "name": "Volt",
+      "suffixes": [
+        ".volt"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Volt",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-cakephp-template",
+      "name": "CakePHP Template",
+      "suffixes": [
+        ".ctp"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "CakePHP Template",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-go-template",
+      "name": "Go Template",
+      "suffixes": [
+        ".gotmpl",
+        ".tmpl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Go Template",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-hjson",
+      "name": "HJSON",
+      "suffixes": [
+        ".hjson"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "HJSON",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-configuration-source",
+      "name": "Configuration Source",
+      "suffixes": [
+        ".conf",
+        ".cfg",
+        ".cnf",
+        ".config"
+      ],
+      "filenames": [
+        ".yarnrc",
+        ".bazelrc",
+        ".mailmap"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Configuration Source",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-windows-registry",
+      "name": "Windows Registry",
+      "suffixes": [
+        ".reg"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Windows Registry",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-qmake",
+      "name": "QMake",
+      "suffixes": [
+        ".pri"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "QMake",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-tool-versions",
+      "name": "Tool Versions",
+      "suffixes": [],
+      "filenames": [
+        ".nvmrc",
+        ".tool-versions",
+        ".ruby-version",
+        ".node-version",
+        ".python-version"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Tool Versions",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-git-attributes",
+      "name": "Git Attributes",
+      "suffixes": [],
+      "filenames": [
+        ".gitattributes"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Git Attributes",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-go-module",
+      "name": "Go Module",
+      "suffixes": [],
+      "filenames": [
+        "go.mod"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Go Module",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-go-checksums",
+      "name": "Go Checksums",
+      "suffixes": [],
+      "filenames": [
+        "go.sum"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Go Checksums",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-bundler-lockfile",
+      "name": "Bundler Lockfile",
+      "suffixes": [],
+      "filenames": [
+        "Gemfile.lock"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Bundler Lockfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-earthfile",
+      "name": "Earthfile",
+      "suffixes": [],
+      "filenames": [
+        "Earthfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Earthfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-tiltfile",
+      "name": "Tiltfile",
+      "suffixes": [],
+      "filenames": [
+        "Tiltfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Tiltfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-snakemake",
+      "name": "Snakemake",
+      "suffixes": [],
+      "filenames": [
+        "Snakefile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Snakemake",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-matlab-octave",
+      "name": "MATLAB / Octave",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "MATLAB / Octave",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-mercury",
+      "name": "Mercury",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Mercury",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-coq",
+      "name": "Coq",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Coq",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-puppet",
+      "name": "Puppet",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Puppet",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-apex",
+      "name": "Apex",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Apex",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-dtrace",
+      "name": "DTrace",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "DTrace",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-supercollider",
+      "name": "SuperCollider",
+      "suffixes": [],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "SuperCollider",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-opencl-c",
+      "name": "OpenCL C",
+      "suffixes": [
+        ".cl"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "OpenCL C",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-arduino",
+      "name": "Arduino",
+      "suffixes": [
+        ".ino"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Arduino",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-processing",
+      "name": "Processing",
+      "suffixes": [
+        ".pde"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Processing",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-qt-style-sheet",
+      "name": "Qt Style Sheet",
+      "suffixes": [
+        ".qss"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Qt Style Sheet",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-classic-asp",
+      "name": "Classic ASP",
+      "suffixes": [
+        ".asp"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Classic ASP",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-asp-net",
+      "name": "ASP.NET",
+      "suffixes": [
+        ".aspx"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ASP.NET",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-coldfusion",
+      "name": "ColdFusion",
+      "suffixes": [
+        ".cfm",
+        ".cfml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "ColdFusion",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-mxml",
+      "name": "MXML",
+      "suffixes": [
+        ".mxml"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "MXML",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-blade",
+      "name": "Blade",
+      "suffixes": [
+        ".blade.php"
+      ],
+      "filenames": [],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Blade",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-nginx",
+      "name": "Nginx",
+      "suffixes": [],
+      "filenames": [
+        "nginx.conf"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Nginx",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-haproxy",
+      "name": "HAProxy",
+      "suffixes": [],
+      "filenames": [
+        "haproxy.cfg",
+        "haproxy.conf"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "HAProxy",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-caddyfile",
+      "name": "Caddyfile",
+      "suffixes": [],
+      "filenames": [
+        "Caddyfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Caddyfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-procfile",
+      "name": "Procfile",
+      "suffixes": [],
+      "filenames": [
+        "Procfile"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Procfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-yarn-lockfile",
+      "name": "Yarn Lockfile",
+      "suffixes": [],
+      "filenames": [
+        "yarn.lock",
+        ".yarn.lock"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Yarn Lockfile",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "source-apache-configuration",
+      "name": "Apache Configuration",
+      "suffixes": [],
+      "filenames": [
+        ".htaccess"
+      ],
+      "tier": "free",
+      "min_macos": "14.0",
+      "switch": "Apache Configuration",
+      "support": "documented",
+      "source_profile": true,
+      "baseline": "released-0.1.7"
+    },
+    {
+      "id": "outside-scpt",
+      "name": "Outside documented preview scope",
+      "suffixes": [
+        ".scpt"
+      ],
+      "filenames": [],
+      "tier": "unknown",
+      "min_macos": "14.0",
+      "switch": "Outside documented preview scope",
+      "support": "outside_documented_scope"
+    },
+    {
+      "id": "outside-scptd",
+      "name": "Outside documented preview scope",
+      "suffixes": [
+        ".scptd"
+      ],
+      "filenames": [],
+      "tier": "unknown",
+      "min_macos": "14.0",
+      "switch": "Outside documented preview scope",
+      "support": "outside_documented_scope"
+    },
+    {
+      "id": "outside-mlx",
+      "name": "Outside documented preview scope",
+      "suffixes": [
+        ".mlx"
+      ],
+      "filenames": [],
+      "tier": "unknown",
+      "min_macos": "14.0",
+      "switch": "Outside documented preview scope",
+      "support": "outside_documented_scope"
+    },
+    {
+      "id": "outside-logarchive",
+      "name": "Outside documented preview scope",
+      "suffixes": [
+        ".logarchive"
+      ],
+      "filenames": [],
+      "tier": "unknown",
+      "min_macos": "14.0",
+      "switch": "Outside documented preview scope",
+      "support": "outside_documented_scope"
+    },
+    {
+      "id": "outside-docc",
+      "name": "Outside documented preview scope",
+      "suffixes": [
+        ".docc"
+      ],
+      "filenames": [],
+      "tier": "unknown",
+      "min_macos": "14.0",
+      "switch": "Outside documented preview scope",
+      "support": "outside_documented_scope"
+    }
+  ]
+}

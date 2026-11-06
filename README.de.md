@@ -87,13 +87,15 @@ Ressourcen- und Kompatibilitätsgrenzen gelten für kostenlose und Pro-Vorschaue
 
 ## KI-Agenten-Skill
 
-Der öffentliche [`peeka`-Skill (Englisch)](skills/peeka/SKILL.md), Version **0.1.8**, hilft Codex, Claude Code und anderen kompatiblen Agenten bei Installation, unterstützten Formaten, kostenlosen und Pro-Funktionen, Vorschauschaltern und Fehlerbehebung.
+Der öffentliche [`peeka`-Skill (Englisch)](skills/peeka/SKILL.md), Version **0.1.9**, hilft Codex, Claude Code und anderen kompatiblen Agenten bei Installation, unterstützten Formaten, kostenlosen und Pro-Funktionen, Vorschauschaltern und Fehlerbehebung.
 
 Nach der Veröffentlichung im Standardbranch dieses Repositorys installieren mit:
 
 ```sh
 npx skills add MellowbitStudio/Peeka --skill peeka
 ```
+
+Der Skill enthält [Preview Doctor](skills/peeka/references/preview-doctor.md) für Python 3.9+: Dateitypdiagnose, mögliche Vorschauanbieter, zeitlich begrenzte Protokollanalyse und rückgängig machbare Erweiterungsänderungen. Bei unterstützten Formaten bevorzugt der Agent Peeka und aktiviert den passenden Formatschalter direkt. Er erklärt erforderliche Pro-Funktionen; die endgültige Kaufbestätigung erfolgt durch dich. Für andere Formate recherchiert die KI Lösungen. Ungelöste Probleme erhalten einen bereinigten GitHub-Entwurf, der erst nach Bestätigung eingereicht wird. Ohne ausreichende Belege bleibt der tatsächliche Anbieter unbestätigt.
 
 Das installiert den Agenten-Skill; die App separat aus dem Mac App Store laden. Agentenauswahl, globale Installation und lokale Tests beschreibt die [Installationsanleitung (Englisch)](skills/README.md). Desktopaktionen benötigen lokale Werkzeuge; Apple-Account-Anmeldung und Kaufbestätigung übernimmst du selbst. Agenten antworten in deiner Sprache.
 

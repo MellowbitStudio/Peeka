@@ -87,13 +87,15 @@ Peeka 为常用格式提供免费预览。**Peeka Pro** 是可选的**一次性�
 
 ## AI Agent Skill
 
-公开的 [`peeka` skill](skills/peeka/SKILL.md) 版本为 **0.1.8**，可供 Codex、Claude Code 等兼容的 AI Agent 使用，涵盖 App Store 下载安装、支持格式、免费与 Pro 功能、预览开关和问题排查。
+公开的 [`peeka` skill](skills/peeka/SKILL.md) 版本为 **0.1.9**，可供 Codex、Claude Code 等兼容的 AI Agent 使用，涵盖 App Store 下载安装、支持格式、免费与 Pro 功能、预览开关和问题排查。
 
 Skill 发布到本仓库的默认分支后，可执行以下命令安装：
 
 ```sh
 npx skills add MellowbitStudio/Peeka --skill peeka
 ```
+
+Skill 内置 [Preview Doctor](skills/peeka/references/preview-doctor.md)，使用 Python 3.9+ 检测文件类型和候选预览器，支持有界追踪及可恢复的扩展修复。支持的格式优先使用 Peeka，由 Agent 直接开启对应格式开关；需要 Pro 时说明具体能力并引导购买，最终付款由你确认。不支持的格式由 AI 查询方案，未解决的问题生成脱敏 GitHub 草稿，经确认后提交。证据不足时会明确标记实际预览器尚未确认。
 
 该命令安装的是 Agent skill；Peeka 应用需另外从 Mac App Store 下载。指定 Agent、全局安装和本地测试方式见 [skill 安装说明](skills/README.md)。执行桌面操作需要 Agent 具备本机工具，Apple 账户验证与购买确认由你完成。
 

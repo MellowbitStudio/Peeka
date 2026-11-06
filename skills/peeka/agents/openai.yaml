@@ -1,4 +1,4 @@
 interface:
   display_name: "Peeka"
-  short_description: "Install Peeka and manage Finder file previews"
-  default_prompt: "Use $peeka to set up Finder previews, check supported formats, or troubleshoot Peeka."
+  short_description: "Set up Peeka and diagnose Finder preview conflicts"
+  default_prompt: "Use $peeka to diagnose this file's preview, prefer Peeka when supported, enable its format switch, explain any necessary Pro purchase, and prepare reviewed issue feedback if unresolved."
