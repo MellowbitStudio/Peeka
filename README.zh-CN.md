@@ -87,7 +87,7 @@ Peeka 为常用格式提供免费预览。**Peeka Pro** 是可选的**一次性�
 
 ## AI Agent Skill
 
-公开的 [`peeka` skill](skills/peeka/SKILL.md) 版本为 **0.1.7**，可供 Codex、Claude Code 等兼容的 AI Agent 使用，涵盖 App Store 下载安装、支持格式、免费与 Pro 功能、预览开关和问题排查。
+公开的 [`peeka` skill](skills/peeka/SKILL.md) 版本为 **0.1.8**，可供 Codex、Claude Code 等兼容的 AI Agent 使用，涵盖 App Store 下载安装、支持格式、免费与 Pro 功能、预览开关和问题排查。
 
 Skill 发布到本仓库的默认分支后，可执行以下命令安装：
 

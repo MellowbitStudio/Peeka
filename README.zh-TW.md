@@ -87,7 +87,7 @@ Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收�
 
 ## AI Agent Skill
 
-公開的 [`peeka` skill（英文）](skills/peeka/SKILL.md) 版本為 **0.1.7**，協助 Codex、Claude Code 等相容 Agent 安裝 Peeka、了解格式與免費／Pro 功能、控制預覽與排解問題。
+公開的 [`peeka` skill（英文）](skills/peeka/SKILL.md) 版本為 **0.1.8**，協助 Codex、Claude Code 等相容 Agent 安裝 Peeka、了解格式與免費／Pro 功能、控制預覽與排解問題。
 
 Skill 發布至本儲存庫預設分支後，可使用：
 

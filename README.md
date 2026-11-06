@@ -87,7 +87,7 @@ Resource and compatibility limits apply to both Free and Pro previews.
 
 ## AI agent skill
 
-The public [`peeka` skill](skills/peeka/SKILL.md), version **0.1.7**, helps Codex, Claude Code, and other compatible agents install Peeka from the App Store, explain supported formats and Free / Pro features, enable or disable previews, and troubleshoot issues.
+The public [`peeka` skill](skills/peeka/SKILL.md), version **0.1.8**, helps Codex, Claude Code, and other compatible agents install Peeka from the App Store, explain supported formats and Free / Pro features, enable or disable previews, and troubleshoot issues.
 
 After the skill is published to this repository's default branch, install it with:
 

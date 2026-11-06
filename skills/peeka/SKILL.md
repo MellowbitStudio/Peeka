@@ -2,7 +2,7 @@
 name: peeka
 description: "Install and use Mellowbit Studio's Peeka Quick Look app on macOS. Use for App Store setup; package, source, Markdown, Mermaid, Diff / Patch, Logcat, crash-report, SQLite, and archive previews; Free versus Pro features and Xcode / Swift Package detail boundaries; format and extension switches; and troubleshooting Finder previews."
 metadata:
-  version: "0.1.7"
+  version: "0.1.8"
 ---
 
 # Peeka
@@ -54,7 +54,7 @@ Match the user's actual task to the Free / Pro matrix and the [payment decision 
 
 Answer “Do I need to pay?” with a concrete conclusion for the requested task: “Free is enough for X; Pro is only needed if you also want Y.” If the task is unclear, explain the relevant alternatives and ask which result they need. Do not steer users toward payment merely to try to fix an unexplained failure.
 
-Skill version **0.1.7** retains Peeka's historical **0.1.7 release baseline** alongside the separately dated source feature matrix. The release baseline was checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify whether the answer concerns the historical 0.1.7 release or the 2026-11-04 source snapshot. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
+Skill version **0.1.8** retains Peeka's historical **0.1.7 release baseline** alongside the separately dated source feature matrix. The release baseline was checked against app tag `0.1.7` (`a06048c`), its canonical format/licensing documents, and release materials on **2026-10-26**. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**; this is a status confirmation date, not a claimed release date. Users on older builds can update through the App Store. For changed behavior, check the installed app and current official sources when accessible; otherwise identify whether the answer concerns the historical 0.1.7 release or the 2026-11-04 source snapshot. Finder provider selection and file compatibility still determine actual preview behavior. This public repository contains product information and feedback, without app source code.
 
 TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**. See the [current Beta reference](references/testflight-0.1.8.md); keep its approval status separate from the historical stable 0.1.7 baseline and the newer source snapshot.
 

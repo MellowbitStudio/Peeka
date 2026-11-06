@@ -87,7 +87,7 @@ Framework와 dSYM에는 별도 형식 스위치가 있으며 사용자 지정 �
 
 ## AI 에이전트 스킬
 
-공개 [`peeka` 스킬(영어)](skills/peeka/SKILL.md)의 버전은 **0.1.7**입니다. Codex, Claude Code 등 호환 에이전트의 App Store 설치, 지원 형식 및 무료·Pro 기능 설명, 미리보기 제어, 문제 해결을 돕습니다.
+공개 [`peeka` 스킬(영어)](skills/peeka/SKILL.md)의 버전은 **0.1.8**입니다. Codex, Claude Code 등 호환 에이전트의 App Store 설치, 지원 형식 및 무료·Pro 기능 설명, 미리보기 제어, 문제 해결을 돕습니다.
 
 파일이 저장소 기본 브랜치에 게시된 후 다음 명령으로 설치하세요.
 

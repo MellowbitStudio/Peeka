@@ -87,7 +87,7 @@ Los límites de recursos y compatibilidad se aplican tanto a las vistas gratuita
 
 ## Skill para agentes de IA
 
-El [skill público `peeka` (inglés)](skills/peeka/SKILL.md), versión **0.1.7**, ayuda a Codex, Claude Code y otros agentes compatibles a instalar la app, explicar formatos y funciones gratuitas/Pro, controlar vistas previas y resolver problemas.
+El [skill público `peeka` (inglés)](skills/peeka/SKILL.md), versión **0.1.8**, ayuda a Codex, Claude Code y otros agentes compatibles a instalar la app, explicar formatos y funciones gratuitas/Pro, controlar vistas previas y resolver problemas.
 
 Cuando se publique en la rama predeterminada del repositorio, instálalo con:
 

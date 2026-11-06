@@ -87,7 +87,7 @@ Ressourcen- und Kompatibilitätsgrenzen gelten für kostenlose und Pro-Vorschaue
 
 ## KI-Agenten-Skill
 
-Der öffentliche [`peeka`-Skill (Englisch)](skills/peeka/SKILL.md), Version **0.1.7**, hilft Codex, Claude Code und anderen kompatiblen Agenten bei Installation, unterstützten Formaten, kostenlosen und Pro-Funktionen, Vorschauschaltern und Fehlerbehebung.
+Der öffentliche [`peeka`-Skill (Englisch)](skills/peeka/SKILL.md), Version **0.1.8**, hilft Codex, Claude Code und anderen kompatiblen Agenten bei Installation, unterstützten Formaten, kostenlosen und Pro-Funktionen, Vorschauschaltern und Fehlerbehebung.
 
 Nach der Veröffentlichung im Standardbranch dieses Repositorys installieren mit:
 

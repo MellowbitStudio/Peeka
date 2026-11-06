@@ -1,6 +1,6 @@
 # Installation and preview controls
 
-Skill **0.1.7**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
+Skill **0.1.8**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
 
 ## Install from the Mac App Store
 
