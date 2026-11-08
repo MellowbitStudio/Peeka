@@ -101,16 +101,16 @@
     },
     {
       "id": "aar",
-      "name": "Android AAR / Apple Archive",
+      "name": "Archive with ambiguous type",
       "suffixes": [
         ".aar"
       ],
       "filenames": [],
       "tier": "free",
       "min_macos": "14.0",
-      "switch": "Android AAR / Apple Archive",
-      "support": "documented",
-      "notes": "Check content before choosing the Android AAR, Apple Archive or ZIP switch. Android AAR uses an APK-style overview with available permission details gated by Pro. Apple Archive and ZIP show bounded listings."
+      "switch": null,
+      "support": "needs_content_verification",
+      "notes": "Verify the archive content before choosing the Android AAR, Apple Archive or ZIP switch. Android AAR uses an APK-style overview with available permission details gated by Pro. Apple Archive and ZIP show bounded listings."
     },
     {
       "id": "apple-app-app",

@@ -112,6 +112,18 @@ class InventoryTests(unittest.TestCase):
         self.assertIn("public.text", native["conforming_types"])
         self.assertTrue(warnings)
 
+    def test_malformed_xml_plists_are_treated_as_unavailable(self):
+        malformed = '<?xml version="1.0"?><plist version="1.0"><dict>'
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "Info.plist"
+            path.write_text(malformed)
+            self.assertEqual(doctor.load_plist(path), {})
+
+        def runner(args):
+            return result(malformed) if "mdls" in args[0] else result(ok=False)
+        native, _ = doctor.inspect_types(Path("/target.md"), [], runner)
+        self.assertIsNone(native["uti"])
+
 
 class FormatTests(unittest.TestCase):
     @classmethod
@@ -197,6 +209,29 @@ class DiagnosisTests(unittest.TestCase):
             target.write_bytes(b"SQLite format 3\x00")
             self.assertEqual(self.diagnose(target, [])["format"]["support"], "documented")
 
+    def test_sqlite_signature_precedes_missing_or_misleading_suffix(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for name in ("database", "database.md", "database.aar"):
+                with self.subTest(name=name):
+                    target = Path(directory) / name
+                    target.write_bytes(b"SQLite format 3\x00")
+                    report = self.diagnose(target, [], {"uti": "public.data"})
+                    self.assertEqual(report["format"]["id"], "sqlite")
+                    self.assertEqual(report["format"]["match"], "signature")
+
+    def test_ambiguous_archive_does_not_select_a_switch_or_allow_repair(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for name, uti in (("sample.aar", "public.zip-archive"), ("sample", "com.apple.archive")):
+                with self.subTest(name=name):
+                    target = Path(directory) / name
+                    target.write_bytes(b"PK\x03\x04")
+                    report = self.diagnose(target, [], {"uti": uti})
+                    self.assertEqual(report["format"]["support"], "needs_content_verification")
+                    self.assertIsNone(report["format"]["switch"])
+                    self.assertFalse(any("enable it directly" in step for step in report["next_steps"]))
+                    with self.assertRaisesRegex(doctor.DoctorError, "verify the format"):
+                        doctor.repair_plan(report)
+
     def test_cloud_placeholder_is_not_read(self):
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory) / "cloud.db"
@@ -252,6 +287,14 @@ class TraceTests(unittest.TestCase):
                         "Selected preview provider example.preview.evil " + self.path]:
             with self.subTest(message=message):
                 self.assertEqual(self.evidence([message])["status"], "unconfirmed")
+
+    def test_provider_is_extracted_from_the_event_and_never_from_target_path(self):
+        self.path = "/tmp/example.preview/sample.mmd"
+        unknown_selection = 'Selected preview provider unlisted.preview for "' + self.path + '"'
+        self.assertEqual(self.evidence([unknown_selection])["status"], "unconfirmed")
+        known_selection = 'Selected preview provider "example.preview" for "' + self.path + '"'
+        self.assertEqual(self.evidence([known_selection])["id"], "example.preview")
+        self.assertEqual(self.evidence([known_selection, unknown_selection])["reason"], "conflicting_evidence")
 
     def test_permission_failure_and_capture_bound(self):
         report = {"file": {"path": self.path}, "providers": self.providers, "warnings": [],
@@ -348,7 +391,7 @@ class RepairTests(unittest.TestCase):
         other = plugin("other.preview", "/Applications/Other.app", "/other")
         report = {"inventory_complete": True, "format": {"support": "documented"},
                   "file": {"local": True, "readable": True}, "os_compatible": True,
-                  "selected_peeka": peeka, "candidates": [peeka, other]}
+                  "selected_peeka": peeka, "candidates": [peeka, other], "providers": [peeka, other]}
         with patch.object(doctor, "diagnose", return_value=report), \
                 patch.object(doctor, "apply_operations") as apply, \
                 contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
@@ -368,22 +411,68 @@ class RepairTests(unittest.TestCase):
     def test_competitor_has_separate_confirmation_and_affected_types(self):
         peeka = plugin("peeka.preview", "/Applications/Peeka.app", "/peeka")
         other = plugin("other.preview", "/Applications/Other.app", "/other", types=["public.text", "public.xml"])
+        older = plugin("other.preview", "/tmp/Other.app", "/older", types=["public.image"])
+        older["superseded"] = True
         report = {"inventory_complete": True, "format": {"support": "documented"},
                   "file": {"local": True, "readable": True}, "os_compatible": True,
-                  "selected_peeka": peeka, "candidates": [peeka, other]}
+                  "selected_peeka": peeka, "candidates": [peeka, other], "providers": [peeka, other, older]}
         operation = doctor.repair_plan(report, "other.preview")[-1]
         self.assertFalse(operation["separate_confirmation"])
-        self.assertEqual(operation["affected_types"], ["public.text", "public.xml"])
+        self.assertEqual(operation["affected_types"], ["public.image", "public.text", "public.xml"])
         self.assertTrue(doctor.repair_plan(report, "other.preview", "other.preview")[-1]["separate_confirmation"])
-        other["app_id"] = "com.apple.system"
+        older["metadata_valid"] = False
+        with self.assertRaisesRegex(doctor.DoctorError, "Affected types are unavailable"):
+            doctor.repair_plan(report, "other.preview", "other.preview")
+        older.update(metadata_valid=True, app_id="com.apple.system")
         with self.assertRaises(doctor.DoctorError):
             doctor.repair_plan(report, "other.preview", "other.preview")
 
 
 class ReportAndCLITests(unittest.TestCase):
+    def test_invalid_output_prevents_repair_and_restore(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "missing" / "output.json"
+            with patch.object(doctor.platform, "system", return_value="Darwin"), \
+                    patch.object(doctor, "diagnose", return_value={}), \
+                    patch.object(doctor, "repair_plan", return_value=[]), \
+                    patch.object(doctor, "apply_operations") as apply, \
+                    patch.object(doctor, "restore_record") as restore, \
+                    contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                for command in ("repair", "restore"):
+                    self.assertEqual(doctor.main([command, "target", "--apply", "--output", str(output)]), 1)
+            apply.assert_not_called()
+            restore.assert_not_called()
+
+    def test_repair_prints_durable_recovery_path_even_if_rediagnosis_fails(self):
+        states = Elections({"peeka.preview": "default"})
+        with tempfile.TemporaryDirectory() as directory:
+            journal = Path(directory) / "journal.json"
+            output = Path(directory) / "output.json"
+            stderr = io.StringIO()
+            def runner(args):
+                if "-e" in args:
+                    self.assertTrue(output.exists())
+                    self.assertEqual(doctor.read_record(journal)["status"], "prepared")
+                    self.assertIn("Recovery record: " + str(journal), stderr.getvalue())
+                return states(args)
+            apply_operations = doctor.apply_operations
+            with patch.object(doctor.platform, "system", return_value="Darwin"), \
+                    patch.object(doctor, "diagnose", side_effect=[
+                        {"file": {"path": "/sample.mmd"}}, doctor.DoctorError("target disappeared")]), \
+                    patch.object(doctor, "repair_plan", return_value=[{"id": "peeka.preview", "to": "use"}]), \
+                    patch.object(doctor, "new_record_path", return_value=journal), \
+                    patch.object(doctor, "apply_operations", side_effect=lambda *a, **kw: apply_operations(*a, runner=runner, **kw)), \
+                    contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(stderr):
+                code = doctor.main(["repair", "/sample.mmd", "--apply", "--json", "--output", str(output)])
+            self.assertEqual(code, 1)
+            self.assertFalse(output.exists())
+            self.assertEqual(states.mutations, [("peeka.preview", "use")])
+            self.assertEqual(doctor.read_record(journal)["status"], "configuration_adjusted")
+
     def test_issue_report_does_not_leak_filename_path_contents_or_logs(self):
         report = {"file": {"path": "/Users/alice/secret/project-secret.mmd", "name": "project-secret.mmd", "size": 1024},
-                  "macos": "14.4", "format": {"name": "Mermaid"}, "type": {"uti": "com.private.customer.data"},
+                  "macos": "14.4", "format": doctor.match_format("project-secret.mmd", doctor.load_catalog()),
+                  "type": {"uti": "com.private.customer.data"},
                   "peeka_copies": [], "actual_provider": {"status": "unconfirmed", "id": None},
                   "candidates": [{"kind": "extension", "id": "private.secret.bundle", "match": "conforms", "election": "use"}],
                   "warnings": ["secret log with /Users/alice"], "raw_logs": "SECRET CONTENT"}
@@ -396,6 +485,11 @@ class ReportAndCLITests(unittest.TestCase):
         historical = doctor.issue_draft(report)
         self.assertIn("(historical)", historical)
         self.assertIn("2026-11-06T08:00:00+00:00", historical)
+        self.assertIn("studio.mellowbit.peeka.quicklook", historical)
+        report["file"]["name"] = "project.ACME-MERGER-Q4"
+        report["type"]["uti"] = "public.ACME-MERGER-Q4"
+        report["candidates"][0]["id"] = "com.apple.ACME-MERGER-Q4"
+        self.assertNotIn("ACME-MERGER-Q4", doctor.issue_draft(report))
 
     def test_cli_help_and_trace_limit(self):
         args = doctor.parser().parse_args(["diagnose", "a file;$(touch nope).mmd", "--json"])

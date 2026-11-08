@@ -25,12 +25,12 @@ Exit 1 means invalid input, refused/failed mutation, or a command-level error. D
 
 ## Interpret the report
 
-- `format`: documented support, name/suffix match, tier, minimum macOS, format switch, optional Pro details. The [machine catalog](format-catalog.json) follows the 0.1.9 release. Verify the installed version and its visible controls.
+- `format`: documented support, match evidence, tier, minimum macOS, format switch, optional Pro details. The helper checks the SQLite signature on local readable regular files, including extensionless files. Ambiguous archive candidates can report `needs_content_verification` without a switch. The [machine catalog](format-catalog.json) follows the 0.1.9 release. Verify the installed version and its visible controls.
 - `type` / `type_declarers`: actual resource UTI, Spotlight fallback, and imported/exported app declarations. A declaration explains a suffix collision without proving preview ownership. The scan covers top-level standard application directories and parents of registered extensions, not every app on disk.
 - `candidates`: modern extensions and legacy generators declaring an exact or conforming type. Eligibility is not proof of selection; inspect recorded election/superseded state.
 - `peeka_copies` / `selected_peeka`: registered paths and versions. If several valid copies exist, choose the intended app with `--peeka-app '/exact/path/Peeka.app'`. Elections affect **every copy of the same identifier**, not just that path.
 - `installed_peeka_apps`: apps found in the scanned locations, including installations whose preview extension is not registered. Missing registration does not mean the app is uninstalled.
-- `actual_provider`: tracing requires a selection event containing the full target path and known provider identifier. A process, default opening app, basename, generic Quick Look host, or redacted log is insufficient. Missing evidence means **unconfirmed**.
+- `actual_provider`: tracing requires a recognizable selection event with separate fields for the full target path and a known provider identifier. A process, default opening app, basename, generic Quick Look host, or redacted log is insufficient. Missing or conflicting evidence means **unconfirmed**.
 - `installed_capability`, `format_switch`, `entitlement`: require visible UI verification. The helper does not read undocumented Peeka preferences or infer Pro from version numbers.
 
 During `trace`, close the old preview and reopen the target in Finder with Space within the indicated 1–30 seconds. Avoid other previews during comparison. Log queries are bounded; raw messages are not included in results. Privacy redaction often prevents attribution. A provider invocation does not establish successful rendering. Historical trace evidence is labeled as previous evidence, not a new observation.
@@ -47,12 +47,12 @@ During `trace`, close the old preview and reopen the target in Finder with Space
    python3 skills/peeka/scripts/preview_doctor.py repair '/path/to/diagram.mmd' --disable-extension 'observed.competitor.identifier'
    ```
 
-   Explain all declared affected types and all copies of the identifier. **Obtain separate confirmation for this whole extension**, even after a general repair request. Then repeat with `--apply --confirm-disable 'observed.competitor.identifier'`. The CLI accepts one competitor per invocation; do not loop over competitors or infer consent for others. System extensions, legacy generators, and unidentified extensions are ineligible. Give manual steps for legacy conflicts; do not delete/move generators.
+   Explain the declared types across every registered copy of the identifier. The helper refuses to disable the extension if any copy's declared types are unavailable. **Obtain separate confirmation for this whole extension**, even after a general repair request. Then repeat with `--apply --confirm-disable 'observed.competitor.identifier'`. The CLI accepts one competitor per invocation; do not loop over competitors or infer consent for others. System extensions, legacy generators, and unidentified extensions are ineligible. Give manual steps for legacy conflicts; do not delete/move generators.
 6. Close and reopen the file in Finder; verify Space and the preview pane. Report configuration success, observed provider, and successful rendering separately. Never mark previews verified from command success alone. Restore temporary comparisons, or unsuccessful changes when they should not remain.
 
 ### Recovery
 
-Before any election change, original `use` / `ignore` / `default` states are saved in a private JSON journal under `~/Library/Application Support/PeekaPreviewDoctor/records/`. Results give its exact path. Unknown/debugger-only/inconsistent states stop repair. The helper does not modify original files, opening associations, app bundles, format preferences, global caches, or the Launch Services database.
+Before any election change, the helper saves the original `use` / `ignore` / `default` states in a private JSON journal under `~/Library/Application Support/PeekaPreviewDoctor/records/` and prints its path. Unknown, debugger-only or inconsistent states stop repair. The helper does not modify original files, opening associations, app bundles, format preferences, global caches, or the Launch Services database.
 
 Partial failures trigger compare-and-restore rollback. For incomplete rollback, preserve the record and inspect live state; do not report success. `restore RECORD` previews recovery; `restore RECORD --apply` performs it. Recovery refuses a later **different** election, and restores `default` as default. An external change away and back to the same value cannot be detected. UI format-switch changes are outside this journal: record their prior state in the chat. Restore only tool-generated records for the intended operation.
 

@@ -19,7 +19,9 @@ import sys
 import tempfile
 import time
 import uuid
+from contextlib import contextmanager, suppress
 from pathlib import Path
+from xml.parsers.expat import ExpatError
 
 ROOT = Path(__file__).resolve().parents[1]
 PEEKA_BUNDLE_ID = "studio.mellowbit.peeka"
@@ -27,6 +29,15 @@ PROTOCOL = "com.apple.quicklook.preview"
 SCHEMA_VERSION = 1
 MAX_OUTPUT = 2 * 1024 * 1024
 ELECTIONS = {"use", "ignore", "default"}
+PUBLIC_UTIS = {
+    "public.data", "public.text", "public.plain-text", "public.json", "public.xml",
+    "public.zip-archive", "com.apple.archive", "net.daringfireball.markdown",
+    "com.soulmen.ulysses3.markdown",
+}
+PUBLIC_PROVIDER_IDS = {
+    "studio.mellowbit.peeka.quicklook", "com.ulyssesapp.mac.quicklookextension",
+    "com.kingsoft.wpsoffice.mac.WPSQuickLook",
+}
 
 
 class DoctorError(Exception):
@@ -79,7 +90,7 @@ def load_plist(path):
         with Path(path).open("rb") as handle:
             value = plistlib.load(handle)
         return value if isinstance(value, dict) else {}
-    except (OSError, ValueError, plistlib.InvalidFileException):
+    except (OSError, ValueError, plistlib.InvalidFileException, ExpatError):
         return {}
 
 
@@ -221,10 +232,10 @@ def inspect_types(target, types, runner=run_command):
     # mdls requires an explicit '-' destination. -plist cannot combine with -name.
     metadata = runner(["/usr/bin/mdls", "-plist", "-", str(target)])
     md = {}
-    if metadata["ok"]:
+    if metadata["ok"] and not metadata.get("truncated"):
         try:
-            md = plistlib.loads(metadata["stdout"].encode("utf-8"))
-        except (ValueError, TypeError, plistlib.InvalidFileException):
+            md = mapping(plistlib.loads(metadata["stdout"].encode("utf-8")))
+        except (ValueError, TypeError, plistlib.InvalidFileException, ExpatError):
             pass
     if not native.get("uti"):
         native["uti"] = md.get("kMDItemContentType") if isinstance(md.get("kMDItemContentType"), str) else None
@@ -301,16 +312,25 @@ def diagnose(filename, peeka_app=None, runner=run_command):
         status["local"] = False
     catalog = load_catalog()
     format_info = match_format(target.name, catalog)
-    if format_info["id"] == "sqlite" and status["regular"] and status["readable"] and status["local"]:
+    sqlite = None
+    if status["regular"] and status["readable"] and status["local"]:
         try:
-            with target.open("rb") as handle:
+            with target.open("rb", buffering=0) as handle:
                 sqlite = handle.read(16) == b"SQLite format 3\x00"
-            format_info["signature_matches"] = sqlite
-            if not sqlite:
-                format_info["support"] = "unknown"
-                warnings.append("Database suffix without SQLite signature; do not promise a SQLite preview.")
         except OSError:
-            format_info["support"] = "unknown"
+            pass
+    if sqlite:
+        entry = next(item for item in catalog["formats"] if item["id"] == "sqlite")
+        format_info = dict(entry, match="signature", signature_matches=True)
+    elif format_info["id"] == "aar" or (native.get("uti") == "com.apple.archive" and
+                                       format_info["id"] != "apple-archive"):
+        entry = next(item for item in catalog["formats"] if item["id"] == "aar")
+        format_info = dict(entry, match="suffix" if format_info["id"] == "aar" else "uti")
+    elif format_info["id"] == "sqlite":
+        format_info.update(support="unknown", switch=None)
+        if sqlite is False:
+            format_info["signature_matches"] = False
+            warnings.append("Database suffix without SQLite signature; do not promise a SQLite preview.")
     conforming = set(native.get("conforming_types", [])) | {native.get("uti")}
     candidates = []
     for provider in plugins + generators:
@@ -341,6 +361,8 @@ def diagnose(filename, peeka_app=None, runner=run_command):
             actions.append("This preview requires Pro. Check existing entitlement/Restore Purchases; otherwise explain the paid capability and guide to the purchase page. User confirms payment.")
         elif format_info.get("pro_details"):
             actions.append("Basic preview is free. Pro is optional for: {}.".format(format_info["pro_details"]))
+    elif format_info.get("support") == "needs_content_verification":
+        actions.append(format_info["notes"])
     else:
         actions.append("Support is unknown or outside the documented scope. Ask the agent to research official documentation and suitable preview tools.")
     if not selected:
@@ -362,30 +384,32 @@ def diagnose(filename, peeka_app=None, runner=run_command):
 
 def trace_evidence(events, path, providers):
     """Fail closed: a running process, basename, or generic display host is insufficient."""
+    known_ids = {provider["id"] for provider in providers}
+    target = re.escape(path)
+    selection = re.compile(
+        r"""\s*(?i:selected|using|invoking|loading|generated)\s+"""
+        r"""(?i:preview\s+(?:provider|extension|generator))\s+"""
+        r"""(?:"([^"]+)"|'([^']+)'|(\S+))\s+(?i:for)\s+"""
+        + rf"""(?:"{target}"|'{target}'|{target})\s*"""
+    )
     matched = []
+    ids = set()
     for event in events:
         message = event.get("eventMessage", "")
         if not isinstance(message, str):
             continue
-        # Require the full target path with boundaries, in the same selected-provider event.
-        path_pattern = r"(?<![\w/])" + re.escape(path) + r"(?=$|[\s\"'<>;,])"
-        if not re.search(path_pattern, message):
+        fields = selection.fullmatch(message)
+        if not fields:
             continue
-        if (not re.search(r"\bpreview\b", message, re.I) or
-                not re.search(r"\b(selected|using|invoking|loading|generated)\b", message, re.I) or
-                not re.search(r"\b(provider|extension|generator)\b", message, re.I) or
-                re.search(r"\b(candidate|registered|failed|failure|error|rejected|not|unable|disabled|ignored|skipping)\b", message, re.I)):
-            continue
-        for provider in providers:
-            identifier = provider["id"]
-            if re.search(r"(?<![\w.-])" + re.escape(identifier) + r"(?![\w.-])", message):
-                matched.append({"id": identifier, "timestamp": event.get("timestamp"),
-                                "kind": "same_event_target_and_selected_provider"})
-    ids = {event["id"] for event in matched}
-    if len(ids) == 1:
-        return {"status": "observed", "id": next(iter(ids)), "evidence": matched[:5]}
+        identifier = next(value for value in fields.groups() if value is not None)
+        ids.add(identifier)
+        if identifier in known_ids and len(matched) < 5:
+            matched.append({"id": identifier, "timestamp": event.get("timestamp"),
+                            "kind": "same_event_target_and_selected_provider"})
+    if len(ids) == 1 and matched:
+        return {"status": "observed", "id": matched[0]["id"], "evidence": matched}
     return {"status": "unconfirmed", "id": None,
-            "reason": "conflicting_evidence" if ids else "no_correlated_unredacted_event"}
+            "reason": "conflicting_evidence" if len(ids) > 1 else "no_correlated_unredacted_event"}
 
 
 def trace(report, seconds, runner=run_command, sleep=time.sleep):
@@ -459,7 +483,7 @@ def repair_plan(report, disable=None, confirm=None):
     if not report["inventory_complete"]:
         raise DoctorError("A complete live extension inventory is required for repair.")
     if report["format"].get("support") != "documented":
-        raise DoctorError("Peeka support is not established for this file; research before changing providers.")
+        raise DoctorError("Peeka support is not established for this file; verify the format before changing providers.")
     if not report["file"]["local"] or not report["file"]["readable"] or report["os_compatible"] is not True:
         raise DoctorError("A local readable file and a compatible known macOS version are required.")
     peeka = report["selected_peeka"]
@@ -470,17 +494,21 @@ def repair_plan(report, disable=None, confirm=None):
     operations = [{"id": peeka["id"], "to": "use", "purpose": "Enable Peeka's preview extension"}]
     if disable:
         matches = [p for p in report["candidates"] if p["id"] == disable and p["kind"] == "extension"]
-        if not matches or any(p.get("is_peeka") or (p.get("app_id") or p["id"]).startswith("com.apple.") for p in matches):
+        copies = [p for p in report["providers"] if p["id"] == disable and p["kind"] == "extension"]
+        if not matches or not copies or disable == peeka["id"] or disable.startswith("com.apple.") or any(
+                p.get("is_peeka") or (p.get("app_id") or "").startswith("com.apple.") for p in copies):
             raise DoctorError("Only an explicitly selected matching third-party preview extension can be disabled.")
-        if not any(p.get("exists") and p.get("metadata_valid") and not p.get("superseded") for p in matches):
-            raise DoctorError("Competing extension metadata is unavailable or superseded; inspect it before changing state.")
+        if any(not (p.get("exists") and p.get("metadata_valid") and p.get("types")) for p in copies):
+            raise DoctorError("Affected types are unavailable for a registered copy of the competing extension.")
+        if all(p.get("superseded") for p in matches):
+            raise DoctorError("Only superseded copies of the competing extension match this file.")
         operations.append({"id": disable, "to": "ignore", "purpose": "Disable the entire competing extension",
-                           "affected_types": sorted({t for p in matches for t in p["types"]}),
+                           "affected_types": sorted({t for p in copies for t in p["types"]}),
                            "separate_confirmation": confirm == disable})
     return operations
 
 
-def apply_operations(operations, record_path, runner=run_command, target=None):
+def apply_operations(operations, record_path, runner=run_command, target=None, on_prepared=None):
     """Journal before changing anything; compare live state before each mutation."""
     record = {"schema_version": SCHEMA_VERSION, "kind": "peeka_preview_elections", "created_at": utc_now(),
               "status": "prepared", "operations": [], "preview_verified": False,
@@ -488,6 +516,8 @@ def apply_operations(operations, record_path, runner=run_command, target=None):
     for operation in operations:
         record["operations"].append(dict(operation, before=live_election(operation["id"], runner), status="pending"))
     atomic_json(record_path, record)
+    if on_prepared:
+        on_prepared(record_path)
     try:
         for operation in record["operations"]:
             if live_election(operation["id"], runner) != operation["before"]:
@@ -596,12 +626,12 @@ def attach_trace(report, path):
 
 def issue_draft(report, repair_record=None):
     """Allowlist metadata; never include raw paths, filenames, logs or file contents."""
-    suffix = Path(report["file"]["name"]).suffix[-40:]
-    suffix = suffix if re.fullmatch(r"(?:\.[A-Za-z0-9_+-]+)*", suffix) else "[redacted]"
-    # Custom UTIs and bundle IDs can contain private data; public report only lists known vendors.
-    def public_id(identifier):
-        if identifier and re.fullmatch(r"[A-Za-z0-9.-]{1,200}", identifier) and identifier.startswith(("public.", "com.apple.", "studio.mellowbit.peeka", "net.daringfireball.",
-                                                "com.soulmen.ulysses3.", "com.ulyssesapp.", "net.ia.", "com.kingsoft.")):
+    name = report["file"]["name"].lower()
+    suffix = max((value for value in report["format"].get("suffixes", []) if name.endswith(value.lower())),
+                 key=len, default=None)
+    # Vendor prefixes alone cannot establish that an identifier is public.
+    def public_id(identifier, allowed=PUBLIC_PROVIDER_IDS):
+        if isinstance(identifier, str) and identifier in allowed:
             return identifier
         return "[other identifier redacted]" if identifier else "unknown"
     peeka_versions = sorted({p.get("app_version") or p["version"] for p in report["peeka_copies"]} |
@@ -613,10 +643,10 @@ def issue_draft(report, repair_record=None):
              "Draft — review before submitting. No file content or raw logs are attached.", "",
              "- macOS: {}".format(report["macos"] or "unknown"),
              "- Peeka version(s): {}".format(", ".join(peeka_versions) or "not established"),
-             "- Format: {}; suffix: {}".format(report["format"]["name"], suffix or "[none]"),
+             "- Format: {}; suffix: {}".format(report["format"]["name"], suffix or "[not reported]"),
              "- Approximate size: {}".format("{} KiB".format((report["file"]["size"] + 1023) // 1024)
                                                if report["file"]["size"] is not None else "directory; not traversed"),
-             "- Actual UTI: {}".format(public_id(report["type"].get("uti"))),
+             "- Actual UTI: {}".format(public_id(report["type"].get("uti"), PUBLIC_UTIS)),
              "- Type data source: {}".format(report["type"].get("source", "unknown")),
              "- {}: {} ({})".format(provider_label, public_id(actual.get("id")), actual["status"]),
              "- Extension inventory complete: {}".format(report.get("inventory_complete", False)),
@@ -703,12 +733,27 @@ def parser():
     return result
 
 
-def emit(value, args):
+@contextmanager
+def reserve_output(path):
+    if path is None:
+        yield None
+        return
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as handle:
+        try:
+            yield handle
+        except BaseException:
+            with suppress(OSError):
+                if os.path.samestat(os.fstat(handle.fileno()), path.lstat()):
+                    path.unlink()
+            raise
+
+
+def emit(value, args, output):
     content = value if isinstance(value, str) else (json.dumps(value, indent=2, ensure_ascii=False) if args.json else human_report(value))
-    if args.output:
-        fd = os.open(str(args.output), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
-        with os.fdopen(fd, "w", encoding="utf-8") as handle:
-            handle.write(content + "\n")
+    if output:
+        output.write(content + "\n")
+        output.flush()
         print("Saved: " + str(args.output), file=sys.stderr)
     else:
         print(content)
@@ -722,9 +767,10 @@ def main(argv=None):
         # Check before any mutation; reports and local JSON may contain private paths.
         if args.output and args.output.exists():
             raise DoctorError("Output already exists; choose a new path.")
-        exit_code = 0
         if args.command == "restore":
-            result = restore_record(args.target, args.apply)
+            with reserve_output(args.output) as output:
+                emit(restore_record(args.target, args.apply), args, output)
+            return 0
         else:
             result = diagnose(args.target, args.peeka_app)
             if args.command == "trace":
@@ -736,15 +782,18 @@ def main(argv=None):
                 if args.apply:
                     if args.disable_extension and args.confirm_disable != args.disable_extension:
                         raise DoctorError("Show affected types with repair first; obtain separate confirmation and pass --confirm-disable with the exact ID.")
-                    print("Applying extension plan:\n" + json.dumps(operations, indent=2), file=sys.stderr, flush=True)
-                    record_path = new_record_path()
-                    record = apply_operations(operations, record_path, target=result["file"]["path"])
-                    result = diagnose(args.target, args.peeka_app)
-                    result["command"] = "repair"
-                    result["repair"] = {"status": record["status"], "record": str(record_path),
-                                        "operations": record["operations"], "preview_verified": False}
-                    if record["status"] != "configuration_adjusted":
-                        exit_code = 1
+                    with reserve_output(args.output) as output:
+                        print("Applying extension plan:\n" + json.dumps(operations, indent=2), file=sys.stderr, flush=True)
+                        record_path = new_record_path()
+                        record = apply_operations(
+                            operations, record_path, target=result["file"]["path"],
+                            on_prepared=lambda path: print("Recovery record: " + str(path), file=sys.stderr, flush=True))
+                        result = diagnose(args.target, args.peeka_app)
+                        result["command"] = "repair"
+                        result["repair"] = {"status": record["status"], "record": str(record_path),
+                                            "operations": record["operations"], "preview_verified": False}
+                        emit(result, args, output)
+                        return int(record["status"] != "configuration_adjusted")
             elif args.command == "report":
                 if args.trace_record:
                     attach_trace(result, args.trace_record)
@@ -753,8 +802,9 @@ def main(argv=None):
                     raise DoctorError("Repair record does not belong to this target.")
                 draft = issue_draft(result, record)
                 result = {"schema_version": SCHEMA_VERSION, "command": "report", "markdown": draft} if args.json else draft
-        emit(result, args)
-        return exit_code
+        with reserve_output(args.output) as output:
+            emit(result, args, output)
+        return 0
     except (DoctorError, OSError) as exc:
         if args.json:
             print(json.dumps({"schema_version": SCHEMA_VERSION, "error": str(exc)}))
