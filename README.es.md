@@ -10,15 +10,15 @@ Peeka es una app nativa de macOS que añade al Finder vistas previas pensadas pa
 
 Requiere **macOS 14 o posterior**; la representación gráfica de Mermaid requiere **macOS 14.4+** y Pro. Disponible en **inglés, chino simplificado y tradicional, japonés, coreano, alemán, francés y español**.
 
-**Peeka 0.1.7 ha superado la revisión del App Store y está disponible oficialmente**, según la confirmación del responsable del **2026-10-26**. Actualiza desde el App Store para ampliar el resaltado de código, obtener vistas Pro de Framework/dSYM y mejoras de archivos y diagramas Pele sin conexión. La vista previa depende de la compatibilidad del archivo y del proveedor seleccionado por el Finder.
+**Peeka 0.1.9 ha superado la revisión y está disponible en el Mac App Store.** Actualiza desde el App Store para usar las nuevas vistas previas.
 
-**La beta 0.1.8 de TestFlight ha sido aprobada**, según confirmó el mantenedor el **2026-10-29**. [Unirse a TestFlight](https://testflight.apple.com/join/5jM8yxDB). La versión de referencia de Mac App Store sigue siendo la 0.1.7.
+**La beta 0.1.8 de TestFlight ha sido aprobada**, según confirmó el mantenedor el **2026-10-29**. [Unirse a TestFlight](https://testflight.apple.com/join/5jM8yxDB).
 
 ## Funciones
 
-Estas son las funciones publicadas en 0.1.7. Consulta los cambios desde 0.1.5 en las [novedades](#novedades-de-017).
+Estas funciones están disponibles en 0.1.9. Consulta las [novedades](#novedades-de-019) desde la versión 0.1.7.
 
-- **Paquetes de aplicaciones:** consulta los iconos, nombres, identificadores, versiones, requisitos del sistema y arquitecturas disponibles en paquetes Android y Apple. Los paquetes compatibles con iconos integrados también pueden generar miniaturas del Finder.
+- **Paquetes de aplicaciones:** consulta los iconos, nombres, identificadores, versiones, requisitos del sistema y arquitecturas disponibles en paquetes Android y Apple.
 - **Código fuente:** resaltado de sintaxis, números de línea, selección y copia de texto nativas para lenguajes habituales. Activa o desactiva las vistas previas por lenguaje.
 - **Diff / Patch:** vistas gratuitas Source, Fluid, Blocks y Unified con selección de archivos, números de línea originales y recuentos de cambios. No aplica parches ni lee los archivos mencionados.
 - **Markdown:** documentos con formato, bloques de código resaltados, tablas con desplazamiento horizontal independiente, listas de tareas de solo lectura e imágenes locales con acceso autorizado.
@@ -34,29 +34,28 @@ Estas son las funciones publicadas en 0.1.7. Consulta los cambios desde 0.1.5 en
 
 | Categoría | Vistas previas gratuitas | Funciones adicionales de Peeka Pro |
 | --- | --- | --- |
-| Paquetes Android | APK | AAB, APKS, XAPK, APKM, AAR; resúmenes limitados de permisos, firma y manifiesto cuando estén disponibles |
-| Paquetes Apple | IPA, APP, APPEX; metadatos DMG / PKG planos e información limitada de apps integradas | XCArchive, XCFramework, Framework, dSYM, perfiles de aprovisionamiento, dylib; metadatos de firma disponibles |
+| Paquetes Android | APK y resumen de AAR al estilo APK | AAB, APKS, XAPK, APKM; resúmenes limitados de permisos, firma y manifiesto cuando estén disponibles |
+| Paquetes Apple | IPA, APP, APPEX; metadatos DMG / PKG planos e información limitada de apps integradas | XCArchive, XCFramework, Framework, dSYM, perfiles de aprovisionamiento, dylib, metadatos de firma, componentes, dependencias enlazadas y declaraciones de privacidad disponibles |
+| Xcode / Swift Package | Resúmenes básicos y Source para archivos de texto independientes | Ajustes de compilación declarados, detalles de dependencias y parámetros de Scheme disponibles |
 | Código fuente | 205 perfiles léxicos sin conexión para lenguajes, plantillas, sombreadores, scripts de compilación y configuración; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | Documentos y configuración | Markdown, JSON / JSONL / NDJSON, XML, YAML, TOML, INI, properties, EditorConfig, plist y configuraciones Apple relacionadas, CSV / TSV, TXT / TEXT como texto sin formato; solo nombres de claves en dotenv | — |
 | Mermaid | Código resaltado de bloques Mermaid en Markdown | Archivos `.mmd` / `.mermaid` independientes y diagramas Markdown (macOS 14.4+) |
 | Registros e informes | Texto resaltado de `.log` / `.out` / `.trace`, `.crash`, `.ips` y registros JSONL / NDJSON reconocidos | Resúmenes limitados y detalles estructurados, con diseños Android Logcat / Android Studio |
 | Bases de datos | Resúmenes SQLite y estructuras de tablas (`.sqlite`, `.sqlite3`, `.db`, `.db3`, `.s3db`, `.sdb`) | Páginas de registros de solo lectura e inicio de BLOB |
-| Archivos comprimidos | ZIP, TAR, TAR.GZ / TGZ, metadatos GZ, listados JAR / WAR | Listados 7z compatibles y detalles de manifiestos JAR / WAR |
+| Archivos comprimidos | Apple Archive, ZIP / `.skill`, TAR, TAR.GZ / TGZ, metadatos GZ, listados JAR / WAR | Listados 7z compatibles y detalles de manifiestos JAR / WAR |
 
 La disponibilidad depende del contenido y de que macOS elija la extensión de Peeka. TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS y algunos plist / CSV tienen limitaciones conocidas de proveedor o asignación. Las vistas estructuradas YAML y TOML admiten un subconjunto limitado de su sintaxis. TXT / TEXT se mantiene como texto sin formato, sin detección automática de registros o documentos.
 
-## Novedades de 0.1.7
+## Novedades de 0.1.9
 
-La versión 0.1.7 lleva las siguientes novedades al Mac App Store, incluidas las mejoras de la Beta 0.1.6. [Notas de la versión](https://mellowbit.studio/es/peeka/release-notes/)
-
-- **Resaltado de código ampliado (gratis):** 205 perfiles léxicos sin conexión para lenguajes, plantillas, sombreadores, scripts de compilación y configuración, con interruptores por lenguaje y resaltado compartido con bloques Markdown. No ejecuta código ni valida toda la sintaxis.
-- **Reconocimiento de archivos:** Mejor reconocimiento y asignación de Finder para archivos ocultos, archivos de compilación sin extensión y archivos de bloqueo habituales. Los archivos genéricos no reconocidos muestran información básica; `.ipynb` muestra código JSON. macOS sigue eligiendo el proveedor de vista previa.
-- **Vistas previas de Framework (Pro):** identidad de `.framework` y arquitecturas Mach-O, UUID, plataformas y versiones mínimas del sistema disponibles. Admite paquetes planos y versionados de macOS; los frameworks estáticos habituales solo muestran su identidad.
-- **Símbolos de depuración (Pro):** nombres de binarios y UUID por arquitectura de `.dSYM`. No expande símbolos, no simboliza informes de fallos ni relaciona automáticamente binarios con informes.
-- **Motor Mermaid actualizado:** Pele 1.6.0 integrado representa 20 familias de diagramas sin conexión, con temas claro/oscuro y zoom y desplazamiento vectoriales nativos. El diseño y la compatibilidad de sintaxis pueden diferir de Mermaid.js en 0.1.5.
-- **Archivos comprimidos:** metadatos bajo demanda para listas grandes, más allá de los primeros 256 elementos. Mejoras de indexación, ordenación, cancelación, recuperación y nombres con codificaciones antiguas en ZIP/JAR/WAR y TAR/TGZ. Pro mejora las cabeceras LZMA/LZMA2 y las listas solid 7z compatibles de un solo codificador. Siguen aplicándose límites de recursos y listas parciales.
-
-Framework y dSYM tienen interruptores independientes y no generan miniaturas personalizadas. La validación local registró vistas previas con la barra espaciadora para ambos y una vista previa en columnas del Finder para dSYM. El Finder abre los frameworks como directorios en columnas.
+- Nuevos resúmenes de Xcode, Workspace, Scheme, xcconfig y Swift Package. Resúmenes básicos y Source de archivos independientes gratuitos. Pro añade declaraciones y detalles de las dependencias.
+- Nueva información de compilación Apple y resúmenes Pro de componentes, dependencias enlazadas y declaraciones de privacidad.
+- Nuevas listas Apple Archive y vistas ZIP `.skill`. Android AAR comparte el resumen APK con los SDK y estadísticas de recursos disponibles.
+- Nueva ayuda sin conexión localizada y resaltado específico de reglas de exclusión.
+- Mejoras en tablas nativas, detalles de archivos comprimidos, expansión del árbol, selección SQLite y presentación Markdown.
+- Motor Mermaid sin conexión actualizado. Se mejoraron el reconocimiento de archivos `.mmd` y la indicación del porcentaje de zoom. Los diagramas requieren Pro y macOS 14.4+.
+- Mejoras en análisis limitado, cancelación y recuperación de vistas incompletas o dañadas.
+- Las miniaturas de archivos Finder se aplazan en esta versión. Se mantienen las vistas de Vista Rápida y los iconos de ventana.
 
 ## Primeros pasos
 
@@ -67,7 +66,7 @@ Framework y dSYM tienen interruptores independientes y no generan miniaturas per
 
 Tras cambiar un interruptor o desbloquear Pro, cierra y vuelve a abrir Vista rápida. La app principal ofrece ayuda de configuración, controles de formatos, ajustes y compras; las vistas previas aparecen en el Finder.
 
-Los interruptores de vista previa no controlan las miniaturas de paquetes, que tampoco requieren Pro. La app incluye búsqueda de formatos e interruptores por lenguaje de código. Consulta la [referencia de funciones (inglés)](skills/peeka/references/features-and-plans.md) y la [guía de resolución de problemas (inglés)](skills/peeka/references/troubleshooting.md).
+La app incluye búsqueda de formatos e interruptores por lenguaje de código. Consulta la [referencia de funciones (inglés)](skills/peeka/references/features-and-plans.md) y la [guía de resolución de problemas (inglés)](skills/peeka/references/troubleshooting.md).
 
 ## Peeka Pro
 

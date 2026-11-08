@@ -1,6 +1,6 @@
 # Troubleshooting Peeka
 
-Skill **0.1.9**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
+Peeka **0.1.9** is available on the Mac App Store. Update older installations through the App Store and match guidance to the installed version and UI.
 
 Use the documented product limits to separate configuration problems from unsupported files or macOS routing. Work from the observed symptom; avoid repeating checks already completed.
 
@@ -37,8 +37,8 @@ App Store download failures occur before Peeka's preview extension is available.
 
 macOS decides which Quick Look extension handles a file. Closing and reopening the preview is necessary after switch changes, but an enabled switch cannot force macOS to choose Peeka.
 
-- For **AAR**, **TXT / TEXT**, **IPS**, other dotenv suffixes, and some plist / CSV files, account for documented system-provider/type conflicts. Historical 0.1.7 note: Android AAR may be identified as Apple Archive. The source snapshot checked 2026-11-04 now accepts exact `com.apple.archive` candidates and distinguishes Android AAR, Apple Archive and ZIP by content; check their separate switches and the installed build. Version 0.1.7 also registers code-first routes for conflicting source suffixes such as **`.ts` / `.mts`**, **`.cue`**, and **`.mpp`**. Actual media or binary files with these types can reach source previews or a recoverable binary-input error. Peeka registers `.env` through the generic data fallback and `.env.local` through an exact suffix route; this does not cover every `.env.*` suffix. See [routing details](source-coverage.md#finder-routing-and-conflicts). Do not promise that a cache reset or Pro purchase resolves routing.
-- A `.mmd` file may be assigned another app's Markdown type (including Ulysses). Current source declares a relevant candidate, but registration/type matching alone does not establish that Finder selected Peeka. Compare the observed preview and the installed build before calling it fixed.
+- A file with an **.aar** suffix can contain an Android AAR, an Apple Archive, or a ZIP. Peeka 0.1.9 checks the contents and uses the corresponding switch. Finder's type label can still say Apple Archive for an Android AAR. The Android overview may show only basic statistics if the manifest cannot be verified. Apple Archive uses a directory listing. See [routing details](source-coverage.md#finder-routing-and-conflicts) for source suffix and provider conflicts.
+- A `.mmd` file may be assigned another app's Markdown type (including Ulysses). Peeka 0.1.9 declares a relevant candidate, but registration/type matching alone does not establish that Finder selected Peeka. Compare the observed preview and the installed build before calling it fixed.
 - Check for another Quick Look provider if the visible preview appears to belong to another app. When testing a conflict, change one relevant provider at a time, record its prior setting, and restore settings after the comparison unless the user requested the new state.
 - If Peeka was switched off, a macOS preview or another provider may still appear. Confirm that Peeka's handling is disabled rather than treating any remaining preview as a failed switch.
 - Avoid renaming, overwriting, or changing file associations on the original file as a preview fix. Any experiment should use a separate non-sensitive sample.
@@ -48,14 +48,14 @@ macOS decides which Quick Look extension handles a file. Closing and reopening t
 | Symptom | What to check or explain |
 | --- | --- |
 | `.db` does not show database tables | The suffix is ambiguous; verify that it actually contains a SQLite database. |
-| An extensionless database or unknown suffix gets a generic preview | Version 0.1.7 can receive extensionless files whose exact type is `public.data`; SQLite still requires its magic bytes. Other types may not route to Peeka. Unknown generic files show basic information. Do not change the original filename or claim arbitrary-file support. |
+| An extensionless database or unknown suffix gets a generic preview | Peeka 0.1.9 can receive extensionless files whose exact type is `public.data`; SQLite still requires its magic bytes. Other types may not route to Peeka. Unknown generic files show basic information. Do not change the original filename or claim arbitrary-file support. |
 | SQLite shows schema but no records | Schema is free; records and BLOB prefixes require Pro. Restore an existing purchase before suggesting a new purchase. |
 | SQLite records or BLOBs are truncated | Pages have a 100-row and 1 MiB display limit; BLOBs show only the first 4 KiB. Pro retains these limits. |
 | 7z listing is absent | Requires Pro and a supported variant. Compatible single-coder solid layouts can list; encrypted headers, external metadata, filter chains, and unsupported layouts can still fail. |
 | A large archive listing stops early | Bounded listings may be incomplete. No unlimited listing guarantee is documented. |
 | YAML/TOML outline or mindmap differs from the full document | Structure views support bounded syntax subsets. Inspect the source view if available before concluding that data was lost. |
 | dotenv shows keys without values | Key-name-only display is the documented behavior. Do not expose secret values in a support report. |
-| DMG / flat PKG shows only metadata or a partial app list | Current source can inspect supported containers for app names/icons, within budgets. Unsupported/encrypted variants or limits may yield partial results; only complete inspection can establish that no app was found. Do not mount/install as a preview repair. |
+| DMG / flat PKG shows only metadata or a partial app list | Peeka 0.1.9 can inspect supported containers for app names/icons, within budgets. Unsupported/encrypted variants or limits may yield partial results; only complete inspection can establish that no app was found. Do not mount/install as a preview repair. |
 | GZ only shows metadata | Standalone gzip does not browse payloads or verify total uncompressed size; TAR.GZ / TGZ has a separate listing path and switch. |
 | A log has no structured mode or summary | Highlighted source is free; structured details require Pro and recognized content. TXT / TEXT does not detect logs; binary traces and `.logarchive` are outside support. |
 | Logcat stays plain source or omits statistics | Check the actual layout. `raw` is plain text; `long` needs properly framed multiple records. Statistics cover parsed preview records, not the whole file; budget-truncated final lines do not supply guessed tags or severity. |
@@ -63,13 +63,13 @@ macOS decides which Quick Look extension handles a file. Closing and reopening t
 | Binary / OpenStep plist shows only keys | A key-name projection is intentional, not a full source dump; corrupt binary input does not fall back to unreadable text. |
 | A Markdown image is missing | It must be an authorized regular local file inside the document directory and within image budgets. Remote/data URLs, traversal, and symlinks are blocked; adjacent-file sandbox access may be unavailable. |
 | Signing information is absent or questioned | Metadata availability varies; Peeka is not a signature-validity verifier. |
-| Finder thumbnail is missing | In source snapshot `0ac0cd9` checked 2026-11-04, thumbnails are deferred and the extension is not embedded. Pro does not restore thumbnails. Distinguish icons inside Quick Look previews from Finder thumbnails; inspect the installed build before applying older thumbnail-extension guidance. |
+| Finder thumbnail is missing | Finder thumbnails are deferred in 0.1.9. Check icons inside the Quick Look preview separately. |
 
 If a small supported file fails despite correct switches and tier, record its actual error and reproduction steps for support. Do not infer corruption merely from an extension failure.
 
 ## Framework or dSYM preview is missing
 
-These Pro formats are included in the released App Store 0.1.7 baseline; first check the installed version and channel, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [0.1.7 details](features-and-plans.md#app-store-017).
+These Pro formats are available in 0.1.9; first check the installed version and channel, then check Pro and the individual Framework/dSYM switch. Frameworks may expand as directories in Finder column view; select the bundle and press Space. Neither format provides custom thumbnails. Static framework identity-only output and missing dSYM UUIDs are not evidence of a routing failure. See the [0.1.7 details](features-and-plans.md#app-store-017).
 
 ## Mermaid shows source, no diagram, or no format switch
 
@@ -114,4 +114,4 @@ The bundled [Preview Doctor](preview-doctor.md) provides documented local diagno
 
 ## Source
 
-Product behavior and limitations: Peeka app tag `0.1.7` and canonical format/licensing documents, reviewed **2026-10-26**, summarized in [features and plans](features-and-plans.md). App Store approval and official availability of 0.1.7 were confirmed by the maintainer on **2026-10-26**. Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme). The sequence is diagnostic guidance; some issues depend on file compatibility or macOS provider selection and may not have a local fix.
+See [features and plans](features-and-plans.md) for the 0.1.9 release scope. Preview results depend on file compatibility and Finder provider selection.

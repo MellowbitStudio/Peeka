@@ -1,6 +1,6 @@
 # Preview Doctor
 
-The bundled **skill 0.1.9** adds local diagnosis for macOS 14+. This is the skill package version, not a new Peeka app release. Use it for wrong, generic, empty, or missing Finder previews. Responses and UI guidance follow the user's language.
+The bundled **skill 0.1.9** adds local diagnosis for macOS 14+. The helper ships with the separately installed agent skill. Use it for wrong, generic, empty, or missing Finder previews. Responses and UI guidance follow the user's language.
 
 ## Run the helper
 
@@ -25,7 +25,7 @@ Exit 1 means invalid input, refused/failed mutation, or a command-level error. D
 
 ## Interpret the report
 
-- `format`: documented support, name/suffix match, tier, minimum macOS, format switch, optional Pro details. The [machine catalog](format-catalog.json) follows the dated feature/source references; a source snapshot does not establish availability in an installed release.
+- `format`: documented support, name/suffix match, tier, minimum macOS, format switch, optional Pro details. The [machine catalog](format-catalog.json) follows the 0.1.9 release. Verify the installed version and its visible controls.
 - `type` / `type_declarers`: actual resource UTI, Spotlight fallback, and imported/exported app declarations. A declaration explains a suffix collision without proving preview ownership. The scan covers top-level standard application directories and parents of registered extensions, not every app on disk.
 - `candidates`: modern extensions and legacy generators declaring an exact or conforming type. Eligibility is not proof of selection; inspect recorded election/superseded state.
 - `peeka_copies` / `selected_peeka`: registered paths and versions. If several valid copies exist, choose the intended app with `--peeka-app '/exact/path/Peeka.app'`. Elections affect **every copy of the same identifier**, not just that path.
@@ -38,7 +38,7 @@ During `trace`, close the old preview and reopen the target in Finder with Space
 ## Make a supported file work
 
 1. Diagnose the target. Resolve cloud download/access first. Prefer **Peeka** for documented supported capabilities, checking the installed build and actual content, especially `.db`, `.aar`, `.ts`, and `.mmd`. Generic `public.data` information is not specialized support.
-2. **Operate Peeka directly for setup, preview, or repair requests.** With available desktop tools, open the selected app, search the format list, inspect the matching switch, and turn it on if off. Do not merely give manual steps when you can operate the UI. Use shared alias switches; standalone `.mmd` / `.mermaid` uses Mermaid, fenced diagrams use Markdown. A diagnosis-only request does not request settings changes.
+2. **Operate Peeka directly for setup, preview, or repair requests.** With available desktop tools, open the selected app, search the format list, inspect the matching switch, and turn it on if off. Do not merely give manual steps when you can operate the UI. For an ambiguous `.aar`, identify the content before choosing the Android AAR, Apple Archive, or ZIP switch. Use shared alias switches. Standalone `.mmd` / `.mermaid` uses Mermaid, fenced diagrams use Markdown. A diagnosis-only request does not request settings changes.
 3. For a necessary **Pro** capability, inspect entitlement first. If already owned, use Restore Purchases before suggesting payment. Otherwise explain the specific paid benefit and guide to **Settings → Peeka Pro**, or the purchase page opened by the switch. The user completes sign-in, Touch ID, and final purchase confirmation. Do not click the final payment confirmation or handle credentials. Free basics are sufficient when they meet the task; payment does not repair routing or content limits.
 4. For the system extension, inspect `repair FILE` before `repair FILE --apply`, or operate the matching System Settings control. Script repair requires a complete inventory, one valid selected Peeka build, matching type, local readable target, and compatible known macOS. Enabling an extension cannot force Finder provider selection.
 5. For a confirmed competitor or an explicitly explained comparison, show a concrete plan:

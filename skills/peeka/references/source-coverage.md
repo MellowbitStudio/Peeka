@@ -1,9 +1,6 @@
-# Source and configuration coverage — 0.1.7
+# Source and configuration coverage
 
-Checked **2026-10-26** against app tag **0.1.7** (`a06048c`) and its canonical format documentation. **Peeka 0.1.7 is officially available on the Mac App Store**, as confirmed by the maintainer on **2026-10-26**. This reference replaces the earlier 116-profile development snapshot and describes the released baseline.
-
-
-For the newer dedicated Xcode / Swift Package previews and AAR routing, use the separately dated [source feature matrix](features-and-plans.md#free-and-pro-format-matrix). This historical lexical catalog does not override those structured-preview or routing boundaries.
+The 205-profile catalog from Peeka 0.1.7 also applies to the 0.1.9 release. See the [0.1.9 feature matrix](features-and-plans.md#free-and-pro-format-matrix) for other formats and tiers.
 
 The release contains **205 free offline lexical profiles**, shared by standalone source previews and explicit Markdown fence hints. The app groups them into Source Code, Frontend & Templates, and Build Scripts; SQL, Diff / Patch, Protobuf, and GraphQL remain separate. Each language has a format switch; aliases share its switch. These are bounded, read-only previews, without code execution, full syntax validation, build inspection, or notebook-cell rendering.
 
@@ -221,19 +218,20 @@ The table lists recognized suffixes and filename rules. Profiles with neither a 
 
 ## Shared configuration and document formats
 
-- JSON also handles `.ipynb`, `.xctestplan`, `.storekit`, JSON-derived configuration files, and matching lockfiles such as `Package.resolved`. Notebook files show JSON source and the existing bounded structure modes, without a cell reader.
-- XML handles `.storyboard`, `.xib`, `.xcscheme`, `.csproj`, `.vbproj`, `.props`, `.targets`, `.ps1xml`, and related XML-derived formats. Interface Builder files are shown as source, without instantiating views. `.svg` is XML source when Peeka is selected, rather than an image preview. `.mobileconfig` is source only, without installing profiles or validating signatures.
+- JSON also handles `.ipynb`, `.xctestplan`, `.storekit`, JSON-derived configuration files, and matching lockfiles such as `composer.lock`. Notebook files show JSON source and the existing bounded structure modes, without a cell reader.
+- XML handles `.storyboard`, `.xib`, `.csproj`, `.vbproj`, `.props`, `.targets`, `.ps1xml`, and related XML-derived formats. Interface Builder files are shown as source, without instantiating views. `.svg` is XML source when Peeka is selected, rather than an image preview. `.mobileconfig` is source only, without installing profiles or validating signatures.
 - Common dependency lockfiles reuse matching previews: for example `Cargo.lock` uses TOML, `composer.lock` and `flake.lock` use JSON, and `Gemfile.lock` and `yarn.lock` retain highlighted source. This is not dependency resolution or a general lockfile inspector.
 - `.conf` / `.cfg` / `.cnf` / `.config` can select XML, JSON, TOML, INI, or generic configuration highlighting from bounded content. systemd `.service` / `.timer` / `.socket` / `.mount` / `.target`, `.desktop`, `.gitconfig`, and `.buckconfig` reuse INI. `.sls` / `.raml` reuse YAML. HAR / TopoJSON show JSON source, without network replay or maps.
 - JSON5 / JSONC / Jsonnet / HJSON / Prisma / CUE / Rego retain source without strict JSON validation or execution. `.rmd` / `.qmd` / `.jmd`, RST, Org, and other document profiles are source highlighting rather than rendered documents. Template and embedded-language highlighting is approximate and does not compile templates or load external resources.
+- Peeka 0.1.9 has dedicated previews for `Package.swift`, `Package.resolved`, `.xcscheme`, and `.xcconfig` with free Overview and Source. Its free Ignore Rules preview adds dedicated highlighting for `.gitignore` and `*.gitignore`, including comments, negation, wildcards, and character ranges.
 
 ## Finder routing and conflicts
 
-Version 0.1.7 adds dotfile, extensionless build-file, and common lockfile routing. Exact `public.data` files can reach Peeka's generic fallback; recognized files use the matching format, while unrecognized generic files show basic file information. SQLite still requires its fixed magic bytes. This does not claim arbitrary unknown types or the generic text/source parent types, and a disabled matching format is not bypassed by the fallback.
+Peeka supports dotfile, extensionless build-file, and common lockfile routing. Exact `public.data` files can reach Peeka's generic fallback; recognized files use the matching format, while unrecognized generic files show basic file information. SQLite still requires its fixed magic bytes. This does not claim arbitrary unknown types or the generic text/source parent types, and a disabled matching format is not bypassed by the fallback.
 
-Filename rules remain specific: `go.mod`, `go.sum`, `Package.resolved`, `Dockerfile.*`, `meson.build`, and `.env.local` require their documented name and matching registered type. Their suffix routes do not turn arbitrary `.mod` / `.sum` / `.resolved` / `.build` / `.local` files into the corresponding recognized format. `.env` can use the data fallback; `.env.local` has a dedicated route; other `.env.<suffix>` names still depend on that suffix's type. All recognized dotenv variants show key names only.
+Filename rules remain specific: `go.mod`, `go.sum`, `Package.resolved`, `Dockerfile.*`, `meson.build`, and `.env.local` use their documented filename rules and matching registered types. Their suffix routes do not turn arbitrary `.mod` / `.sum` / `.resolved` / `.build` / `.local` files into the corresponding recognized format. `.env` can use the data fallback; `.env.local` has a dedicated route; other `.env.<suffix>` names still depend on that suffix's type. All recognized dotenv variants show key names only.
 
-The release registers code-first routes for conflicting types associated with `.exs`, `.edn`, `.cue`, `.dts`, `.as`, `.mpp`, `.sdc`, `.ts`, `.mts`, `.mod`, `.rss`, and `.mobileconfig`. Real media or binary files with these types can therefore reach source previews or recoverable binary-input errors. `.svg` is explicitly handled as XML source; `.r` may carry the system Rez type and still be shown as R. Peeka does not provide video playback. macOS still chooses the actual provider; type registration alone does not prove Finder acceptance for a user's file.
+Peeka registers code-first routes for conflicting types associated with `.exs`, `.edn`, `.cue`, `.dts`, `.as`, `.mpp`, `.sdc`, `.ts`, `.mts`, `.mod`, `.rss`, and `.mobileconfig`. Real media or binary files with these types can therefore reach source previews or recoverable binary-input errors. `.svg` is explicitly handled as XML source; `.r` may carry the system Rez type and still be shown as R. Peeka does not provide video playback. macOS still chooses the actual provider; type registration alone does not prove Finder acceptance for a user's file.
 
 ## Content disambiguation and non-text limits
 

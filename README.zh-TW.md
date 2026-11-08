@@ -10,15 +10,15 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 需要 **macOS 14 或以上版本**；Mermaid 圖表另需 **macOS 14.4+** 與 Pro。支援**英文、簡體中文、繁體中文、日文、韓文、德文、法文與西班牙文**。
 
-**Peeka 0.1.7 已通過 App Store 審查並正式上架**，由維護者於 **2026-10-26** 確認。透過 App Store 更新，即可使用擴充的原始碼高亮、Pro Framework/dSYM 預覽、封存檔改進與離線 Pele 圖表。實際預覽仍取決於檔案相容性與 Finder 選用的預覽器。
+**Peeka 0.1.9 已通過審查並在 Mac App Store 正式上架。** 可透過 App Store 更新，使用新增的預覽功能。
 
-**TestFlight 測試版 0.1.8 已通過審核**，由維護者於 **2026-10-29** 確認。[加入 TestFlight](https://testflight.apple.com/join/5jM8yxDB)。Mac App Store 正式版基準仍為 0.1.7。
+**TestFlight 測試版 0.1.8 已通過審核**，由維護者於 **2026-10-29** 確認。[加入 TestFlight](https://testflight.apple.com/join/5jM8yxDB)。
 
 ## 主要功能
 
-以下介紹已發布的 0.1.7 功能；相較於 0.1.5 的變更請見 [0.1.7 更新內容](#017-更新內容)。
+以下是 0.1.9 正式版的功能。相較於 0.1.7 的變更請見 [0.1.9 更新內容](#019-更新內容)。
 
-- **應用程式套件：** 查看 Android 與 Apple 套件中可用的圖示、名稱、識別碼、版本、系統需求與架構。相容套件若內含可用圖示，也可產生 Finder 縮圖。
+- **應用程式套件：** 查看 Android 與 Apple 套件中可用的圖示、名稱、識別碼、版本、系統需求與架構。
 - **原始碼：** 常見開發語言支援語法高亮、行號、原生文字選取與複製，可依語言開啟或關閉預覽。
 - **Diff / Patch：** 免費提供 Source、Fluid、Blocks 與 Unified 檢視，包含檔案選取、原始行號與增刪統計。只檢視修補檔，不套用修補或讀取列出的檔案。
 - **Markdown：** 預覽排版文件，支援程式碼區塊高亮、可獨立水平捲動的表格、唯讀工作清單與獲准存取的本機圖片。
@@ -34,29 +34,28 @@ Peeka 是原生 macOS App，為 Finder 帶來適合開發者的檔案預覽。�
 
 | 類別 | 免費預覽 | Peeka Pro 擴充功能 |
 | --- | --- | --- |
-| Android 套件 | APK | AAB、APKS、XAPK、APKM、AAR；適用時提供有限範圍的權限、簽署與資訊清單摘要 |
-| Apple 套件 | IPA、APP、APPEX；DMG / 平面 PKG 中繼資料與有限範圍的內嵌 App 資訊 | XCArchive、XCFramework、Framework、dSYM、佈建描述檔、dylib；可用的簽署中繼資料 |
+| Android 套件 | APK、APK 風格的 AAR 摘要 | AAB、APKS、XAPK、APKM；適用時提供有限範圍的權限、簽署與資訊清單摘要 |
+| Apple 套件 | IPA、APP、APPEX；DMG / 平面 PKG 中繼資料與有限範圍的內嵌 App 資訊 | XCArchive、XCFramework、Framework、dSYM、佈建描述檔、dylib，以及可取得的簽署中繼資料、元件、連結相依項目與隱私權宣告 |
+| Xcode / Swift Package | 基本摘要與獨立文字檔的 Source 原文 | 可取得的建置設定宣告、相依項目詳情與 Scheme 參數 |
 | 原始碼 | 205 個離線詞法設定，涵蓋程式語言、範本、著色器、建置腳本與設定；SQL、Diff / Patch、Protobuf、GraphQL | — |
 | 文件與設定 | Markdown、JSON / JSONL / NDJSON、XML、YAML、TOML、INI、properties、EditorConfig、plist 與相關 Apple 設定、CSV / TSV、TXT / TEXT 純文字；dotenv 僅顯示鍵名 | — |
 | Mermaid | Markdown 中 Mermaid 圍欄的高亮原始碼 | 獨立 `.mmd` / `.mermaid` 與 Markdown 圖表（macOS 14.4+） |
 | 日誌與報告 | `.log` / `.out` / `.trace`、`.crash`、`.ips` 與已識別 JSONL / NDJSON 日誌的高亮原文 | 有限範圍的摘要與結構化詳細資訊，含 Android Logcat / Android Studio 版面 |
 | 資料庫 | SQLite 摘要與資料表結構（`.sqlite`、`.sqlite3`、`.db`、`.db3`、`.s3db`、`.sdb`） | 唯讀資料分頁與 BLOB 前綴預覽 |
-| 封存檔 | ZIP、TAR、TAR.GZ / TGZ、GZ 中繼資料、JAR / WAR 項目清單 | 支援的 7z 清單與 JAR / WAR 資訊清單詳細內容 |
+| 封存檔 | Apple Archive、ZIP / `.skill`、TAR、TAR.GZ / TGZ、GZ 中繼資料、JAR / WAR 項目清單 | 支援的 7z 清單與 JAR / WAR 資訊清單詳細內容 |
 
 預覽取決於內容與 macOS 是否選用 Peeka 擴充功能。TypeScript `.ts` / `.mts`、dotenv、AAR、TXT / TEXT、IPS 與部分 plist / CSV 有已知預覽器或路由限制。YAML 與 TOML 結構檢視支援有限的語法子集。TXT / TEXT 保持純文字，不自動識別為日誌或文件。
 
-## 0.1.7 更新內容
+## 0.1.9 更新內容
 
-0.1.7 將以下更新帶入 Mac App Store 正式版，包含先前在 0.1.6 Beta 推出的改進。[版本說明](https://mellowbit.studio/zh-tw/peeka/release-notes/)
-
-- **原始碼高亮擴充（免費）：** 205 個離線詞法設定涵蓋程式語言、範本、著色器、建置腳本與設定檔，提供各語言獨立開關，並與 Markdown 程式碼區塊共用高亮。不執行程式碼，也不代表完整語法驗證。
-- **檔案辨識：** 改進點檔案、無副檔名建置檔案和常見鎖定檔的辨識與 Finder 分發。未辨識的通用檔案顯示基本資訊；`.ipynb` 顯示 JSON 原始碼。實際預覽仍取決於 macOS 的預覽器選擇。
-- **Framework 預覽（Pro）：** 查看 `.framework` 身分與可用的 Mach-O 架構、UUID、平台及最低系統版本。支援平面與 macOS 版本化套件；一般靜態框架只顯示身分資訊。
-- **偵錯符號預覽（Pro）：** 查看 `.dSYM` 的二進位檔名稱與各架構 UUID；不展開符號、不符號化當機報告，也不自動配對二進位檔與報告。
-- **Mermaid 引擎更新：** 內建 Pele 1.6.0，離線繪製 20 類圖表，支援淺色／深色主題與原生向量縮放、平移。版面與語法相容性可能不同於 0.1.5 的 Mermaid.js 引擎。
-- **封存檔：** 大型列表按需讀取中繼資料，不再固定為前 256 項；改進索引、排序、取消與恢復，以及 ZIP/JAR/WAR、TAR/TGZ 舊編碼檔名識別；Pro 改進支援的 LZMA/LZMA2 編碼標頭與單編碼器 solid 7z 列表。仍受資源限制，可能顯示不完整列表。
-
-Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收記錄顯示兩者的空白鍵預覽與 dSYM 的 Finder 分欄預覽可用；Framework 在分欄中仍作為目錄展開。
+- 新增 Xcode 專案、Workspace、Scheme、xcconfig 與 Swift Package 摘要。基本摘要及獨立檔案 Source 免費。Pro 提供宣告與相依項目詳情。
+- Apple App 套件新增建置資訊。Pro 增加元件、連結相依項目及隱私權宣告摘要。
+- 新增 Apple Archive 目錄及 `.skill` ZIP 容器預覽。Android AAR 使用 APK 風格摘要，顯示可取得的 SDK 與資源統計。
+- 新增本地化離線輔助說明及忽略規則專用語法突顯。
+- 改善原生表格、封存檔詳情、目錄展開動畫、SQLite 選取效果及 Markdown 排版。
+- 更新離線 Mermaid 引擎，改善 `.mmd` 辨識及縮放百分比。圖表需要 Pro 與 macOS 14.4+。
+- 改善有界解析、取消及損壞或不完整預覽的復原。
+- 本版暫緩 Finder 檔案縮圖。快速查看內容及視窗圖示繼續保留。
 
 ## 開始使用
 
@@ -67,7 +66,7 @@ Framework 與 dSYM 各有獨立開關，均無自訂縮圖。本機 App 驗收�
 
 變更格式開關或解鎖 Pro 後，請關閉並重新開啟快速查看。主 App 提供設定引導、格式控制、設定與購買入口；檔案預覽顯示於 Finder。
 
-預覽開關不控制套件縮圖；縮圖也不需要 Pro。主 App 支援格式搜尋與各原始碼語言的獨立開關。限制與常見問題請見[功能參考（英文）](skills/peeka/references/features-and-plans.md)與[疑難排解（英文）](skills/peeka/references/troubleshooting.md)。
+主 App 支援格式搜尋與各原始碼語言的獨立開關。限制與常見問題請見[功能參考（英文）](skills/peeka/references/features-and-plans.md)與[疑難排解（英文）](skills/peeka/references/troubleshooting.md)。
 
 ## Peeka Pro
 

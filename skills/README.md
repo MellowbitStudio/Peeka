@@ -1,8 +1,8 @@
 # Peeka agent skill
 
-This folder publishes the **`peeka`** skill, version **0.1.9**, for installing and using Mellowbit Studio's macOS Quick Look app. It covers App Store setup, supported formats including Mermaid and Logcat/crash reports, Free and Pro, preview switches, and troubleshooting. **Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**. Product knowledge follows app tag `0.1.7` (`a06048c`), reviewed **2026-10-26**; check the installed version and Finder behavior when troubleshooting.
+This folder publishes the **`peeka`** agent skill, version **0.1.9**, for installing, configuring, and troubleshooting Peeka on macOS. **Peeka app 0.1.9 is available on the Mac App Store**, as confirmed by the maintainer on **2026-11-08**.
 
-The released baseline includes 205 free offline lexical profiles, improved dotfile/build-file/lockfile recognition, Pro Framework/dSYM previews, larger archive listings, filename encoding improvements, and offline Pele diagrams. TestFlight **0.1.8** has passed review, as confirmed by the maintainer on **2026-10-29**; see the [current Beta reference](peeka/references/testflight-0.1.8.md). The 0.1.6 TestFlight reference is retained as historical documentation.
+The [0.1.9 feature matrix](peeka/references/features-and-plans.md) covers Xcode and Swift Package previews, the Android AAR overview, Apple Archive and ZIP-based `.skill` listings, and the Free / Pro boundaries. The [TestFlight 0.1.8 record](peeka/references/testflight-0.1.8.md) documents the earlier Beta approval.
 
 The skill uses the portable `SKILL.md` format with bundled references. Codex, Claude Code, and other agents supported by the [Skills CLI](https://github.com/vercel-labs/skills) can install it. It provides instructions, product knowledge, and the bundled Python Preview Doctor; performing desktop actions requires the agent's own local tools. The Peeka app requires **macOS 14 or later**.
 

@@ -10,15 +10,15 @@ Peeka is a native macOS app that brings developer-friendly previews to Finder. S
 
 Requires **macOS 14 or later**; Mermaid diagrams require **macOS 14.4+** and Pro. Available in **English, Simplified Chinese, Traditional Chinese, Japanese, Korean, German, French, and Spanish**.
 
-**Peeka 0.1.7 has passed App Store review and is officially available**, as confirmed by the maintainer on **2026-10-26**. Update through the App Store for expanded source highlighting, Pro Framework/dSYM previews, archive improvements, and offline Pele diagrams. Preview availability depends on file compatibility and Finder provider selection.
+**Peeka 0.1.9 has passed App Store review and is available on the Mac App Store.** Update from the App Store to get the new previews.
 
-**TestFlight Beta 0.1.8 has passed review**, as confirmed by the maintainer on **2026-10-29**. [Join TestFlight](https://testflight.apple.com/join/5jM8yxDB). The Mac App Store baseline remains 0.1.7.
+**TestFlight Beta 0.1.8 has passed review**, as confirmed by the maintainer on **2026-10-29**. [Join TestFlight](https://testflight.apple.com/join/5jM8yxDB).
 
 ## Features
 
-The following describes the released 0.1.7 features. See [what’s new](#whats-new-in-017) for changes since 0.1.5.
+Features available in 0.1.9. See [what’s new](#whats-new-in-019) for changes since 0.1.7.
 
-- **Application packages:** View available icons, names, identifiers, versions, system requirements, and architectures for Android and Apple packages. Compatible packages with embedded icons can also receive Finder thumbnails.
+- **Application packages:** View available icons, names, identifiers, versions, system requirements, and architectures for Android and Apple packages.
 - **Source code:** Read common development languages with syntax highlighting, line numbers, native text selection, and copy. Enable or disable previews for each source language in Peeka.
 - **Diff / Patch:** Free Source, Fluid, Blocks, and Unified views with file selection, original line numbers, and change counts. Inspect patches without applying them or reading referenced files.
 - **Markdown:** Preview formatted documents with highlighted code blocks, horizontally scrolling tables, read-only task lists, and permitted local images.
@@ -34,29 +34,28 @@ The following describes the released 0.1.7 features. See [what’s new](#whats-n
 
 | Category | Free previews | Peeka Pro additions |
 | --- | --- | --- |
-| Android packages | APK | AAB, APKS, XAPK, APKM, AAR; bounded permissions, signing, and manifest-derived summaries where available |
-| Apple packages | IPA, APP, APPEX; DMG / flat PKG metadata and bounded embedded-app information | XCArchive, XCFramework, Framework, dSYM, provisioning profiles, dylib; signing metadata where available |
+| Android packages | APK and the APK-style AAR overview | AAB, APKS, XAPK, APKM; bounded permissions, signing, and manifest-derived summaries where available |
+| Apple packages | IPA, APP, APPEX; DMG / flat PKG metadata and bounded embedded-app information | XCArchive, XCFramework, Framework, dSYM, provisioning profiles, dylib, available signing metadata, components, linked dependencies, and privacy declarations |
+| Xcode / Swift Package | Basic summaries and Source for standalone text files | Declared build settings, dependencies, and scheme parameters where available |
 | Source code | 205 offline lexical profiles for languages, templates, shaders, build scripts, and configuration; SQL, Diff / Patch, Protobuf, GraphQL | — |
 | Documents and configuration | Markdown, JSON / JSONL / NDJSON, XML, YAML, TOML, INI, properties, EditorConfig, plist and related Apple configuration files, CSV / TSV, TXT / TEXT plain source; dotenv key names only | — |
 | Mermaid | Highlighted Mermaid fenced source in Markdown | Standalone `.mmd` / `.mermaid` and Markdown diagrams (macOS 14.4+) |
 | Logs and reports | Highlighted `.log` / `.out` / `.trace`, `.crash`, `.ips`, and recognized JSONL / NDJSON logs | Bounded summaries and structured details, including Android Logcat / Android Studio layouts |
 | Databases | SQLite summaries and table structure (`.sqlite`, `.sqlite3`, `.db`, `.db3`, `.s3db`, `.sdb`) | Read-only record pages and BLOB prefix previews |
-| Archives | ZIP, TAR, TAR.GZ / TGZ, GZ metadata, JAR / WAR listings | Supported 7z listings and JAR / WAR manifest details |
+| Archives | Apple Archive, ZIP / `.skill`, TAR, TAR.GZ / TGZ, GZ metadata, JAR / WAR listings | Supported 7z listings and JAR / WAR manifest details |
 
 Preview availability depends on file contents and macOS choosing Peeka's extension. TypeScript `.ts` / `.mts`, dotenv, AAR, TXT / TEXT, IPS, and some plist / CSV files have known provider or routing limitations. YAML and TOML structure views support bounded subsets of their syntax. TXT / TEXT stays plain source without automatic log or document detection.
 
-## What’s new in 0.1.7
+## What’s new in 0.1.9
 
-Version 0.1.7 brings the following updates to the Mac App Store, including improvements previously introduced in the 0.1.6 Beta. [Release notes](https://mellowbit.studio/peeka/release-notes/)
-
-- **Expanded source highlighting (Free):** 205 offline lexical profiles cover languages, templates, shaders, build scripts, and configuration files, with individual language switches and shared Markdown fence highlighting. This is lexical inspection, without code execution or full syntax validation.
-- **File recognition:** Improved dotfile, extensionless build-file, and common lockfile recognition and Finder routing. Unrecognized generic files show basic information; `.ipynb` shows JSON source. Actual previews remain subject to macOS provider selection.
-- **Framework previews (Pro):** Inspect `.framework` identity and available Mach-O architectures, UUIDs, platforms, and minimum system versions. Flat and versioned macOS bundles are supported; ordinary static frameworks show identity only.
-- **Debug-symbol previews (Pro):** Inspect `.dSYM` binary names and per-architecture UUIDs. This does not expand symbols, symbolicate crashes, or automatically match binaries to reports.
-- **Updated Mermaid renderer:** Bundled Pele 1.6.0 renders the 20 supported diagram families offline, with light/dark themes and native vector zoom/pan. Layout and syntax compatibility can differ from the Mermaid.js renderer in 0.1.5.
-- **Archives:** Metadata can be read on demand for larger listings, beyond the previous first-256-entry limit. Improved indexing, sorting, cancellation and recovery; ZIP/JAR/WAR and TAR/TGZ legacy filename handling; supported LZMA/LZMA2 headers and single-coder solid 7z listings (Pro). Resource limits and partial listings still apply.
-
-Framework and dSYM have independent format switches and no custom thumbnails. Local app validation recorded working Space previews for both and a Finder column preview for dSYM; Finder expands frameworks as directories in column view.
+- Added Xcode project, workspace, Scheme, xcconfig and Swift Package overviews. Basic summaries and standalone-file Source are free. Pro adds detailed declarations and dependencies.
+- Added Apple application build information and Pro summaries of components, linked dependencies and privacy declarations.
+- Added Apple Archive listings and `.skill` ZIP-container previews. Android AAR now shares the APK-style overview, with available SDK and resource statistics.
+- Added localized offline help and dedicated ignore-rule highlighting.
+- Refined native tables, archive details, outline expansion, SQLite selection and Markdown presentation.
+- Updated the offline Mermaid engine and improved `.mmd` recognition and zoom-percentage feedback. Diagrams require Pro and macOS 14.4+.
+- Improved bounded parsing, cancellation and recovery for malformed or incomplete previews.
+- Finder file thumbnails are deferred in this version. Quick Look previews and their window icons remain available.
 
 ## Get started
 
@@ -67,7 +66,7 @@ Framework and dSYM have independent format switches and no custom thumbnails. Lo
 
 After changing a format switch or unlocking Pro, close and reopen the Quick Look preview. The main app provides setup guidance, format controls, settings, and purchasing; file previews appear in Finder.
 
-Preview switches do not control package thumbnails, which are independent of Pro. The main app includes format search and separate source-language switches. For preview limitations and common problems, see the [feature reference](skills/peeka/references/features-and-plans.md) and [troubleshooting guide](skills/peeka/references/troubleshooting.md).
+The main app includes format search and separate source-language switches. For preview limitations and common problems, see the [feature reference](skills/peeka/references/features-and-plans.md) and [troubleshooting guide](skills/peeka/references/troubleshooting.md).
 
 ## Peeka Pro
 

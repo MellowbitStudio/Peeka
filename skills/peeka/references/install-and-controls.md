@@ -1,6 +1,6 @@
 # Installation and preview controls
 
-Skill **0.1.9**, product baseline checked against app tag `0.1.7` (`a06048c`) on **2026-10-26**. Peeka **0.1.7** has passed App Store review and is officially available, as confirmed by the maintainer on **2026-10-26**. Update older installations through the App Store and match guidance to the installed version and UI.
+Peeka **0.1.9** is available on the Mac App Store. Update older installations through the App Store and match guidance to the installed version and UI.
 
 ## Install from the Mac App Store
 
@@ -23,7 +23,7 @@ Run the second command after installation. App Store authentication or download 
 
 1. Ensure the file is available locally. If it is a cloud placeholder, download it before diagnosing a parser or extension failure.
 2. Select the file in **Finder / 访达** and press **Space / 空格键**. Press Space again or close the Quick Look window to dismiss it.
-3. Use the preview controls provided for that format: Source / Outline / Mindmap for supported structured data; source / structured details for recognized logs and reports; Diagram / Source and zoom controls for Mermaid; archive navigation; or database Structure / Data. See [features and plans](features-and-plans.md) for tier requirements and limits. Mermaid diagrams require Pro and macOS 14.4+; Markdown Mermaid source stays free.
+3. Use the preview controls provided for that format: Source / Outline / Mindmap for supported structured data; source / structured details for recognized logs and reports; Diagram / Source and zoom controls for Mermaid; List / Split for archives; Overview / Source for supported Xcode and Swift Package files; or database Structure / Data. See [features and plans](features-and-plans.md) for tier requirements and limits. Mermaid diagrams require Pro and macOS 14.4+; Markdown Mermaid source stays free.
 
 If local shell access is available, reveal the user's file with:
 
@@ -48,7 +48,7 @@ When purchase/restore newly grants Pro, the app enables Pro-format previews auto
 
 Switching a format off stops Peeka's handling for that format. Finder may show a macOS preview, a preview from another extension, or a generic file display. Do not promise that Finder will show no preview at all.
 
-Current source update (2026-11-04, `0ac0cd9`): Finder thumbnails are deferred and the app does not embed the thumbnail extension. The archived implementation is independent of Pro and preview switches; do not recommend purchasing Pro or enabling a missing thumbnail extension. Icons inside Quick Look previews are separate. Match older-build guidance to the installed bundle.
+Peeka 0.1.9 ships the Quick Look preview extension. Finder thumbnails are deferred. Icons inside Quick Look previews remain available.
 
 ## Enable or disable Peeka's Quick Look extension
 
@@ -61,7 +61,7 @@ Start with Peeka's setup guidance. In System Settings, locate **Quick Look / 快
 | macOS Sonoma 14 | **System Settings → Privacy & Security → Extensions → Quick Look** / **系统设置 → 隐私与安全性 → 扩展 → 快速查看** |
 | Newer macOS UI | **System Settings → General → Login Items & Extensions → Quick Look** / **系统设置 → 通用 → 登录项与扩展 → 快速查看**; open the category's information button if shown |
 
-Inspect the current UI or search System Settings for **Quick Look** or **Extensions** when the path differs. Match Peeka's visible entries rather than guessing extension names. Preview and thumbnail entries may be shown separately; change the entries that correspond to the user's request.
+Inspect the current UI or search System Settings for **Quick Look** or **Extensions** when the path differs. Match Peeka's visible entries rather than guessing extension names. For 0.1.9, use the Peeka preview entry.
 
 Close and reopen Finder Quick Look afterward. This controls Peeka's extension, while the format switches control individual supported formats. macOS Quick Look can continue using its own or other providers when Peeka is disabled.
 
@@ -73,6 +73,6 @@ Report the app installation state, relevant format switch, relevant extension st
 
 ## Sources
 
-Product workflow: Peeka app tag `0.1.7` and canonical format/licensing documentation, reviewed **2026-10-26**; bundled behavior is summarized in [features and plans](features-and-plans.md). Public updates: [Peeka documentation](https://github.com/MellowbitStudio/Peeka#readme).
+See the [0.1.9 feature matrix](features-and-plans.md#free-and-pro-format-matrix) for the supported formats and tier boundaries.
 
 System Settings paths: Apple's [Sonoma Extensions settings](https://support.apple.com/guide/mac-help/change-extensions-settings-mchl8baf92fe/14.0/mac/14.0) and [Login Items & Extensions settings](https://support.apple.com/guide/mac-help/change-login-items-extensions-settings-mtusr003/mac). Check the version selector and installed UI for version-specific labels.

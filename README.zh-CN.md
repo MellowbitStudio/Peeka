@@ -10,15 +10,15 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 需要 **macOS 14 或更高版本**；Mermaid 图形另需 **macOS 14.4+** 和 Pro。支持**英语、简体中文、繁体中文、日语、韩语、德语、法语和西班牙语**。
 
-**Peeka 0.1.7 已通过 App Store 审核并正式上线**，由维护者于 **2026-10-26** 确认。通过 App Store 更新，即可使用扩展的源码高亮、Pro Framework/dSYM 预览、归档改进与离线 Pele 图表。实际预览仍取决于文件兼容性和访达选择的预览器。
+**Peeka 0.1.9 已通过审核并在 Mac App Store 正式上线。** 可通过 App Store 更新，体验新增的预览功能。
 
-**TestFlight 测试版 0.1.8 已通过审核**，由维护者于 **2026-10-29** 确认。[加入 TestFlight](https://testflight.apple.com/join/5jM8yxDB)。Mac App Store 正式版基线仍为 0.1.7。
+**TestFlight 测试版 0.1.8 已通过审核**，由维护者于 **2026-10-29** 确认。[加入 TestFlight](https://testflight.apple.com/join/5jM8yxDB)。
 
 ## 主要功能
 
-以下介绍已发布的 0.1.7 功能；相较于 0.1.5 的变化见 [0.1.7 更新内容](#017-更新内容)。
+以下是 0.1.9 正式版的功能。相较于 0.1.7 的变化见 [0.1.9 更新内容](#019-更新内容)。
 
-- **应用软件包：** 查看 Android 与 Apple 软件包中可用的图标、名称、标识符、版本、系统要求和架构。受支持的软件包含有可用内置图标时，还可生成访达缩略图。
+- **应用软件包：** 查看 Android 与 Apple 软件包中可用的图标、名称、标识符、版本、系统要求和架构。
 - **源码：** 常见开发语言支持语法高亮、行号、原生文本选择与复制。可在 Peeka 中按语言独立开启或关闭预览。
 - **Diff / Patch：** 免费提供 Source、Fluid、Blocks 和 Unified 视图，支持文件选择、原文件行号与增删统计；仅查看补丁，不应用补丁或读取所列文件。
 - **Markdown：** 阅读排版后的文档，支持代码块高亮、独立横向滚动表格、只读任务列表和获准访问的本地图片。
@@ -34,29 +34,28 @@ Peeka 是一款原生 macOS 应用，为「访达」带来更适合开发者的�
 
 | 类别 | 免费预览 | Peeka Pro 扩展能力 |
 | --- | --- | --- |
-| Android 软件包 | APK | AAB、APKS、XAPK、APKM、AAR；适用格式的有界权限、签名和清单摘要 |
-| Apple 软件包 | IPA、APP、APPEX；DMG 与扁平 PKG 的元数据及有界应用信息探查 | XCArchive、XCFramework、Framework、dSYM、预置描述文件、dylib；适用格式的签名元数据 |
+| Android 软件包 | APK、APK 风格的 AAR 概要 | AAB、APKS、XAPK、APKM；适用格式的有界权限、签名和清单摘要 |
+| Apple 软件包 | IPA、APP、APPEX；DMG 与扁平 PKG 的元数据及有界应用信息探查 | XCArchive、XCFramework、Framework、dSYM、预置描述文件、dylib，以及可取得的签名元数据、组件、链接依赖与隐私声明 |
+| Xcode / Swift Package | 基础概要与独立文本文件的 Source 原文 | 可取得的构建设置声明、依赖详情和 Scheme 参数 |
 | 源码 | 205 个离线词法配置，涵盖编程语言、模板、着色器、构建脚本与配置；SQL、Diff / Patch、Protobuf、GraphQL | — |
 | 文档与配置 | Markdown、JSON / JSONL / NDJSON、XML、YAML、TOML、INI、properties、EditorConfig、plist 及相关 Apple 配置、CSV / TSV、TXT / TEXT 普通原文；dotenv 仅显示键名 | — |
 | Mermaid | Markdown 中 Mermaid 围栏高亮源码 | 独立 `.mmd` / `.mermaid` 与 Markdown 内图形（macOS 14.4+） |
 | 日志与报告 | `.log` / `.out` / `.trace`、`.crash`、`.ips` 及已识别 JSONL / NDJSON 日志的高亮原文 | 有界概要与结构化详情，含 Android Logcat / Android Studio 版式 |
 | 数据库 | SQLite 概要与表结构（`.sqlite`、`.sqlite3`、`.db`、`.db3`、`.s3db`、`.sdb`） | 只读记录分页与 BLOB 前缀预览 |
-| 压缩包 | ZIP、TAR、TAR.GZ / TGZ、GZ 元数据、JAR / WAR 条目清单 | 受支持的 7z 条目清单与 JAR / WAR 清单详情 |
+| 压缩包 | Apple Archive、ZIP / `.skill`、TAR、TAR.GZ / TGZ、GZ 元数据、JAR / WAR 条目清单 | 受支持的 7z 条目清单与 JAR / WAR 清单详情 |
 
 实际预览取决于文件内容以及 macOS 是否选择 Peeka 扩展。TypeScript 的 `.ts` / `.mts`、dotenv、AAR、TXT / TEXT、IPS 及部分 plist / CSV 存在已知预览器或分发限制。YAML 与 TOML 的结构视图支持有界语法子集。TXT / TEXT 只显示普通原文，不自动识别日志或文档类型。
 
-## 0.1.7 更新内容
+## 0.1.9 更新内容
 
-0.1.7 将以下更新带入 Mac App Store 正式版，包含此前在 0.1.6 Beta 中推出的改进。[版本说明](https://mellowbit.studio/zh-cn/peeka/release-notes/)
-
-- **源码高亮扩展（免费）：** 205 个离线词法配置覆盖编程语言、模板、着色器、构建脚本与配置文件，提供按语言独立开关，并与 Markdown 代码围栏共享高亮。不执行代码，也不代表完整语法校验。
-- **文件识别：** 改进点文件、无扩展名构建文件和常见锁文件的识别与访达分发。未识别的通用文件显示基础信息；`.ipynb` 显示 JSON 源码。实际预览仍取决于 macOS 的预览器选择。
-- **Framework 预览（Pro）：** 查看 `.framework` 身份，以及可读取的 Mach-O 架构、UUID、平台和最低系统版本。支持平面布局和 macOS 版本化目录；普通静态框架仅显示身份信息。
-- **调试符号包预览（Pro）：** 查看 `.dSYM` 中的二进制名称及各架构 UUID，不展开符号、不符号化崩溃报告，也不自动匹配二进制与报告。
-- **Mermaid 渲染引擎更新：** 内置 Pele 1.6.0，离线渲染 20 类图形，提供浅深色主题和原生矢量缩放、平移；布局与语法兼容性可能不同于 0.1.5 的 Mermaid.js 引擎。
-- **压缩包：** 大型目录按需读取元数据，不再固定为前 256 项；改进索引、排序、取消与恢复，以及 ZIP/JAR/WAR、TAR/TGZ 旧编码文件名识别；Pro 改进受支持的 LZMA/LZMA2 编码头与单编码器固实 7z 列表。仍受资源限制，可能显示不完整目录。
-
-Framework 与 dSYM 各有独立格式开关，均不生成自定义缩略图。App 仓库的本机验收记录显示，两者空格预览及 dSYM 分栏预览通过；Framework 在访达分栏中仍作为目录展开。
+- 新增 Xcode 工程、Workspace、Scheme、xcconfig 与 Swift Package 概要。基础概要及独立文件 Source 免费。Pro 提供声明与依赖详情。
+- Apple 应用包新增构建信息。Pro 增加组件、链接依赖与隐私声明摘要。
+- 新增 Apple Archive 目录及 `.skill` ZIP 容器预览。Android AAR 复用 APK 风格概要，显示可取得的 SDK 与资源统计。
+- 新增本地化离线帮助与忽略规则专用高亮。
+- 优化原生表格、归档详情、目录展开动画、SQLite 选中效果与 Markdown 排版。
+- 更新离线 Mermaid 引擎，改进 `.mmd` 识别与缩放百分比反馈。图形需要 Pro 和 macOS 14.4+。
+- 改善有界解析、取消及损坏或不完整预览的恢复。
+- 本版暂缓 Finder 文件缩略图。Quick Look 内容预览及窗口图标继续保留。
 
 ## 开始使用
 
@@ -67,7 +66,7 @@ Framework 与 dSYM 各有独立格式开关，均不生成自定义缩略图。A
 
 调整格式开关或解锁 Pro 后，请关闭并重新打开快速查看窗口。主应用提供引导、格式开关、设置与购买入口，文件预览通过访达完成。
 
-预览开关不控制软件包缩略图，缩略图也不要求 Pro。主应用提供格式搜索和按源码语言独立控制的开关。具体限制与常见问题见[功能参考](skills/peeka/references/features-and-plans.md)和[故障排查](skills/peeka/references/troubleshooting.md)。
+主应用提供格式搜索和按源码语言独立控制的开关。具体限制与常见问题见[功能参考](skills/peeka/references/features-and-plans.md)和[故障排查](skills/peeka/references/troubleshooting.md)。
 
 ## Peeka Pro
 

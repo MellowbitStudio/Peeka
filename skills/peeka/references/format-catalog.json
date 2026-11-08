@@ -1,9 +1,8 @@
 {
   "schema_version": 1,
   "baseline": {
-    "released": "0.1.7 (a06048c), 2026-10-26",
-    "source_snapshot": "0ac0cd9, 2026-11-04",
-    "availability": "Source capabilities do not establish availability in the installed release. Verify visible UI.",
+    "released": "0.1.9",
+    "availability": "Mac App Store availability confirmed by the maintainer on 2026-11-08. Verify the installed version and visible UI.",
     "references": [
       "features-and-plans.md",
       "source-coverage.md"
@@ -111,8 +110,7 @@
       "min_macos": "14.0",
       "switch": "Android AAR / Apple Archive",
       "support": "documented",
-      "pro_details": "Android AAR analysis and indexed-name/path search",
-      "notes": "Ambiguous: Android AAR, Apple Archive or ZIP. The actual content and installed build determine the preview."
+      "notes": "Check content before choosing the Android AAR, Apple Archive or ZIP switch. Android AAR uses an APK-style overview with available permission details gated by Pro. Apple Archive and ZIP show bounded listings."
     },
     {
       "id": "apple-app-app",
